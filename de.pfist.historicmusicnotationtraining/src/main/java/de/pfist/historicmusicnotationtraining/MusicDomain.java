@@ -17,7 +17,7 @@ public interface MusicDomain {
 
 	public DomainSpecificState getStateObject();
 
-	public WorkerExtension createWorkerExtension();
+	public WorkerExtension<?, ?> createWorkerExtension();
 
 	public AbstractNotePanel createNotePanel(Controller controller);
 }

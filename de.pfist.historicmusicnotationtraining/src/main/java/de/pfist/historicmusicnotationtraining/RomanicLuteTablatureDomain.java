@@ -4,11 +4,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
-public class GermanLuteTablatureDomain implements MusicDomain {
+public class RomanicLuteTablatureDomain implements MusicDomain {
 
-	private static final String NAME = Messages.getString("GermanLuteTablatureDomain.domainTitle"); //$NON-NLS-1$
+	private static final String NAME = Messages.getString("RomanicLuteTablatureDomain.domainTitle"); //$NON-NLS-1$
 
-	private GermanLuteTablatureDomainSpecificState domainSpecificState;
+	private RomanicLuteTablatureDomainSpecificState domainSpecificState;
 
 	/**
 	 * {@inheritDoc}
@@ -23,7 +23,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public int getTabMnemonic() {
-		return KeyEvent.VK_G;
+		return KeyEvent.VK_R;
 	}
 
 	/**
@@ -31,8 +31,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
-		return new NoteButtonPanelType[] { NoteButtonPanelType.SINGLE_CHROMATIC,
-				NoteButtonPanelType.SINGLE_LUTE_FRETBOARD, NoteButtonPanelType.SINGLE_KEYBOARD };
+		return new NoteButtonPanelType[] { NoteButtonPanelType.SINGLE_CHROMATIC, NoteButtonPanelType.SINGLE_KEYBOARD };
 	}
 
 	/**
@@ -41,8 +40,9 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new GermanLuteTablatureDomainSpecificState();
+		domainSpecificState = new RomanicLuteTablatureDomainSpecificState();
 		JPanel specificPanel = new JPanel();
+		I18NComponentHelper.createRomanicLuteTablatureVariantCombo(specificPanel, domainSpecificState);
 
 		I18NComponentHelper.createLuteTuningCombo(specificPanel, domainSpecificState);
 
@@ -66,7 +66,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
-		return new GermanLuteTablatureWorkerExtension();
+		return new RomanicLuteTablatureWorkerExtension();
 	}
 
 	/*
@@ -76,7 +76,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public AbstractNotePanel createNotePanel(Controller controller) {
-		return new GermanLuteTablatureNotePanel(controller);
+		return new RomanicLuteTablatureNotePanel(controller);
 	}
 
 }

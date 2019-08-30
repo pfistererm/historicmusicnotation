@@ -74,7 +74,7 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	 * @see de.pfist.learncclefs.MusicDomain#createWorkerExtension()
 	 */
 	@Override
-	public WorkerExtension createWorkerExtension() {
+	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new GermanLuteTablatureChordsWorkerExtension();
 	}
 

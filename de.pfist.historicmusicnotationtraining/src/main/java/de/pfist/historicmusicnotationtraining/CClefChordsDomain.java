@@ -43,7 +43,7 @@ public class CClefChordsDomain implements MusicDomain {
 
 		// clef selection
 		// specificPanel.add(new JLabel(Messages.getString("CClefDomain.Clef")));
-		// //$NON-NLS-1$
+		//$NON-NLS-1$
 		// I18NComponentHelper.createComboBox(Clef.class, specificPanel, //
 		// (t) -> domainSpecificState.setClefSelection(t), //
 		// Clef.ALL, Clef.C1, Clef.C2, Clef.C3, Clef.C4, Clef.F4);
@@ -66,7 +66,7 @@ public class CClefChordsDomain implements MusicDomain {
 	 * @see de.pfist.learncclefs.MusicDomain#createWorkerExtension()
 	 */
 	@Override
-	public WorkerExtension createWorkerExtension() {
+	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new CClefChordsWorkerExtension();
 	}
 

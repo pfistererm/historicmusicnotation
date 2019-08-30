@@ -15,27 +15,26 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel {
 	 * Note names.
 	 */
 	private static final String[] NOTE_NAMES_LOWER = { //
-			"c", "v", "d", "r", "e", "f", "t", "g", "y", "a", "b", "h" // //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
+			"\uEE0C", "\uEE0D", "\uEE0E", "\uEE0F", "\uEE10", "\uEE11", "\uEE12", "\uEE13", "\uEE14", "\uEE15", "\uEE16", "\uEE17" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
 	};
 	/**
 	 * Note names.
 	 */
 	private static final String[] NOTE_NAMES_UPPER = { //
-			"C", "V", "D", "R", "E", "F", "T", "G", "Y", "A", "B", "H" // //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
+			"\uEE00", "\uEE01", "\uEE02", "\uEE03", "\uEE04", "\uEE05", "\uEE06", "\uEE07", "\uEE08", "\uEE09", "\uEE0A", "\uEE0B" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
 	};
 	private static final String[] OCTAVE_ADDITIONS = { //
-			"", "", "-", "=", "=-" // //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+			"", "", "\uEE18", "\uEE19", "\uEE19\uEE18" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 	};
 
 	private boolean initialized = false;
 	private int midiNote = 0;
 	private Font font;
-	private int fontSize = 40;
+	private float fontSize = 40;
 
 	public NewGermanOrganTablatureNotePanel(final Controller controller) {
 		super(controller);
-		final String fontName = "Möller"; //$NON-NLS-1$
-		font = loadFont(fontName);
+		font = getUnscaledSmuflFont();
 		if (font != null) {
 			font = font.deriveFont(Font.BOLD, fontSize);
 		}

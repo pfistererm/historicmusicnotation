@@ -66,7 +66,7 @@ public class CClefDomain implements MusicDomain {
 	 * @see de.pfist.learncclefs.MusicDomain#createWorkerExtension()
 	 */
 	@Override
-	public WorkerExtension createWorkerExtension() {
+	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new CClefWorkerExtension();
 	}
 

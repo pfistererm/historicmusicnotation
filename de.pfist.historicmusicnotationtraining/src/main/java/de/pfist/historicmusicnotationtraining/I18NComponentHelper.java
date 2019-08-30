@@ -55,7 +55,7 @@ public class I18NComponentHelper {
 	public static <E extends Enum<E> & I18NEnum> JComboBox<EnumComboItem<E>> createComboBox(Class<E> enumClass,
 			JComponent parent, final Consumer<E> selectionHandler, E... enumConstants) {
 		Vector<EnumComboItem<E>> enumItems = new Vector<>();
-		for (E e : enumConstants) {
+		for (final E e : enumConstants) {
 			enumItems.add(new EnumComboItem<>(e, Messages.getString(e.getTextKey())));
 		}
 		JComboBox<EnumComboItem<E>> combo = new JComboBox<>(enumItems);
@@ -87,21 +87,58 @@ public class I18NComponentHelper {
 		}
 	}
 
-	public static  void createLuteTuningCombo(JPanel specificPanel, final AbstractLuteDomainSpecificState domainSpecificState) {
+	public static void createLuteTuningCombo(final JPanel specificPanel,
+			final AbstractLuteDomainSpecificState domainSpecificState) {
 		// tuning selection
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.tuningLabel"))); //$NON-NLS-1$
 		JComboBox<LuteTuning> luteTuningCombo = new JComboBox<>();
 		luteTuningCombo.addItem(LuteTuning.A_TUNING);
 		luteTuningCombo.addItem(LuteTuning.G_TUNING);
 		specificPanel.add(luteTuningCombo);
-	
+
 		luteTuningCombo.addItemListener(new ItemListener() {
-	
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				LuteTuning luteTuning = (LuteTuning) (luteTuningCombo.getSelectedItem());
 				domainSpecificState.setLuteTuning(luteTuning);
 			}
 		});
+	}
+
+	public static void createLuteStringModeCombo(JPanel specificPanel,
+			final AbstractLuteNoteDomainSpecificState domainSpecificState) {
+		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.stringLabel"))); //$NON-NLS-1$
+		createComboBox(LuteStringMode.class, specificPanel, (t) -> {
+			domainSpecificState.setLuteStringMode(t);
+		}, //
+				LuteStringMode.ALL, LuteStringMode.S5, LuteStringMode.S4, LuteStringMode.S3, LuteStringMode.S2,
+				LuteStringMode.S1, LuteStringMode.S0);
+	}
+
+	public static void createKeyModeCombo(final JPanel specificPanel,
+			final AbstractLuteNoteDomainSpecificState domainSpecificState) {
+		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.keyLabel"))); //$NON-NLS-1$
+		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
+
+			@Override
+			public void accept(KeyMode t) {
+				domainSpecificState.setKeyMode(t);
+			}
+		};
+		createComboBox(KeyMode.class, specificPanel, selectionHandler);
+	}
+
+	public static void createRomanicLuteTablatureVariantCombo(final JPanel specificPanel,
+			final IRomanicLuteTablatureVariantState domainSpecificState) {
+		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.romanicLuteTablatureVariantLabel"))); //$NON-NLS-1$
+		Consumer<RomanicLuteTablatureVariant> selectionHandler = new Consumer<RomanicLuteTablatureVariant>() {
+
+			@Override
+			public void accept(RomanicLuteTablatureVariant t) {
+				domainSpecificState.setRomanicLuteTablatureVariant(t);
+			}
+		};
+		createComboBox(RomanicLuteTablatureVariant.class, specificPanel, selectionHandler);
 	}
 }

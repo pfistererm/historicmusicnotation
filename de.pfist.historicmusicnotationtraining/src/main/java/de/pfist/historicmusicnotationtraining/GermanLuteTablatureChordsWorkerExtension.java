@@ -103,7 +103,7 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
 		final ChordDescription[] chords = getChords(luteTuning);
 		final int chordDescriptionIndex = Worker.randomInteger(chords.length);
-		System.out.println("chordDescriptionIndex: " + chordDescriptionIndex);
+		System.out.println("chordDescriptionIndex: " + chordDescriptionIndex); //$NON-NLS-1$
 		final ChordDescription chordDescription = chords[chordDescriptionIndex];
 
 		final LuteNote[] luteNotes = chordDescription.getLuteNotes();

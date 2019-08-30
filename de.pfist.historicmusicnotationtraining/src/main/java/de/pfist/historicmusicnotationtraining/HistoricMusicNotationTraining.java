@@ -57,6 +57,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 				new CClefChordsDomain(), //
 				new GermanLuteTablatureDomain(), //
 				new GermanLuteTablatureChordsDomain(), //
+				new RomanicLuteTablatureDomain(), //
 				new NewGermanOrganTablatureDomain() //
 		};
 		new HistoricMusicNotationTraining(domains);
@@ -254,9 +255,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		StatusBar statusBar = new StatusBar();
 		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));
-		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" },
-				new Component[] { successLabel, new JLabel("second"), new JLabel("remaining") },
-				new String[] { "25%", "25%", "*" });
+		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" }, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				new Component[] { successLabel, new JLabel("second"), new JLabel("remaining") }, //$NON-NLS-1$ //$NON-NLS-2$
+				new String[] { "25%", "25%", "*" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return statusBar;
 	}
 

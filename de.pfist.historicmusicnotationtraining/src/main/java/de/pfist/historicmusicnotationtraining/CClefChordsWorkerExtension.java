@@ -55,7 +55,7 @@ public class CClefChordsWorkerExtension
 
 		final ChordDescription[] chords = getChords();
 		final int chordDescriptionIndex = CHORD_TEST ? chordDescriptionIndexTest : Worker.randomInteger(chords.length);
-		System.out.println("chordDescriptionIndex: " + chordDescriptionIndex);
+		System.out.println("chordDescriptionIndex: " + chordDescriptionIndex); //$NON-NLS-1$
 		final ChordDescription chordDescription = chords[chordDescriptionIndex];
 		if (CHORD_TEST && chordDescriptionIndexTest < chords.length) {
 			chordDescriptionIndexTest++;

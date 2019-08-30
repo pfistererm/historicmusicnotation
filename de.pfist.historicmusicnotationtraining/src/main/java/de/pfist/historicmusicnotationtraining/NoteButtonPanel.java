@@ -1,5 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -178,6 +179,14 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 	 */
 	public final void setController(final Controller controller) {
 		this.controller = controller;
+		// TODO: find a clean solution
+		for (Component c : this.getComponents())
+		{
+			if (c instanceof MidiSynth)
+			{
+				((MidiSynth)c).setController(controller);
+			}
+		}
 	}
 
 }

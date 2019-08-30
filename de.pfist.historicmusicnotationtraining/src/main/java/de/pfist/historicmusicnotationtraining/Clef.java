@@ -17,15 +17,15 @@ package de.pfist.historicmusicnotationtraining;
  *
  */
 public enum Clef implements I18NEnum {
-	G1(ClefType.G_CLEF, 1, 18, "Clef.g1"), // //$NON-NLS-1$
-	G2(ClefType.G_CLEF, 2, 16, "Clef.g2"), // //$NON-NLS-1$
-	C1(ClefType.C_CLEF, 1, 14, "Clef.c1"), // //$NON-NLS-1$
-	C2(ClefType.C_CLEF, 2, 12, "Clef.c2"), // //$NON-NLS-1$
-	C3(ClefType.C_CLEF, 3, 10, "Clef.c3"), // //$NON-NLS-1$
-	C4(ClefType.C_CLEF, 4, 8, "Clef.c4"), // //$NON-NLS-1$
-	C5(ClefType.C_CLEF, 5, 6, "Clef.c5"), // //$NON-NLS-1$
-	F3(ClefType.F_CLEF, 3, 6, "Clef.f3"), // //$NON-NLS-1$
-	F4(ClefType.F_CLEF, 4, 4, "Clef.f4"), // //$NON-NLS-1$
+	G1(ClefType.G_CLEF, 1, 18, "Clef.g1"), //$NON-NLS-1$
+	G2(ClefType.G_CLEF, 2, 16, "Clef.g2"), //$NON-NLS-1$
+	C1(ClefType.C_CLEF, 1, 14, "Clef.c1"), //$NON-NLS-1$
+	C2(ClefType.C_CLEF, 2, 12, "Clef.c2"), //$NON-NLS-1$
+	C3(ClefType.C_CLEF, 3, 10, "Clef.c3"), //$NON-NLS-1$
+	C4(ClefType.C_CLEF, 4, 8, "Clef.c4"), //$NON-NLS-1$
+	C5(ClefType.C_CLEF, 5, 6, "Clef.c5"), //$NON-NLS-1$
+	F3(ClefType.F_CLEF, 3, 6, "Clef.f3"), //$NON-NLS-1$
+	F4(ClefType.F_CLEF, 4, 4, "Clef.f4"), //$NON-NLS-1$
 	ALL(null, 0, 0, "Clef.all"); //$NON-NLS-1$
 
 	private static Clef[] ALL_CLEFS = new Clef[] { G1, G2, C1, C2, C3, C4, C5, F3, F4 };

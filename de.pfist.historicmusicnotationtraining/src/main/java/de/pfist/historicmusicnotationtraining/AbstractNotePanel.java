@@ -12,10 +12,14 @@ import javax.swing.JPanel;
 
 public abstract class AbstractNotePanel extends JPanel {
 
+	private static final String SMUFL_FONT_NAME = "Bravura"; //$NON-NLS-1$
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5639322492906295423L;
+
+	private static Font unscaledSmuflFont = null;
 
 	protected AbstractNotePanel(final Controller controller) {
 		this.addMouseListener(new MouseAdapter() {
@@ -35,6 +39,8 @@ public abstract class AbstractNotePanel extends JPanel {
 	public abstract void setRandomResult(DomainRandomResult domainRandomResult);
 
 	/**
+	 * Loads a truetype font from the resources directory.
+	 * 
 	 * @param fontName
 	 * @return
 	 */
@@ -46,4 +52,17 @@ public abstract class AbstractNotePanel extends JPanel {
 		}
 		return null;
 	}
+
+	/**
+	 * Obtains a SMUFL ( Standard music font layout) font.
+	 * 
+	 * @return an unscaled font
+	 */
+	protected static Font getUnscaledSmuflFont() {
+		if (unscaledSmuflFont == null) {
+			unscaledSmuflFont = loadFont(SMUFL_FONT_NAME);
+		}
+		return unscaledSmuflFont;
+	}
+
 }

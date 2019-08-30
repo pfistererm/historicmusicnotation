@@ -1,9 +1,9 @@
 package de.pfist.historicmusicnotationtraining;
 
 public enum ClefType {
-	G_CLEF(0, "ClefType.g"), // //$NON-NLS-1$
-	C_CLEF(0, "ClefType.c"), // //$NON-NLS-1$
-	F_CLEF(-2, "ClefType.f"), // //$NON-NLS-1$
+	G_CLEF(0, "ClefType.g"), //$NON-NLS-1$
+	C_CLEF(0, "ClefType.c"), //$NON-NLS-1$
+	F_CLEF(-2, "ClefType.f"), //$NON-NLS-1$
 	;
 
 	private final int offset;

@@ -76,7 +76,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public WorkerExtension createWorkerExtension() {
+	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new NewGermanOrganTablatureWorkerExtension();
 	}
 

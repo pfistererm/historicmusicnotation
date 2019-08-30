@@ -16,12 +16,13 @@ public abstract class BaseClefNotePanel extends AbstractNotePanel {
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private Font font;
+	private Font unscaledFont;
 
 	protected BaseClefNotePanel(Controller controller) {
 		super(controller);
-		font = loadFont("Bravura"); //$NON-NLS-1$
+		unscaledFont = getUnscaledSmuflFont();
 	}
+
 
 	protected static void drawLines(Graphics g, final int width, final int height, final int xBase, final int yBase) {
 		// half of space between lines
@@ -41,8 +42,8 @@ public abstract class BaseClefNotePanel extends AbstractNotePanel {
 			ClefAndNote clefAndNote) {
 		final float halfLineSpaceUnit = height / 16.0F;
 		final float fontSize = halfLineSpaceUnit * 8.0F;
-		final Font f = font.deriveFont(fontSize);
-		g.setFont(f);
+		final Font scaledFont = unscaledFont.deriveFont(fontSize);
+		g.setFont(scaledFont);
 		Clef clef = clefAndNote.getClef();
 		int note = clefAndNote.getNoteRelative();
 		// draw clef

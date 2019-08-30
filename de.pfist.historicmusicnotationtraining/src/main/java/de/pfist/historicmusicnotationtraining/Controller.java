@@ -20,11 +20,11 @@ public class Controller {
 	private IMainGui mainGui;
 	private MusicDomain currentDomain;
 	private DomainSpecificState currentDomainSpecificState;
-	private WorkerExtension currentWorkerExtension;
+	private WorkerExtension<?, ?> currentWorkerExtension;
 	private AbstractNotePanel currentNotePanel;
 
 	private List<DomainSpecificState> domainSpecificStates = new ArrayList<>();
-	private List<WorkerExtension> workerExtensions = new ArrayList<>();
+	private List<WorkerExtension<?, ?>> workerExtensions = new ArrayList<>();
 	private List<AbstractNotePanel> notePanels = new ArrayList<>();
 	private boolean playNotes = true;
 	private int midiNoteVelocity = 80;
@@ -52,7 +52,7 @@ public class Controller {
 
 	public void noteButtonPressed(int midiNote) {
 		// System.out.println("noteButtonPressed(): midiNote: " + midiNote);
-		// //$NON-NLS-1$
+		//$NON-NLS-1$
 		boolean doNext = false;
 		if (midiNote == expectedMidiNote) {
 			if (playNotes) {
@@ -190,7 +190,7 @@ public class Controller {
 		domainSpecificStates.add(domainSpecificState);
 	}
 
-	public void addWorkerExtension(final WorkerExtension workerExtension) {
+	public void addWorkerExtension(final WorkerExtension<?, ?> workerExtension) {
 		workerExtensions.add(workerExtension);
 	}
 

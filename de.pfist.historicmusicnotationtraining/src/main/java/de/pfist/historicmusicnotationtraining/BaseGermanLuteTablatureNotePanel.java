@@ -17,7 +17,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	private static final long serialVersionUID = 6912518755149078029L;
 
 	private Font font;
-	private int fontSize = 24;
+	private float fontSize = 24;
 
 	public BaseGermanLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
@@ -25,7 +25,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 		this.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
-				fontSize = e.getComponent().getHeight() / 3;
+				fontSize = e.getComponent().getHeight() / 3.0F;
 				scaleFont();
 				// System.out.println("Resized to " + e.getComponent().getSize()); //$NON-NLS-1$
 			}
@@ -33,7 +33,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	}
 
 	private void scaleFont() {
-		font = new Font("default", Font.BOLD, fontSize); //$NON-NLS-1$
+		font = new Font("default", Font.BOLD, (int) fontSize); //$NON-NLS-1$
 	}
 
 	protected void prepareDraw(final Graphics g) {
@@ -55,12 +55,12 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 		}
 		// draw letter
 		int letterY = height / 2;
-		int letterX = width / 2 + noteIndex * fontSize;
+		int letterX = (int) (width / 2 + noteIndex * fontSize);
 		FontMetrics fontMetricesForLabel = g.getFontMetrics();
 		double LetterWidth = fontMetricesForLabel.getStringBounds(letter, g).getWidth();
 		g.drawString(letter, letterX, letterY);
 		if (paintBar) {
-			int lineY = letterY - fontSize;
+			int lineY = (int) (letterY - fontSize);
 			g.drawLine(letterX, lineY, (int) (letterX + LetterWidth), lineY);
 		}
 	}

@@ -1,6 +1,5 @@
 package de.pfist.historicmusicnotationtraining;
 
-import java.awt.Component;
 import java.awt.Container;
 
 import javax.swing.JPanel;
@@ -55,12 +54,6 @@ public abstract class AbstractNoteButtonPanel extends JPanel {
 	 */
 	public final void setController(final Controller controller) {
 		this.controller = controller;
-		// TODO: find a clean solution
-		for (Component c : this.getComponents()) {
-			if (c instanceof MidiSynth) {
-				((MidiSynth) c).setController(controller);
-			}
-		}
 	}
 
 	public static AbstractNoteButtonPanel createNoteButtonPanel(final Container parent,

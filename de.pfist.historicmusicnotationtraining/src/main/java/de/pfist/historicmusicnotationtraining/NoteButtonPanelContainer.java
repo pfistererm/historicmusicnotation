@@ -5,7 +5,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +18,7 @@ public class NoteButtonPanelContainer extends JPanel {
 
 	private Controller controller;
 	private final JPanel mainPanel;
-	private JComboBox<NoteButtonPanelType> typeSelectionCombo;
+	private JComboBox<I18NComponentHelper.EnumComboItem<NoteButtonPanelType>> typeSelectionCombo;
 
 	/**
 	 * Constructor.
@@ -28,20 +27,10 @@ public class NoteButtonPanelContainer extends JPanel {
 		this.setLayout(new BorderLayout());
 		final JPanel controlPanel = new JPanel();
 		controlPanel.add(new JLabel(Messages.getString("NoteButtonPanelContainer.typeLabel"))); //$NON-NLS-1$
-		// TODO: use I18nhelper combo
-		typeSelectionCombo = new JComboBox<>();
-		// typeSelectionCombo.addItem(NoteButtonPanelType.SINGLE_CHROMATIC);
-		// typeSelectionCombo.addItem(NoteButtonPanelType.SINGLE_LUTE_FRETBOARD);
+
+		typeSelectionCombo = I18NComponentHelper.createComboBox(NoteButtonPanelType.class, controlPanel, //
+				(t) -> getController().setNoteButtonPanel(t));
 		controlPanel.add(typeSelectionCombo);
-
-		typeSelectionCombo.addItemListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				NoteButtonPanelType noteButtonPanelType = (NoteButtonPanelType) (typeSelectionCombo.getSelectedItem());
-				getController().setNoteButtonPanel(noteButtonPanelType);
-			}
-		});
 
 		this.add(controlPanel, BorderLayout.PAGE_START);
 		mainPanel = new JPanel();
@@ -69,7 +58,9 @@ public class NoteButtonPanelContainer extends JPanel {
 	}
 
 	public final void setNoteButtonPanelTypes(final NoteButtonPanelType[] noteButtonPanelTypes) {
-		typeSelectionCombo.setModel(new DefaultComboBoxModel<>(noteButtonPanelTypes));
+		I18NComponentHelper.setItems(typeSelectionCombo, noteButtonPanelTypes);
+		// typeSelectionCombo.setModel(new
+		// DefaultComboBoxModel<>(noteButtonPanelTypes));
 		typeSelectionCombo.setEnabled(noteButtonPanelTypes.length != 1);
 		controller.setNoteButtonPanel(noteButtonPanelTypes[0]);
 	}

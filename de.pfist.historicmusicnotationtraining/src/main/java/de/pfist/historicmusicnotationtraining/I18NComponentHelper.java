@@ -5,6 +5,7 @@ import java.awt.event.ItemListener;
 import java.util.Vector;
 import java.util.function.Consumer;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -54,10 +55,7 @@ public class I18NComponentHelper {
 	@SafeVarargs
 	public static <E extends Enum<E> & I18NEnum> JComboBox<EnumComboItem<E>> createComboBox(Class<E> enumClass,
 			JComponent parent, final Consumer<E> selectionHandler, E... enumConstants) {
-		Vector<EnumComboItem<E>> enumItems = new Vector<>();
-		for (final E e : enumConstants) {
-			enumItems.add(new EnumComboItem<>(e, Messages.getString(e.getTextKey())));
-		}
+		Vector<EnumComboItem<E>> enumItems = createItemVector(enumConstants);
 		JComboBox<EnumComboItem<E>> combo = new JComboBox<>(enumItems);
 		if (selectionHandler != null) {
 			combo.addItemListener(new ItemListener() {
@@ -74,6 +72,20 @@ public class I18NComponentHelper {
 			parent.add(combo);
 		}
 		return combo;
+	}
+
+	@SafeVarargs
+	private static <E extends Enum<E> & I18NEnum> Vector<EnumComboItem<E>> createItemVector(E... enumConstants) {
+		Vector<EnumComboItem<E>> enumItems = new Vector<>();
+		for (final E e : enumConstants) {
+			enumItems.add(new EnumComboItem<>(e, Messages.getString(e.getTextKey())));
+		}
+		return enumItems;
+	}
+
+	public static <E extends Enum<E> & I18NEnum> void setItems(JComboBox<EnumComboItem<E>> comboBox, E[] items) {
+		Vector<EnumComboItem<E>> enumItems = createItemVector(items);
+		comboBox.setModel(new DefaultComboBoxModel<>(enumItems));
 	}
 
 	public static <E extends Enum<E> & I18NEnum> void setSelectedItem(JComboBox<EnumComboItem<E>> combo,

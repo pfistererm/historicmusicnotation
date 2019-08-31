@@ -48,7 +48,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	private JLabel successLabel;
 
 	private NoteButtonPanelContainer noteButtonPanelContainer;
-	private Map<NoteButtonPanelType, NoteButtonPanel> noteButtonPanels;
+	private Map<NoteButtonPanelType, AbstractNoteButtonPanel> noteButtonPanels;
 
 	@SuppressWarnings("unused")
 	public static void main(final String[] args) {
@@ -135,7 +135,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		noteButtonPanelContainer.setController(controller);
 		noteButtonPanels = new EnumMap<>(NoteButtonPanelType.class);
 		for (final NoteButtonPanelType type : NoteButtonPanelType.values()) {
-			NoteButtonPanel noteButtonPanel = noteButtonPanelContainer.createNoteButtonPanel(type);
+			AbstractNoteButtonPanel noteButtonPanel = noteButtonPanelContainer.createNoteButtonPanel(type);
 			noteButtonPanel.setController(controller);
 			noteButtonPanels.put(type, noteButtonPanel);
 		}

@@ -27,9 +27,8 @@ public class NoteButtonPanelContainer extends JPanel {
 	public NoteButtonPanelContainer() {
 		this.setLayout(new BorderLayout());
 		final JPanel controlPanel = new JPanel();
-		// TODO: I18n
 		controlPanel.add(new JLabel(Messages.getString("NoteButtonPanelContainer.typeLabel"))); //$NON-NLS-1$
-//TODO: use I18nhelper combo
+		// TODO: use I18nhelper combo
 		typeSelectionCombo = new JComboBox<>();
 		// typeSelectionCombo.addItem(NoteButtonPanelType.SINGLE_CHROMATIC);
 		// typeSelectionCombo.addItem(NoteButtonPanelType.SINGLE_LUTE_FRETBOARD);
@@ -50,8 +49,8 @@ public class NoteButtonPanelContainer extends JPanel {
 		this.add(mainPanel, BorderLayout.CENTER);
 	}
 
-	public NoteButtonPanel createNoteButtonPanel(NoteButtonPanelType type) {
-		return new NoteButtonPanel(mainPanel, type);
+	public AbstractNoteButtonPanel createNoteButtonPanel(NoteButtonPanelType type) {
+		return AbstractNoteButtonPanel.createNoteButtonPanel(mainPanel, type);
 	}
 
 	/**

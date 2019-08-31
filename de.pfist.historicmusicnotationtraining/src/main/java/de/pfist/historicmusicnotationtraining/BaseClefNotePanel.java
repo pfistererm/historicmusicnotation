@@ -23,7 +23,6 @@ public abstract class BaseClefNotePanel extends AbstractNotePanel {
 		unscaledFont = getUnscaledSmuflFont();
 	}
 
-
 	protected static void drawLines(Graphics g, final int width, final int height, final int xBase, final int yBase) {
 		// half of space between lines
 		final float halfLineSpaceUnit = height / 16.0F;
@@ -66,7 +65,7 @@ public abstract class BaseClefNotePanel extends AbstractNotePanel {
 		case F_CLEF:
 			return F_CLEF_CHAR;
 		default:
-			return null;
+			throw new RuntimeException("Unsupported clef type: " + clef.getClefType());
 		}
 	}
 

@@ -1,6 +1,5 @@
 package de.pfist.historicmusicnotationtraining;
 
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -11,18 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.util.MidiSynth;
-
-public class NoteButtonPanel extends JPanel implements ActionListener {
+public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1130754558315947299L;
 
-	private final NoteButtonPanelType noteButtonPanelType;
-	private final JButton[] noteButtons;
-	private Controller controller;
+	private JButton[] noteButtons;
 
 	/**
 	 * Constructor.
@@ -31,21 +26,21 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 	 * @param noteButtonPanelType
 	 */
 	public NoteButtonPanel(final Container parent, final NoteButtonPanelType noteButtonPanelType) {
-		this.noteButtonPanelType = noteButtonPanelType;
+		super(parent, noteButtonPanelType);
 
-		if (noteButtonPanelType == NoteButtonPanelType.SINGLE_KEYBOARD) {
-			MidiSynth piano = new MidiSynth();
-			this.add(piano);
-			noteButtons = null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void createInterface(JPanel noteButtonPanel) {
+		noteButtons = new JButton[getNoteNames().length];
+		if (getNoteButtonPanelType() == NoteButtonPanelType.SINGLE_LUTE_FRETBOARD) {
+			createInterfaceLuteFretboard(this);
 		} else {
-			noteButtons = new JButton[getNoteNames().length];
-			if (noteButtonPanelType == NoteButtonPanelType.SINGLE_LUTE_FRETBOARD) {
-				createInterfaceLuteFretboard(this);
-			} else {
-				createInterface(this);
-			}
+			createInterfaceStandard(this);
 		}
-		parent.add(this);
 	}
 
 	private void createInterfaceLuteFretboard(final Container noteButtonPanel) {
@@ -63,11 +58,20 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 			final LuteStringMode string = strings[stringIndex];
 			final int availableFrets = string.getAvailableFrets(luteTuning);
 			for (int fretIndex = 0; fretIndex < availableFrets; fretIndex++) {
+				// TODO: remove hard coded tuning
+				final int midiNote = string.getOffset(LuteTuning.A_TUNING) + fretIndex;
 				final String buttonText = (fretIndex == 0) ? Messages.getString(string.getTextKey())
 						: "Bund " + fretIndex;
 				noteButtons[fretIndex] = new JButton(buttonText);
 				noteButtons[fretIndex].setMargin(new Insets(2, 1, 2, 1));
-				noteButtons[fretIndex].addActionListener(this);
+				noteButtons[fretIndex].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						getController().noteButtonPressed(midiNote);
+					}
+				});
 				noteButtonPanel.add(noteButtons[fretIndex]);
 			}
 			for (int j = availableFrets; j < totalMaxFrets; j++) {
@@ -76,10 +80,7 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * GUI code
-	 */
-	private void createInterface(final JPanel noteButtonPanel) {
+	private void createInterfaceStandard(final JPanel noteButtonPanel) {
 
 		noteButtonPanel.setLayout(new GridLayout(getLayouRows(), 0));
 		final String[] noteNames = getNoteNames();
@@ -92,7 +93,7 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 	}
 
 	private int getLayouRows() {
-		switch (noteButtonPanelType) {
+		switch (getNoteButtonPanelType()) {
 		case SINGLE_LUTE_FRETBOARD:
 			return 6;
 		case SINGLE_CHROMATIC:
@@ -109,9 +110,11 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 	}
 
 	private String[] getNoteNames() {
-		switch (noteButtonPanelType) {
+		switch (getNoteButtonPanelType()) {
 		case SINGLE_LUTE_FRETBOARD:
 			return new String[6 * 10]; // hack to get the number of buttons
+		case SINGLE_KEYBOARD:
+			return null;
 		case SINGLE_CHROMATIC:
 			return NoteConstants.NOTE_NAMES_CHROMATIC;
 		case SINGLE_CHROMATIC_4_OCTAVES:
@@ -127,6 +130,8 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 				namesIndex++;
 			}
 			return names;
+		default:
+			break;
 		}
 		return null;
 	}
@@ -146,45 +151,28 @@ public class NoteButtonPanel extends JPanel implements ActionListener {
 		}
 		if (noteButtonIndex != -1) {
 			int midiNote = 0;
-			switch (noteButtonPanelType) {
+			switch (getNoteButtonPanelType()) {
+			case SINGLE_KEYBOARD:
+				// should not happen
+				break;
+			case SINGLE_LUTE_FRETBOARD:
+				// handled by local action listener
+				break;
 			case SINGLE_CHROMATIC:
 				midiNote = noteButtonIndex + NoteConstants.BASE_MIDI_NOTE_CROMATIC;
-				controller.noteButtonPressed(midiNote);
+				getController().noteButtonPressed(midiNote);
 				break;
 			case SINGLE_CHROMATIC_4_OCTAVES:
 				midiNote = noteButtonIndex + NoteConstants.BASE_MIDI_NOTE_CROMATIC_4_OCTAVES;
-				controller.noteButtonPressed(midiNote);
+				getController().noteButtonPressed(midiNote);
 				break;
 			case SINGLE_DIATONIC:
 				midiNote = NoteConstants.NOTE_MIDI_NOTE_TABLE_DIATONIC[noteButtonIndex];
-				controller.noteButtonPressed(midiNote);
+				getController().noteButtonPressed(midiNote);
 				break;
 			case CHORDS:
-				controller.chordButtonPressed(NoteConstants.CHORDS[noteButtonIndex]);
+				getController().chordButtonPressed(NoteConstants.CHORDS[noteButtonIndex]);
 				break;
-			}
-		}
-	}
-
-	/**
-	 * @return the controller
-	 */
-	public final Controller getController() {
-		return controller;
-	}
-
-	/**
-	 * @param controller
-	 *            the controller to set
-	 */
-	public final void setController(final Controller controller) {
-		this.controller = controller;
-		// TODO: find a clean solution
-		for (Component c : this.getComponents())
-		{
-			if (c instanceof MidiSynth)
-			{
-				((MidiSynth)c).setController(controller);
 			}
 		}
 	}

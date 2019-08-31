@@ -21,6 +21,8 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 
 	public BaseGermanLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
+		// BevelBorder bb = new BevelBorder(BevelBorder.LOWERED);
+		// setBorder(bb);
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
 			@Override
@@ -47,7 +49,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote) {
 		int width = getWidth();
 		int height = getHeight();
-		String letter = GermanLuteUtils.getNoteName(luteNote);
+		String letter = GermanLuteUtils.getNoteName(luteNote, GermanLuteTablatureNameVariant.ANTIQUA_1);
 		boolean paintBar = false;
 		if (letter.endsWith("'")) { //$NON-NLS-1$
 			paintBar = true;

@@ -69,10 +69,8 @@ public class RomanicLuteTablatureDomain implements MusicDomain {
 		return new RomanicLuteTablatureWorkerExtension();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createNotePanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public AbstractNotePanel createNotePanel(Controller controller) {

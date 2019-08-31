@@ -69,10 +69,8 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 		return new GermanLuteTablatureWorkerExtension();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createNotePanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public AbstractNotePanel createNotePanel(Controller controller) {

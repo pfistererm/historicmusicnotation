@@ -16,10 +16,8 @@ public class CClefDomain implements MusicDomain {
 		return NAME;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#getTabMnemonic()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int getTabMnemonic() {
@@ -31,10 +29,8 @@ public class CClefDomain implements MusicDomain {
 		return new NoteButtonPanelType[] { NoteButtonPanelType.SINGLE_DIATONIC, NoteButtonPanelType.SINGLE_KEYBOARD };
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createSpecificTopPanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public JPanel createSpecificTopPanel() {
@@ -50,30 +46,24 @@ public class CClefDomain implements MusicDomain {
 		return specificPanel;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#getStateObject()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DomainSpecificState getStateObject() {
 		return domainSpecificState;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createWorkerExtension()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new CClefWorkerExtension();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createNotePanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public AbstractNotePanel createNotePanel(Controller controller) {

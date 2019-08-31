@@ -15,10 +15,8 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 		return NAME;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#getTabMnemonic()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int getTabMnemonic() {
@@ -30,10 +28,8 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 		return new NoteButtonPanelType[] { NoteButtonPanelType.CHORDS};
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createSpecificTopPanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public JPanel createSpecificTopPanel() {
@@ -44,44 +40,27 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 		// tuning selection
 		I18NComponentHelper.createLuteTuningCombo(specificPanel, domainSpecificState);
 
-		// key mode selection
-//		specificPanel.add(new JLabel(Messages.getString("GermanLuteTablatureDomain.keyLabel"))); //$NON-NLS-1$
-//		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
-//
-//			@Override
-//			public void accept(KeyMode t) {
-//				domainSpecificState.setKeyMode(t);
-//			}
-//		};
-//		I18NComponentHelper.createComboBox(KeyMode.class, specificPanel, selectionHandler);
-
 		return specificPanel;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#getStateObject()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DomainSpecificState getStateObject() {
 		return domainSpecificState;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createWorkerExtension()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
 		return new GermanLuteTablatureChordsWorkerExtension();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.pfist.learncclefs.MusicDomain#createNotePanel()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public AbstractNotePanel createNotePanel(Controller controller) {

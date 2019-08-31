@@ -65,12 +65,8 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.pfist.learncclefs.AbstractNotePanel#setRandomResult(de.pfist.learncclefs.
-	 * DomainRandomResult)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void setRandomResult(DomainRandomResult domainRandomResult) {

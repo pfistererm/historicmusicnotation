@@ -16,6 +16,8 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	 */
 	private static final long serialVersionUID = 6912518755149078029L;
 
+	final GermanLuteTablatureNameVariant nameVariant = GermanLuteTablatureNameVariant.FRACTURA_1;
+
 	private Font font;
 	private float fontSize = 24;
 
@@ -25,6 +27,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 		// setBorder(bb);
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
+			/** {@inheritDoc} */
 			@Override
 			public void componentResized(ComponentEvent e) {
 				fontSize = e.getComponent().getHeight() / 3.0F;
@@ -35,7 +38,11 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	}
 
 	private void scaleFont() {
-		font = new Font("default", Font.BOLD, (int) fontSize); //$NON-NLS-1$
+		if (nameVariant.isUseSmufl()) {
+			font = getUnscaledSmuflFont().deriveFont(fontSize * 1.5f);
+		} else {
+			font = new Font("default", Font.BOLD, (int) fontSize); //$NON-NLS-1$
+		}
 	}
 
 	protected void prepareDraw(final Graphics g) {
@@ -49,7 +56,7 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote) {
 		int width = getWidth();
 		int height = getHeight();
-		String letter = GermanLuteUtils.getNoteName(luteNote, GermanLuteTablatureNameVariant.ANTIQUA_1);
+		String letter = GermanLuteUtils.getNoteName(luteNote, nameVariant);
 		boolean paintBar = false;
 		if (letter.endsWith("'")) { //$NON-NLS-1$
 			paintBar = true;

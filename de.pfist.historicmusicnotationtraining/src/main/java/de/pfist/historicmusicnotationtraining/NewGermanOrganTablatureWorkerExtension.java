@@ -6,8 +6,11 @@ package de.pfist.historicmusicnotationtraining;
 public class NewGermanOrganTablatureWorkerExtension
 		implements WorkerExtension<NewGermanOrganTablatureDomainSpecificState, NewGermanOrganTablatureRandomResult> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public NewGermanOrganTablatureRandomResult doRandom(final /* CClef */DomainSpecificState domainSpecificState) {
+	public NewGermanOrganTablatureRandomResult doRandom(final DomainSpecificState domainSpecificState) {
 		NewGermanOrganTablatureDomainSpecificState domainSpecificState2 = (NewGermanOrganTablatureDomainSpecificState) domainSpecificState;
 		// 0 .. 3
 		int octave = Worker.randomInteger(4);

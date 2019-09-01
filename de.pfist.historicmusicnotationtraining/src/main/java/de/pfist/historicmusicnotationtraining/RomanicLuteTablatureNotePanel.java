@@ -17,6 +17,9 @@ public class RomanicLuteTablatureNotePanel extends BaseRomanicLuteTablatureNoteP
 		super(controller);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void paintComponent(final Graphics g) {
 		prepareDraw(g);

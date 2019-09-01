@@ -11,19 +11,24 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 public abstract class AbstractNotePanel extends JPanel {
-
-	private static final String SMUFL_FONT_NAME = "Bravura"; //$NON-NLS-1$
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5639322492906295423L;
 
+	private static final String SMUFL_FONT_NAME = "Bravura"; //$NON-NLS-1$
+
 	private static Font unscaledSmuflFont = null;
 
+	private final Controller controller;
+
 	protected AbstractNotePanel(final Controller controller) {
+		this.controller = controller;
 		this.addMouseListener(new MouseAdapter() {
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.doNext(false);
@@ -31,6 +36,18 @@ public abstract class AbstractNotePanel extends JPanel {
 		});
 	}
 
+	/**
+	 * @return the controller
+	 */
+	protected final Controller getController() {
+		return controller;
+	}
+
+	protected DomainSpecificState getDomainSpecificState() {
+		return getController().getCurrentDomainSpecificState();
+	}
+
+	/** {@inheritDoc} */
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(100, 100);
@@ -54,7 +71,7 @@ public abstract class AbstractNotePanel extends JPanel {
 	}
 
 	/**
-	 * Obtains a SMUFL ( Standard music font layout) font.
+	 * Obtains a SMUFL (Standard music font layout) font.
 	 * 
 	 * @return an unscaled font
 	 */

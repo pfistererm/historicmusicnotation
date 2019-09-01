@@ -10,6 +10,9 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 
 	private GermanLuteTablatureChordsDomainSpecificState domainSpecificState;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getName() {
 		return NAME;
@@ -23,6 +26,9 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 		return KeyEvent.VK_1;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
 		return new NoteButtonPanelType[] { NoteButtonPanelType.CHORDS};

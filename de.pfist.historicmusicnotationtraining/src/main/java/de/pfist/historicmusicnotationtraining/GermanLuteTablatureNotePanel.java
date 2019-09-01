@@ -16,6 +16,9 @@ public class GermanLuteTablatureNotePanel extends BaseGermanLuteTablatureNotePan
 		super(controller);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void paintComponent(final Graphics g) {
 		prepareDraw(g);

@@ -70,6 +70,9 @@ public enum Clef implements I18NEnum {
 		return offset;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public final String getTextKey() {
 		return textKey;

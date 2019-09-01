@@ -56,6 +56,9 @@ public class MidiHelper {
 
 		final Runnable runnable = new Runnable() {
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void run() {
 				midiChannel.noteOn(midiNote, midiNoteVelocity);
@@ -74,6 +77,9 @@ public class MidiHelper {
 		final int noteCount = Math.min(midiNotes.length, midiChannels.size());
 		final Runnable runnable = new Runnable() {
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void run() {
 				for (int i = 0; i < noteCount; i++) {

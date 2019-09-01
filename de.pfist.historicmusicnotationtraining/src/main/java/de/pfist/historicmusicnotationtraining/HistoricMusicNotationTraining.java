@@ -46,6 +46,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	private JButton stopButton, nextButton;
 	private JComboBox<Integer> autoIntervallMenu;
 	private JLabel successLabel;
+	private JLabel statusMessage;
 
 	private NoteButtonPanelContainer noteButtonPanelContainer;
 	private Map<NoteButtonPanelType, AbstractNoteButtonPanel> noteButtonPanels;
@@ -91,6 +92,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		final JFrame frame = new JFrame(APP_TITLE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
+			/** {@inheritDoc} */
 			@Override
 			public void windowClosing(WindowEvent e) {
 				if (controller != null) {
@@ -115,6 +117,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			controller.addWorkerExtension(domain.createWorkerExtension());
 		}
 		tabbedPane.addChangeListener(new ChangeListener() {
+			/** {@inheritDoc} */
 			@Override
 			public void stateChanged(final ChangeEvent e) {
 				final int selectedIndex = tabbedPane.getSelectedIndex();
@@ -207,6 +210,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 				controller.isPlayNotes());
 		midiPanel.add(playNotesCheckBox);
 		playNotesCheckBox.addItemListener(new ItemListener() {
+			/** {@inheritDoc} */
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				controller.setPlayNotes(e.getStateChange() == 1);
@@ -220,6 +224,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		}
 		instrumentCombo.addItemListener(new ItemListener() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				controller.setIntrument((ControllerInstrument) instrumentCombo.getSelectedItem());
@@ -231,6 +236,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		// volume / velocity
 		JSlider velocitySlider = new JSlider(SwingConstants.HORIZONTAL, 0, 127, controller.getMidiNoteVelocity());
 		velocitySlider.addChangeListener(new ChangeListener() {
+			/** {@inheritDoc} */
 			@Override
 			public void stateChanged(ChangeEvent event) {
 				int value = velocitySlider.getValue();
@@ -255,8 +261,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		StatusBar statusBar = new StatusBar();
 		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));
+		statusMessage = new JLabel("remaining");
 		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" }, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				new Component[] { successLabel, new JLabel("second"), new JLabel("remaining") }, //$NON-NLS-1$ //$NON-NLS-2$
+				new Component[] { successLabel, new JLabel("second"), statusMessage }, //$NON-NLS-1$ //$NON-NLS-2$
 				new String[] { "25%", "25%", "*" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return statusBar;
 	}
@@ -285,6 +292,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		// System.out.println(text);
 		SwingUtilities.invokeLater(new Runnable() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void run() {
 				successLabel.setText(text);
@@ -293,6 +301,24 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		});
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStatusMesssage(final String message) {
+		SwingUtilities.invokeLater(new Runnable() {
+
+			/** {@inheritDoc} */
+			@Override
+			public void run() {
+				statusMessage.setText(message);
+			}
+		});
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setNotePanelTypes(NoteButtonPanelType[] noteButtonPanelTypes) {
 		noteButtonPanelContainer.setNoteButtonPanelTypes(noteButtonPanelTypes);

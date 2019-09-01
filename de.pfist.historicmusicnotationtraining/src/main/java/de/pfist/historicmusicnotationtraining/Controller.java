@@ -31,6 +31,8 @@ public class Controller {
 	private Mode mode = Mode.AUTO_NEXT_ON_RIGHT;
 
 	private MidiHelper midiHelper;
+	private GlobalCounter globalCounter;
+	private AnswerState answerState = null;
 
 	public Controller(final MusicDomain[] domains) {
 		super();
@@ -40,6 +42,21 @@ public class Controller {
 		} catch (MidiUnavailableException e) {
 			e.printStackTrace();
 		}
+		globalCounter = new GlobalCounter();
+		globalCounter.addPropertyChangeListener(new PropertyChangeListener() {
+
+			/** {@inheritDoc} */
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				if (event.getPropertyName().equals(GlobalCounter.COUNTER_PROPERTY)) {
+
+					GlobalCounter g = ((GlobalCounter) event.getSource());
+					String message = "Success: " + g.getSuccessCount() + "  Failure: " + g.getFailureCount()
+							+ "  Missed: " + g.getMissedCount();
+					getMainGui().setStatusMesssage(message);
+				}
+			}
+		});
 	}
 
 	public ControllerInstrument[] getInstruments() {
@@ -52,24 +69,27 @@ public class Controller {
 
 	public void noteButtonPressed(int midiNote) {
 		// System.out.println("noteButtonPressed(): midiNote: " + midiNote);
-		//$NON-NLS-1$
+		// $NON-NLS-1$
 		boolean doNext = false;
 		if (midiNote == expectedMidiNote) {
 			if (playNotes) {
 				playNote(midiNote);
 			}
 			setAnswerState(AnswerState.RIGHT);
+			globalCounter.increaseSuccessCount();
 			doNext = getMode() == Mode.AUTO_NEXT_ON_RIGHT;
 		} else {
 			if (playNotes) {
 				beep();
 			}
 			setAnswerState(AnswerState.WRONG);
+			globalCounter.increaseFailureCount();
 			doNext = getMode() == Mode.AUTO_NEXT_ALWAYS;
 		}
 		if (doNext) {
 			SwingUtilities.invokeLater(new Runnable() {
 
+				/** {@inheritDoc} */
 				@Override
 				public void run() {
 					doNext(true);
@@ -94,17 +114,20 @@ public class Controller {
 				playNotes();
 			}
 			setAnswerState(AnswerState.RIGHT);
+			globalCounter.increaseSuccessCount();
 			doNext = getMode() == Mode.AUTO_NEXT_ON_RIGHT;
 		} else {
 			if (playNotes) {
 				beep();
 			}
 			setAnswerState(AnswerState.WRONG);
+			globalCounter.increaseFailureCount();
 			doNext = getMode() == Mode.AUTO_NEXT_ALWAYS;
 		}
 		if (doNext) {
 			SwingUtilities.invokeLater(new Runnable() {
 
+				/** {@inheritDoc} */
 				@Override
 				public void run() {
 					doNext(true);
@@ -124,6 +147,7 @@ public class Controller {
 		Worker w = new Worker(currentDomainSpecificState, currentWorkerExtension, withDelay);
 		w.addPropertyChangeListener(new PropertyChangeListener() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getPropertyName().equals(Worker.RANDOM_RESULT)) {
@@ -150,12 +174,14 @@ public class Controller {
 	}
 
 	private void setAnswerState(final AnswerState answerState) {
+		this.answerState = answerState;
 		getMainGui().setAnswerState(answerState);
 	}
 
 	private void repaintNotePanel() {
 		SwingUtilities.invokeLater(new Runnable() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void run() {
 				currentNotePanel.repaint();
@@ -184,6 +210,13 @@ public class Controller {
 		currentWorkerExtension = workerExtensions.get(selectedIndex);
 		currentNotePanel = notePanels.get(selectedIndex);
 		getMainGui().setNotePanelTypes(currentDomain.getNoteButtonPanelTypes());
+	}
+
+	/**
+	 * @return the currentDomainSpecificState
+	 */
+	public final DomainSpecificState getCurrentDomainSpecificState() {
+		return currentDomainSpecificState;
 	}
 
 	public void addDomainSpecificState(final DomainSpecificState domainSpecificState) {

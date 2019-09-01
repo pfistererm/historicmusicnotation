@@ -40,6 +40,9 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void paintComponent(final Graphics g) {
 		int width = getWidth();

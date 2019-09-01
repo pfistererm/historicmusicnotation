@@ -7,4 +7,6 @@ public interface IMainGui {
 	public void setNotePanelVisible(NoteButtonPanelType noteButtonPanelType);
 
 	public void setNotePanelTypes(NoteButtonPanelType[] noteButtonPanelTypes);
+
+	public void setStatusMesssage(String message);
 }

@@ -14,6 +14,7 @@ public enum AnswerState implements I18NEnum {
 		this.textKey = textKey;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public final String getTextKey() {
 		return textKey;

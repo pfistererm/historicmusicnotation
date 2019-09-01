@@ -10,6 +10,7 @@ public class CClefChordsDomain implements MusicDomain {
 
 	private CClefChordsDomainSpecificState domainSpecificState;
 
+	/** {@inheritDoc} */
 	@Override
 	public String getName() {
 		return NAME;
@@ -23,6 +24,9 @@ public class CClefChordsDomain implements MusicDomain {
 		return KeyEvent.VK_C;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
 		return new NoteButtonPanelType[] {NoteButtonPanelType.CHORDS};

@@ -54,6 +54,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 		specificPanel.add(new JLabel(Messages.getString("NewGermanOrganTablatureDomain.keyLabel"))); //$NON-NLS-1$
 		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void accept(KeyMode t) {
 				domainSpecificState.setKeyMode(t);

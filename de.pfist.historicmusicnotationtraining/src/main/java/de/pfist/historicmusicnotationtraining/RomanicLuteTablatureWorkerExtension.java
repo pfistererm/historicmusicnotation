@@ -9,6 +9,9 @@ import java.util.List;
 public class RomanicLuteTablatureWorkerExtension
 		implements WorkerExtension<RomanicLuteTablatureDomainSpecificState, RomanicLuteTablatureRandomResult> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public RomanicLuteTablatureRandomResult doRandom(final DomainSpecificState domainSpecificState) {
 		LuteStringMode string;

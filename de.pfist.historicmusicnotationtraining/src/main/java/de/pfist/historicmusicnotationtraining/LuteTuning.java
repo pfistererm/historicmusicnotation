@@ -48,6 +48,9 @@ public class LuteTuning {
 		return midiBaseNotes.length;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public final String toString() {
 		return getName();

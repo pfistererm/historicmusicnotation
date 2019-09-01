@@ -28,6 +28,7 @@ public abstract class BaseRomanicLuteTablatureNotePanel extends AbstractNotePane
 
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
+			/** {@inheritDoc} */
 			@Override
 			public void componentResized(ComponentEvent e) {
 				fontSize = e.getComponent().getHeight() / 3.0F;

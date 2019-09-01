@@ -28,6 +28,9 @@ public class Worker implements Runnable {
 		propertyChangeSupport = new PropertyChangeSupport(this);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void run() {
 		if (withDelay) {

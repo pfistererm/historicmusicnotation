@@ -40,6 +40,7 @@ public class I18NComponentHelper {
 			return labelText;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public String toString() {
 			return getLabelText();
@@ -60,6 +61,7 @@ public class I18NComponentHelper {
 		if (selectionHandler != null) {
 			combo.addItemListener(new ItemListener() {
 
+				/** {@inheritDoc} */
 				@Override
 				public void itemStateChanged(ItemEvent e) {
 					@SuppressWarnings("unchecked")
@@ -110,6 +112,7 @@ public class I18NComponentHelper {
 
 		luteTuningCombo.addItemListener(new ItemListener() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				LuteTuning luteTuning = (LuteTuning) (luteTuningCombo.getSelectedItem());
@@ -133,6 +136,7 @@ public class I18NComponentHelper {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.keyLabel"))); //$NON-NLS-1$
 		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void accept(KeyMode t) {
 				domainSpecificState.setKeyMode(t);
@@ -146,6 +150,7 @@ public class I18NComponentHelper {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.romanicLuteTablatureVariantLabel"))); //$NON-NLS-1$
 		Consumer<RomanicLuteTablatureVariant> selectionHandler = new Consumer<RomanicLuteTablatureVariant>() {
 
+			/** {@inheritDoc} */
 			@Override
 			public void accept(RomanicLuteTablatureVariant t) {
 				domainSpecificState.setRomanicLuteTablatureVariant(t);

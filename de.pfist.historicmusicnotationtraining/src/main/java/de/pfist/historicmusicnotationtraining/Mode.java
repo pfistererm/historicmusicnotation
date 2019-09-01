@@ -12,6 +12,9 @@ public enum Mode implements I18NEnum {
 		this.textKey = textKey;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public final String getTextKey() {
 		return textKey;

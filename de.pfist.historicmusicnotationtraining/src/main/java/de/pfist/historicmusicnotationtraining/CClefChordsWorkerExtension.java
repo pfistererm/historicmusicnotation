@@ -48,6 +48,9 @@ public class CClefChordsWorkerExtension
 		return CHORDS;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CClefChordsRandomResult doRandom(final DomainSpecificState domainSpecificState) {
 		// CClefChordsDomainSpecificState domainSpecificState2 =

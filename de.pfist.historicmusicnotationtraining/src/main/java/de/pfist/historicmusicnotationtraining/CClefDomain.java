@@ -11,6 +11,9 @@ public class CClefDomain implements MusicDomain {
 
 	private CClefDomainSpecificState domainSpecificState;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getName() {
 		return NAME;
@@ -24,6 +27,9 @@ public class CClefDomain implements MusicDomain {
 		return KeyEvent.VK_C;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
 		return new NoteButtonPanelType[] { NoteButtonPanelType.SINGLE_DIATONIC, NoteButtonPanelType.SINGLE_KEYBOARD };

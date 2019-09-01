@@ -49,6 +49,9 @@ public enum LuteStringMode implements I18NEnum {
 		return REAL_STRINGS;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public final String getTextKey() {
 		return textKey;

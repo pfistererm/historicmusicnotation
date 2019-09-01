@@ -16,6 +16,9 @@ public class CClefNotePanel extends BaseClefNotePanel {
 		super(controller);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		final int width = getWidth();
@@ -29,6 +32,7 @@ public class CClefNotePanel extends BaseClefNotePanel {
 	}
 
 	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public final void setRandomResult(DomainRandomResult domainRandomResult) {

@@ -97,6 +97,9 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		return CHORDS;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public GermanLuteTablatureChordsRandomResult doRandom(final DomainSpecificState domainSpecificState) {
 		final GermanLuteTablatureChordsDomainSpecificState domainSpecificState2 = (GermanLuteTablatureChordsDomainSpecificState) domainSpecificState;

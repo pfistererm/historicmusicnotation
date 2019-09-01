@@ -2,7 +2,7 @@ package de.pfist.historicmusicnotationtraining;
 
 import java.awt.Graphics;
 
-public class CClefNotePanel extends BaseClefNotePanel {
+public class CClefNotePanel extends BaseClefNotePanel<CClefDomainSpecificState> {
 
 	/**
 	 * 

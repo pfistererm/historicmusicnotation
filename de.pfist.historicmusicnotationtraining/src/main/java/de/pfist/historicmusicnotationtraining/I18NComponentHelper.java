@@ -158,4 +158,33 @@ public class I18NComponentHelper {
 		};
 		createComboBox(RomanicLuteTablatureVariant.class, specificPanel, selectionHandler);
 	}
+
+	public static void createGermanLuteTablatureNotationVariantCombo(final JPanel specificPanel,
+			final IGermanLuteTablatureVariantState domainSpecificState) {
+		specificPanel
+				.add(new JLabel(Messages.getString("I18NComponentHelper.germanLuteTablatureNotationVariantLabel"))); //$NON-NLS-1$
+		Consumer<GermanLuteTablatureNotationVariant> selectionHandler = new Consumer<GermanLuteTablatureNotationVariant>() {
+
+			/** {@inheritDoc} */
+			@Override
+			public void accept(GermanLuteTablatureNotationVariant t) {
+				domainSpecificState.setGermanLuteTablatureNotationVariant(t);
+			}
+		};
+		createComboBox(GermanLuteTablatureNotationVariant.class, specificPanel, selectionHandler);
+	}
+
+	public static void createGermanLuteTablatureFontVariantCombo(final JPanel specificPanel,
+			final IGermanLuteTablatureVariantState domainSpecificState) {
+		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.germanLuteTablatureFontVariantLabel"))); //$NON-NLS-1$
+		Consumer<GermanLuteTablatureFontVariant> selectionHandler = new Consumer<GermanLuteTablatureFontVariant>() {
+
+			/** {@inheritDoc} */
+			@Override
+			public void accept(GermanLuteTablatureFontVariant t) {
+				domainSpecificState.setGermanLuteTablatureFontVariant(t);
+			}
+		};
+		createComboBox(GermanLuteTablatureFontVariant.class, specificPanel, selectionHandler);
+	}
 }

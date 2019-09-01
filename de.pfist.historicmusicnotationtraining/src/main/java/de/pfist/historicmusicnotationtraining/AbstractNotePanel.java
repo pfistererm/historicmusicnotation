@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
-public abstract class AbstractNotePanel extends JPanel {
+public abstract class AbstractNotePanel<D extends DomainSpecificState> extends JPanel {
 	/**
 	 * 
 	 */
@@ -43,8 +43,14 @@ public abstract class AbstractNotePanel extends JPanel {
 		return controller;
 	}
 
-	protected DomainSpecificState getDomainSpecificState() {
-		return getController().getCurrentDomainSpecificState();
+	@SuppressWarnings("unchecked")
+	protected D getDomainSpecificState() {
+		return (D) getController().getCurrentDomainSpecificState();
+	}
+
+	@SuppressWarnings("unchecked")
+	protected D getDomainSpecificState(final Class<?> domainSpecificStateClass) {
+		return (D) getController().getDomainSpecificState(domainSpecificStateClass);
 	}
 
 	/** {@inheritDoc} */
@@ -78,6 +84,8 @@ public abstract class AbstractNotePanel extends JPanel {
 	protected static Font getUnscaledSmuflFont() {
 		if (unscaledSmuflFont == null) {
 			unscaledSmuflFont = loadFont(SMUFL_FONT_NAME);
+			// scale once for performance
+			unscaledSmuflFont.deriveFont(20.0f);
 		}
 		return unscaledSmuflFont;
 	}

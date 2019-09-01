@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public abstract class BaseRomanicLuteTablatureNotePanel extends AbstractNotePanel {
+public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
 
 	/**
 	 * 
@@ -32,8 +32,8 @@ public abstract class BaseRomanicLuteTablatureNotePanel extends AbstractNotePane
 			@Override
 			public void componentResized(ComponentEvent e) {
 				fontSize = e.getComponent().getHeight() / 3.0F;
-				System.out.println("Resized to " + e.getComponent().getSize());  //$NON-NLS-1$
-				System.out.println("fontSize: " + fontSize);  //$NON-NLS-1$
+				// System.out.println("Resized to " + e.getComponent().getSize()); //$NON-NLS-1$
+				// System.out.println("fontSize: " + fontSize); //$NON-NLS-1$
 				scaleFont();
 			}
 		});
@@ -66,7 +66,7 @@ public abstract class BaseRomanicLuteTablatureNotePanel extends AbstractNotePane
 
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote,
 			RomanicLuteTablatureVariant romanicLuteTablatureVariant) {
-		System.out.println("luteNote:" + luteNote);  //$NON-NLS-1$
+		System.out.println("luteNote:" + luteNote); //$NON-NLS-1$
 		int width = getWidth();
 		int height = getHeight();
 		final float halfLineSpaceUnit = height / 16.0F;

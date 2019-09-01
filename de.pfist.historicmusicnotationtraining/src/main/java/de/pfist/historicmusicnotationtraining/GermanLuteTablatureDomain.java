@@ -2,6 +2,9 @@ package de.pfist.historicmusicnotationtraining;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class GermanLuteTablatureDomain implements MusicDomain {
@@ -39,16 +42,21 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public JPanel createSpecificTopPanel() {
+	public JComponent createSpecificTopPanel() {
 
 		domainSpecificState = new GermanLuteTablatureDomainSpecificState();
-		JPanel specificPanel = new JPanel();
+		Box specificPanel = new Box(BoxLayout.Y_AXIS);
+		JPanel specificPanel1 = new JPanel();
+		JPanel specificPanel2 = new JPanel();
+		specificPanel.add(specificPanel1);
+		specificPanel.add(specificPanel2);
 
-		I18NComponentHelper.createLuteTuningCombo(specificPanel, domainSpecificState);
+		I18NComponentHelper.createLuteTuningCombo(specificPanel1, domainSpecificState);
+		I18NComponentHelper.createKeyModeCombo(specificPanel1, domainSpecificState);
+		I18NComponentHelper.createLuteStringModeCombo(specificPanel1, domainSpecificState);
 
-		I18NComponentHelper.createKeyModeCombo(specificPanel, domainSpecificState);
-
-		I18NComponentHelper.createLuteStringModeCombo(specificPanel, domainSpecificState);
+		I18NComponentHelper.createGermanLuteTablatureNotationVariantCombo(specificPanel2, domainSpecificState);
+		I18NComponentHelper.createGermanLuteTablatureFontVariantCombo(specificPanel2, domainSpecificState);
 
 		return specificPanel;
 	}
@@ -73,7 +81,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel createNotePanel(Controller controller) {
+	public AbstractNotePanel<?> createNotePanel(Controller controller) {
 		return new GermanLuteTablatureNotePanel(controller);
 	}
 

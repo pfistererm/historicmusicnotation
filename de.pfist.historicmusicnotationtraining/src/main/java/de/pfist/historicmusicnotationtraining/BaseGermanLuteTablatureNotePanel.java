@@ -9,17 +9,17 @@ import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel {
+public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTablatureVariantState & DomainSpecificState>
+		extends AbstractNotePanel<D> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6912518755149078029L;
 
-	final GermanLuteTablatureNameVariant nameVariant = GermanLuteTablatureNameVariant.FRACTURA_1;
-
 	private Font font;
 	private float fontSize = 24;
+	private boolean fontIsSmufl;
 
 	public BaseGermanLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
@@ -30,7 +30,6 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 			/** {@inheritDoc} */
 			@Override
 			public void componentResized(ComponentEvent e) {
-				fontSize = e.getComponent().getHeight() / 3.0F;
 				scaleFont();
 				// System.out.println("Resized to " + e.getComponent().getSize()); //$NON-NLS-1$
 			}
@@ -38,14 +37,41 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	}
 
 	private void scaleFont() {
-		if (nameVariant.isUseSmufl()) {
-			font = getUnscaledSmuflFont().deriveFont(fontSize * 1.5f);
-		} else {
-			font = new Font("default", Font.BOLD, (int) fontSize); //$NON-NLS-1$
+		int componentHeight = this.getHeight();
+		fontSize = componentHeight / 3.0F;
+		if (getDomainSpecificState(IGermanLuteTablatureVariantState.class) != null) {
+			fontIsSmufl = isUseSmufl();
+			if (fontIsSmufl) {
+				fontSize *= 1.5f;
+				font = getUnscaledSmuflFont().deriveFont(fontSize);
+			} else {
+				font = new Font("default", Font.BOLD, (int) fontSize); //$NON-NLS-1$
+			}
 		}
 	}
 
+	private boolean isUseSmufl() {
+		return getGermanLuteTablatureFontVariant().isUseSmufl();
+	}
+
+	private void checkFont() {
+		if (isUseSmufl() != fontIsSmufl) {
+			scaleFont();
+		}
+	}
+
+	private GermanLuteTablatureNotationVariant getGermanLuteTablatureNotationVariant() {
+		return getDomainSpecificState(IGermanLuteTablatureVariantState.class).getGermanLuteTablatureNotationVariant();
+	}
+
+	private GermanLuteTablatureFontVariant getGermanLuteTablatureFontVariant() {
+		return getDomainSpecificState(IGermanLuteTablatureVariantState.class) != null
+				? getDomainSpecificState(IGermanLuteTablatureVariantState.class).getGermanLuteTablatureFontVariant()
+				: GermanLuteTablatureFontVariant.ANTIQUA;
+	}
+
 	protected void prepareDraw(final Graphics g) {
+		checkFont();
 		g.setFont(font);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setStroke(new BasicStroke(fontSize / 10));
@@ -56,12 +82,14 @@ public abstract class BaseGermanLuteTablatureNotePanel extends AbstractNotePanel
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote) {
 		int width = getWidth();
 		int height = getHeight();
-		String letter = GermanLuteUtils.getNoteName(luteNote, nameVariant);
+		String letter = GermanLuteUtils.getNoteName(luteNote, getGermanLuteTablatureNotationVariant(),
+				getGermanLuteTablatureFontVariant());
 		boolean paintBar = false;
 		if (letter.endsWith("'")) { //$NON-NLS-1$
 			paintBar = true;
 			letter = letter.substring(0, letter.length() - 1);
 		}
+		// System.out.println("char (hex): "+ Integer.toHexString(letter.charAt(0)));
 		// draw letter
 		int letterY = height / 2;
 		int letterX = (int) (width / 2 + noteIndex * fontSize);

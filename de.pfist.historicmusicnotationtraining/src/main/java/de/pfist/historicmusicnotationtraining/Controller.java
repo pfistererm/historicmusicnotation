@@ -21,11 +21,11 @@ public class Controller {
 	private MusicDomain currentDomain;
 	private DomainSpecificState currentDomainSpecificState;
 	private WorkerExtension<?, ?> currentWorkerExtension;
-	private AbstractNotePanel currentNotePanel;
+	private AbstractNotePanel<?> currentNotePanel;
 
 	private List<DomainSpecificState> domainSpecificStates = new ArrayList<>();
 	private List<WorkerExtension<?, ?>> workerExtensions = new ArrayList<>();
-	private List<AbstractNotePanel> notePanels = new ArrayList<>();
+	private List<AbstractNotePanel<?>> notePanels = new ArrayList<>();
 	private boolean playNotes = true;
 	private int midiNoteVelocity = 80;
 	private Mode mode = Mode.AUTO_NEXT_ON_RIGHT;
@@ -219,6 +219,16 @@ public class Controller {
 		return currentDomainSpecificState;
 	}
 
+	protected DomainSpecificState getDomainSpecificState(final Class<?> domainSpecificStateClass) {
+		for (DomainSpecificState domainSpecificState : domainSpecificStates) {
+			if (domainSpecificStateClass.isAssignableFrom(domainSpecificState.getClass())) {
+				return domainSpecificState;
+			}
+		}
+		throw new RuntimeException(
+				"No domain specific stat found with type: " + domainSpecificStateClass.getSimpleName());
+	}
+
 	public void addDomainSpecificState(final DomainSpecificState domainSpecificState) {
 		domainSpecificStates.add(domainSpecificState);
 	}
@@ -227,7 +237,7 @@ public class Controller {
 		workerExtensions.add(workerExtension);
 	}
 
-	public void addNotePanel(final AbstractNotePanel notePanel) {
+	public void addNotePanel(final AbstractNotePanel<?> notePanel) {
 		notePanels.add(notePanel);
 	}
 

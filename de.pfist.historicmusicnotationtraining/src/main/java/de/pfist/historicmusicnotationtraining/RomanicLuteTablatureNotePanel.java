@@ -2,7 +2,8 @@ package de.pfist.historicmusicnotationtraining;
 
 import java.awt.Graphics;
 
-public class RomanicLuteTablatureNotePanel extends BaseRomanicLuteTablatureNotePanel {
+public class RomanicLuteTablatureNotePanel
+		extends BaseRomanicLuteTablatureNotePanel<RomanicLuteTablatureDomainSpecificState> {
 
 	/**
 	 * 

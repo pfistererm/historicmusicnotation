@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 public interface MusicDomain {
 	public String getName();
@@ -13,11 +13,11 @@ public interface MusicDomain {
 		return getName();
 	}
 
-	public JPanel createSpecificTopPanel();
+	public JComponent createSpecificTopPanel();
 
 	public DomainSpecificState getStateObject();
 
 	public WorkerExtension<?, ?> createWorkerExtension();
 
-	public AbstractNotePanel createNotePanel(Controller controller);
+	public AbstractNotePanel<?> createNotePanel(Controller controller);
 }

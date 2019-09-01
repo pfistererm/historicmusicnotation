@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public abstract class BaseClefNotePanel extends AbstractNotePanel {
+public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
 
 	private static final String G_CLEF_CHAR = "\ue050"; //$NON-NLS-1$
 	private static final String C_CLEF_CHAR = "\ue05c"; //$NON-NLS-1$

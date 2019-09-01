@@ -2,7 +2,8 @@ package de.pfist.historicmusicnotationtraining;
 
 import java.awt.Graphics;
 
-public class GermanLuteTablatureChordsNotePanel extends BaseGermanLuteTablatureNotePanel {
+public class GermanLuteTablatureChordsNotePanel
+		extends BaseGermanLuteTablatureNotePanel<GermanLuteTablatureChordsDomainSpecificState> {
 
 	/**
 	 * 

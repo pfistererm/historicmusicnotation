@@ -85,7 +85,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel createNotePanel(Controller controller) {
+	public AbstractNotePanel<?> createNotePanel(Controller controller) {
 		return new NewGermanOrganTablatureNotePanel(controller);
 	}
 

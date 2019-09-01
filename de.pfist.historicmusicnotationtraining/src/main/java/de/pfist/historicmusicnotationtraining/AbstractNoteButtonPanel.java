@@ -59,7 +59,7 @@ public abstract class AbstractNoteButtonPanel extends JPanel {
 	public static AbstractNoteButtonPanel createNoteButtonPanel(final Container parent,
 			final NoteButtonPanelType noteButtonPanelType) {
 		if (noteButtonPanelType == NoteButtonPanelType.SINGLE_KEYBOARD) {
-			return new MidiSynth(parent, 6);
+			return new MidiSynth(parent, 6, 2);
 		} else {
 			return new NoteButtonPanel(parent, noteButtonPanelType);
 		}

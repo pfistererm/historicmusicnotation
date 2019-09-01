@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel {
+public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGermanOrganTablatureDomainSpecificState> {
 
 	/**
 	 * 
@@ -15,13 +15,15 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel {
 	 * Note names.
 	 */
 	private static final String[] NOTE_NAMES_LOWER = { //
-			"\uEE0C", "\uEE0D", "\uEE0E", "\uEE0F", "\uEE10", "\uEE11", "\uEE12", "\uEE13", "\uEE14", "\uEE15", "\uEE16", "\uEE17" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
+			"\uEE0C", "\uEE0D", "\uEE0E", "\uEE0F", "\uEE10", "\uEE11", "\uEE12", "\uEE13", "\uEE14", "\uEE15", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$
+			"\uEE16", "\uEE17" //$NON-NLS-1$ //$NON-NLS-2$
 	};
 	/**
 	 * Note names.
 	 */
 	private static final String[] NOTE_NAMES_UPPER = { //
-			"\uEE00", "\uEE01", "\uEE02", "\uEE03", "\uEE04", "\uEE05", "\uEE06", "\uEE07", "\uEE08", "\uEE09", "\uEE0A", "\uEE0B" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
+			"\uEE00", "\uEE01", "\uEE02", "\uEE03", "\uEE04", "\uEE05", "\uEE06", "\uEE07", "\uEE08", "\uEE09", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$
+			"\uEE0A", "\uEE0B" //$NON-NLS-1$ //$NON-NLS-2$
 	};
 	private static final String[] OCTAVE_ADDITIONS = { //
 			"", "", "\uEE18", "\uEE19", "\uEE19\uEE18" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$

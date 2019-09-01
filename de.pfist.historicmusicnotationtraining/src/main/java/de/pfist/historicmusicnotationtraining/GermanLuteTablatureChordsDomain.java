@@ -46,6 +46,9 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 		// tuning selection
 		I18NComponentHelper.createLuteTuningCombo(specificPanel, domainSpecificState);
 
+		I18NComponentHelper.createGermanLuteTablatureNotationVariantCombo(specificPanel, domainSpecificState);
+		I18NComponentHelper.createGermanLuteTablatureFontVariantCombo(specificPanel, domainSpecificState);
+
 		return specificPanel;
 	}
 
@@ -69,7 +72,7 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel createNotePanel(Controller controller) {
+	public AbstractNotePanel<?> createNotePanel(Controller controller) {
 		return new GermanLuteTablatureChordsNotePanel(controller);
 	}
 

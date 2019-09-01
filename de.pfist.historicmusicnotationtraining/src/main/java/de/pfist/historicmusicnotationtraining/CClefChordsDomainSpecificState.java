@@ -1,22 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
-public class CClefChordsDomainSpecificState implements DomainSpecificState {
+public class CClefChordsDomainSpecificState extends BaseCClefDomainSpecificState {
 
-	private Clef clefSelection = Clef.ALL;
-
-	/**
-	 * @return the clefSelection
-	 */
-	public final Clef getClefSelection() {
-		return clefSelection;
-	}
-
-	/**
-	 * @param clefSelection
-	 *            the clefSelection to set
-	 */
-	public final void setClefSelection(Clef clefSelection) {
-		this.clefSelection = clefSelection;
-	}
 
 }

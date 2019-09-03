@@ -4,7 +4,7 @@ import java.awt.Container;
 
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.util.MidiSynth;
+import de.pfist.historicmusicnotationtraining.piano.PianoNoteButtonPanel;
 
 public abstract class AbstractNoteButtonPanel extends JPanel {
 
@@ -59,7 +59,9 @@ public abstract class AbstractNoteButtonPanel extends JPanel {
 	public static AbstractNoteButtonPanel createNoteButtonPanel(final Container parent,
 			final NoteButtonPanelType noteButtonPanelType) {
 		if (noteButtonPanelType == NoteButtonPanelType.SINGLE_KEYBOARD) {
-			return new MidiSynth(parent, 6, 2);
+			PianoNoteButtonPanel.setOctaves(4);
+			PianoNoteButtonPanel.setStartOctave(3);
+			return new PianoNoteButtonPanel(parent);
 		} else {
 			return new NoteButtonPanel(parent, noteButtonPanelType);
 		}

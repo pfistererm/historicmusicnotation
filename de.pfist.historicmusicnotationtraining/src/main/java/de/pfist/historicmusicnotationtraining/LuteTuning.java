@@ -1,5 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 public class LuteTuning {
 
 	public static final LuteTuning A_TUNING = new LuteTuning(Messages.getString("LuteTuning.tuningNameA"), //$NON-NLS-1$

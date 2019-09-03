@@ -6,6 +6,8 @@ import java.util.function.Consumer;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 /**
  * @author matthias
  *

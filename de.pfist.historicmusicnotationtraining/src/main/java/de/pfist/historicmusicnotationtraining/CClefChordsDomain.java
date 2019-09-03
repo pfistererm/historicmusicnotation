@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 public class CClefChordsDomain implements MusicDomain {
 
 	private static final String NAME = Messages.getString("CClefChordsDomain.domainName"); //$NON-NLS-1$

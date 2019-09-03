@@ -35,6 +35,7 @@ import javax.swing.event.ChangeListener;
 import com.l2fprod.common.swing.StatusBar;
 
 import de.pfist.historicmusicnotationtraining.I18NComponentHelper.EnumComboItem;
+import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 
 public class HistoricMusicNotationTraining implements IMainGui {
@@ -105,13 +106,12 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		int tabIndex = 0;
 		for (final MusicDomain domain : domains) {
 			JComponent tabPanel = new JPanel();
-			// TODO: use BorderLayout?
-			tabPanel.setLayout(new BoxLayout(tabPanel, BoxLayout.Y_AXIS));
-			tabPanel.add(domain.createSpecificTopPanel());
+			tabPanel.setLayout(new BorderLayout());
+			tabPanel.add(domain.createSpecificTopPanel(), BorderLayout.PAGE_START);
 			controller.addDomainSpecificState(domain.getStateObject());
 			controller.addWorkerExtension(domain.createWorkerExtension());
 			AbstractNotePanel<?> notePanel = domain.createNotePanel(controller);
-			tabPanel.add(notePanel);
+			tabPanel.add(notePanel, BorderLayout.CENTER);
 			controller.addNotePanel(notePanel);
 			tabbedPane.addTab(domain.getName(), null, tabPanel, domain.getToolTip());
 			tabbedPane.setMnemonicAt(tabIndex, domain.getTabMnemonic());

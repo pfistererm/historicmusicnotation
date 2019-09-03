@@ -7,7 +7,10 @@ import java.awt.Graphics;
 public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
 
 	private static final String G_CLEF_CHAR = "\ue050"; //$NON-NLS-1$
-	private static final String C_CLEF_CHAR = "\ue05c"; //$NON-NLS-1$
+	// modern
+	// private static final String C_CLEF_CHAR = "\ue05c"; //$NON-NLS-1$
+	// renaissance
+	private static final String C_CLEF_CHAR = "\ue905"; //$NON-NLS-1$
 	private static final String F_CLEF_CHAR = "\ue062"; //$NON-NLS-1$
 	private static final String NOTEHEAD_CHAR = "\ue0A4"; //$NON-NLS-1$
 

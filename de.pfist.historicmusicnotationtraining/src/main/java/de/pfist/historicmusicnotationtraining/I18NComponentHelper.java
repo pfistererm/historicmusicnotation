@@ -11,6 +11,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 public class I18NComponentHelper {
 
 	public static class EnumComboItem<E extends Enum<E>> {

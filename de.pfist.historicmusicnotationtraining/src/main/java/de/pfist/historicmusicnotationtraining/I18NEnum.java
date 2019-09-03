@@ -3,6 +3,8 @@
  */
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 /**
  * Interface for enumerations that provide a key for i18n.
  * 

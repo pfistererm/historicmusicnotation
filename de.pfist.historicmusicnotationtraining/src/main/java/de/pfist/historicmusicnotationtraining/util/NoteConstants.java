@@ -1,4 +1,7 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.util;
+
+import de.pfist.historicmusicnotationtraining.Chord;
+import de.pfist.historicmusicnotationtraining.ChordType;
 
 public abstract class NoteConstants {
 

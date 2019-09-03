@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
 public class RomanicLuteTablatureDomain implements MusicDomain {
 
 	private static final String NAME = Messages.getString("RomanicLuteTablatureDomain.domainTitle"); //$NON-NLS-1$

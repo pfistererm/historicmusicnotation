@@ -1,5 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.util.NoteConstants;
+
 public class ClefAndNote {
 
 	private final Clef clef;

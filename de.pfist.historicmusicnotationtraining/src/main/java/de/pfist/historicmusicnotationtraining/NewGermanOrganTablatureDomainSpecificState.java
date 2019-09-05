@@ -12,7 +12,8 @@ public class NewGermanOrganTablatureDomainSpecificState implements DomainSpecifi
 	}
 
 	/**
-	 * @param keyMode the KeyMode to set
+	 * @param keyMode
+	 *            the KeyMode to set
 	 */
 	public final void setKeyMode(KeyMode keyMode) {
 		this.keyMode = keyMode;

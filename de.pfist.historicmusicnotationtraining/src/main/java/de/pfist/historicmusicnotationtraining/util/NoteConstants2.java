@@ -9,9 +9,9 @@ public abstract class NoteConstants2 {
 			"c'", "c#' / db'", "d'", "d#' / eb'", "e'", "f'", "f#' / gb'", "g'", "g#' / ab'", "a'", "a#' / b'", "h'",
 			"c''", "c#'' / db''", "d''", "d#'' / eb''", "e''", "f''", "f#'' / gb''", "g''", "g#'' / ab''", "a''",
 			"a#'' / b''", "h''", //
-			"c'''", "c#''' / db'''", "d'''", "d#''' / eb'''", "e'''", "f'''", "f#''' / gb'''", "g'''", "g#''' / ab'''", "a'''",
-			"a#''' / b'''", "h'''" //
-			};
+			"c'''", "c#''' / db'''", "d'''", "d#''' / eb'''", "e'''", "f'''", "f#''' / gb'''", "g'''", "g#''' / ab'''",
+			"a'''", "a#''' / b'''", "h'''" //
+	};
 	public static final int BASE_MIDI_NOTE_CROMATIC_6_OCTAVES = 24;
 
 }

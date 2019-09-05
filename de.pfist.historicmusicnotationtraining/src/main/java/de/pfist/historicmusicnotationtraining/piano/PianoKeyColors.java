@@ -12,6 +12,6 @@ public abstract class PianoKeyColors {
 	private static Color getSelectionColor() {
 		UIDefaults defaults = javax.swing.UIManager.getDefaults();
 		return defaults.getColor("List.selectionBackground");
-	
+
 	}
 }

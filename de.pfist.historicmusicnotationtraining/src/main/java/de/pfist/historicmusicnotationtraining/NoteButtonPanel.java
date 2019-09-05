@@ -27,6 +27,7 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 
 	/**
 	 * Constructor.
+	 * 
 	 * @param noteButtonPanelType
 	 */
 	public NoteButtonPanel(final NoteButtonPanelType noteButtonPanelType) {

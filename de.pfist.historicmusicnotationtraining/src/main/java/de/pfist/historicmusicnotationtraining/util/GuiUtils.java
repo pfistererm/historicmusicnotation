@@ -24,7 +24,8 @@ public class GuiUtils {
 	}
 
 	/**
-	 * @param component a component
+	 * @param component
+	 *            a component
 	 * @return a rectangle containing the effective drawing area
 	 */
 	public static Rectangle getEffectiveDimensions(final JComponent component) {

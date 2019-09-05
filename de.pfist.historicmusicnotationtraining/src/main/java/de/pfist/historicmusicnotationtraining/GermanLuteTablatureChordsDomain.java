@@ -33,7 +33,7 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	 */
 	@Override
 	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
-		return new NoteButtonPanelType[] { NoteButtonPanelType.CHORDS};
+		return new NoteButtonPanelType[] { NoteButtonPanelType.CHORDS };
 	}
 
 	/**

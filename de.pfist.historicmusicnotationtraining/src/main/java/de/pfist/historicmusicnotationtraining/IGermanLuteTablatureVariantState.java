@@ -24,6 +24,5 @@ public interface IGermanLuteTablatureVariantState {
 	 * @param germanLuteTablatureFontVariant
 	 *            the germanLuteTablatureNotationVariant to set
 	 */
-	public void setGermanLuteTablatureFontVariant(
-			GermanLuteTablatureFontVariant germanLuteTablatureFontVariant);
+	public void setGermanLuteTablatureFontVariant(GermanLuteTablatureFontVariant germanLuteTablatureFontVariant);
 }

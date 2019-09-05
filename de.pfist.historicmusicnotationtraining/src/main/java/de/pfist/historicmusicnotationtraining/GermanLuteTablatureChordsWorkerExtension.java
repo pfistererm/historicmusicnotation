@@ -91,7 +91,7 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 			new ChordDescription(Chord.G_MAJOR, LuteNote.S4_3, LuteNote.S2_4, LuteNote.S0_2), // orC
 	};
 
-//	 int chordDescriptionIndex = 0;
+	// int chordDescriptionIndex = 0;
 
 	private static ChordDescription[] getChords(final LuteTuning luteTuning) {
 		return CHORDS;

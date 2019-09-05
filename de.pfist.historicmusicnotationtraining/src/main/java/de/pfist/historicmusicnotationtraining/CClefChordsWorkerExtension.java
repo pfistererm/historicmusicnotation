@@ -37,7 +37,7 @@ public class CClefChordsWorkerExtension
 
 	private static final ChordDescription[] CHORDS = new ChordDescription[] {
 			new ChordDescription(Chord.C_MAJOR, new ClefAndNote(Clef.C1, 0), new ClefAndNote(Clef.C1, 0),
-					new ClefAndNote(Clef.C1, 0), new ClefAndNote(Clef.C1, 0)), // 
+					new ClefAndNote(Clef.C1, 0), new ClefAndNote(Clef.C1, 0)), //
 	};
 
 	private boolean CHORD_TEST = false;

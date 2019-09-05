@@ -1,7 +1,5 @@
 package de.pfist.historicmusicnotationtraining;
 
-import java.awt.Container;
-
 import javax.swing.JPanel;
 
 import de.pfist.historicmusicnotationtraining.piano.PianoNoteButtonPanel;
@@ -19,14 +17,12 @@ public abstract class AbstractNoteButtonPanel extends JPanel {
 	/**
 	 * Constructor.
 	 * 
-	 * @param parent
 	 * @param noteButtonPanelType
 	 */
-	public AbstractNoteButtonPanel(final Container parent, final NoteButtonPanelType noteButtonPanelType) {
+	public AbstractNoteButtonPanel(final NoteButtonPanelType noteButtonPanelType) {
 		this.noteButtonPanelType = noteButtonPanelType;
 
 		createInterface(this);
-		parent.add(this);
 	}
 
 	/**
@@ -56,14 +52,13 @@ public abstract class AbstractNoteButtonPanel extends JPanel {
 		this.controller = controller;
 	}
 
-	public static AbstractNoteButtonPanel createNoteButtonPanel(final Container parent,
-			final NoteButtonPanelType noteButtonPanelType) {
+	public static AbstractNoteButtonPanel createNoteButtonPanel(final NoteButtonPanelType noteButtonPanelType) {
 		if (noteButtonPanelType == NoteButtonPanelType.SINGLE_KEYBOARD) {
 			PianoNoteButtonPanel.setOctaves(4);
 			PianoNoteButtonPanel.setStartOctave(3);
-			return new PianoNoteButtonPanel(parent);
+			return new PianoNoteButtonPanel();
 		} else {
-			return new NoteButtonPanel(parent, noteButtonPanelType);
+			return new NoteButtonPanel(noteButtonPanelType);
 		}
 	}
 

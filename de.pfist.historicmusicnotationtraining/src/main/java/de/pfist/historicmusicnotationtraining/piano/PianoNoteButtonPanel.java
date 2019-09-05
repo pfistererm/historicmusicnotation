@@ -1,7 +1,6 @@
 package de.pfist.historicmusicnotationtraining.piano;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -24,8 +23,8 @@ public class PianoNoteButtonPanel extends AbstractNoteButtonPanel {
 	private static int octaves;
 	private static int startOctave;
 
-	public PianoNoteButtonPanel(final Container parent) {
-		super(parent, NoteButtonPanelType.SINGLE_KEYBOARD);
+	public PianoNoteButtonPanel() {
+		super(NoteButtonPanelType.SINGLE_KEYBOARD);
 	}
 
 	/**

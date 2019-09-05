@@ -19,7 +19,6 @@ import de.pfist.historicmusicnotationtraining.util.NoteConstants2;
 /**
  * Piano renders black & white keys and plays the notes for a MIDI channel.
  */
-// TODO: own properties octaves and startOctave set in constructor
 class PianoPanel extends JPanel {
 	/**
 	 * 

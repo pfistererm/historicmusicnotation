@@ -290,6 +290,10 @@ public class Controller {
 		getMainGui().setNotePanelVisible(noteButtonPanelType);
 	}
 
+	public AnswerState[] getGlobalCounterValues() {
+		return globalCounter.getQueueValues();
+	}
+
 	public void close() {
 		if (midiHelper != null) {
 			midiHelper.close();

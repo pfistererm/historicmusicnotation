@@ -39,7 +39,9 @@ public class NoteButtonPanelContainer extends JPanel {
 	}
 
 	public AbstractNoteButtonPanel createNoteButtonPanel(NoteButtonPanelType type) {
-		return AbstractNoteButtonPanel.createNoteButtonPanel(mainPanel, type);
+		final AbstractNoteButtonPanel panel = AbstractNoteButtonPanel.createNoteButtonPanel(type);
+		mainPanel.add(panel);
+		return panel;
 	}
 
 	/**

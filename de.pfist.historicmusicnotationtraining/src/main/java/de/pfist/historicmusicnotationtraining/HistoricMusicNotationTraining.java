@@ -37,6 +37,7 @@ import com.l2fprod.common.swing.StatusBar;
 import de.pfist.historicmusicnotationtraining.I18NComponentHelper.EnumComboItem;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
+import de.pfist.historicmusicnotationtraining.util.BarLineLabel;
 
 public class HistoricMusicNotationTraining implements IMainGui {
 
@@ -47,23 +48,12 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	private JButton stopButton, nextButton;
 	private JComboBox<Integer> autoIntervallMenu;
 	private JLabel successLabel;
+	private BarLineLabel<AnswerState> successBarLineLabel;
 	private JLabel statusMessage;
+	private Map<AnswerState, Color> colorMap = null;
 
 	private NoteButtonPanelContainer noteButtonPanelContainer;
 	private Map<NoteButtonPanelType, AbstractNoteButtonPanel> noteButtonPanels;
-
-	@SuppressWarnings("unused")
-	public static void main(final String[] args) {
-		MusicDomain[] domains = new MusicDomain[] { //
-				new CClefDomain(), //
-				new CClefChordsDomain(), //
-				new GermanLuteTablatureDomain(), //
-				new GermanLuteTablatureChordsDomain(), //
-				new RomanicLuteTablatureDomain(), //
-				new NewGermanOrganTablatureDomain() //
-		};
-		new HistoricMusicNotationTraining(domains);
-	}
 
 	/**
 	 * Constructor.
@@ -77,19 +67,23 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		try {
 			UIManager.setLookAndFeel(local); // use local or metal
 		} catch (Exception e) {
+			// DO NOTHING
 		}
 		controller = new Controller(domains);
 		controller.setMainGui(this);
 		// call other methods
-		createInterface(domains);
+		final JFrame frame = createFrame();
+		createInterface(frame, domains);
+
+		frame.setSize(700, 400);
+		frame.setVisible(true);
 		controller.setCurrentDomainIndex(0);
 	}
 
 	/**
-	 * GUI code
+	 * @return a JFrame
 	 */
-	private void createInterface(final MusicDomain[] domains) {
-
+	private JFrame createFrame() {
 		final JFrame frame = new JFrame(APP_TITLE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
@@ -101,6 +95,43 @@ public class HistoricMusicNotationTraining implements IMainGui {
 				}
 			}
 		});
+		return frame;
+	}
+
+	/**
+	 * @param frame
+	 * @param domains
+	 */
+	private void createInterface(final JFrame frame, final MusicDomain[] domains) {
+		final JTabbedPane tabbedPane = createDomainsTabbedPane(domains);
+
+		final Container contentPane2 = frame.getContentPane();
+		contentPane2.setLayout(new BorderLayout());
+
+		JPanel contentPane = new JPanel();
+		contentPane2.add(contentPane, BorderLayout.CENTER);
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+		contentPane.add(tabbedPane);
+
+		// Note: initializes noteButtonPanelContainer and noteButtonPanels
+		createNoteButtonPanels();
+		contentPane.add(noteButtonPanelContainer);
+
+		JPanel otherButtonPanel = createOtherButtonPanel();
+		contentPane.add(otherButtonPanel);
+
+		JPanel midiPanel = createMidiPanel();
+		contentPane.add(midiPanel);
+
+		JComponent statusBar = createStatusBar();
+		contentPane2.add(statusBar, BorderLayout.SOUTH);
+	}
+
+	/**
+	 * @param domains
+	 * @return
+	 */
+	private JTabbedPane createDomainsTabbedPane(final MusicDomain[] domains) {
 		final JTabbedPane tabbedPane = new JTabbedPane();
 
 		int tabIndex = 0;
@@ -125,17 +156,14 @@ public class HistoricMusicNotationTraining implements IMainGui {
 				controller.setCurrentDomainIndex(selectedIndex);
 			}
 		});
+		return tabbedPane;
+	}
 
-		final Container contentPane2 = frame.getContentPane();
-		contentPane2.setLayout(new BorderLayout());
-
-		JPanel contentPane = new JPanel();
-		contentPane2.add(contentPane, BorderLayout.CENTER);
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-		contentPane.add(tabbedPane);
-
+	/**
+	 * 
+	 */
+	private void createNoteButtonPanels() {
 		noteButtonPanelContainer = new NoteButtonPanelContainer();
-		contentPane.add(noteButtonPanelContainer);
 		noteButtonPanelContainer.setController(controller);
 		noteButtonPanels = new EnumMap<>(NoteButtonPanelType.class);
 		for (final NoteButtonPanelType type : NoteButtonPanelType.values()) {
@@ -143,21 +171,13 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			noteButtonPanel.setController(controller);
 			noteButtonPanels.put(type, noteButtonPanel);
 		}
+	}
 
-		Action nextAction = new AbstractAction() {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -4277462648486894183L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.doNext(false);
-			}
-		};
+	/**
+	 * @return
+	 */
+	private JPanel createOtherButtonPanel() {
+		Action nextAction = createNextAction();
 
 		JPanel otherButtonPanel = new JPanel();
 		// buttons
@@ -203,8 +223,33 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.autoIntervallLabel"))); //$NON-NLS-1$
 		otherButtonPanel.add(autoIntervallMenu);
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.seconsLabel"))); //$NON-NLS-1$
-		contentPane.add(otherButtonPanel);
+		return otherButtonPanel;
+	}
 
+	/**
+	 * @return
+	 */
+	private AbstractAction createNextAction() {
+		return new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -4277462648486894183L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.doNext(false);
+			}
+		};
+	}
+
+	/**
+	 * @return
+	 */
+	private JPanel createMidiPanel() {
 		JPanel midiPanel = new JPanel();
 		// buttons
 		JCheckBox playNotesCheckBox = new JCheckBox(Messages.getString("HistoricMusicNotationTraining.playNotesLabel"), //$NON-NLS-1$
@@ -246,27 +291,38 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		});
 		midiPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.volumeLabel"))); //$NON-NLS-1$
 		midiPanel.add(velocitySlider);
-
-		contentPane.add(midiPanel);
-
-		JComponent statusBar = createStatusBar();
-		contentPane2.add(statusBar, BorderLayout.SOUTH);
-
-		frame.setSize(700, 400);
-		frame.setVisible(true);
+		return midiPanel;
 	}
 
 	private JComponent createStatusBar() {
 		successLabel = new JLabel("      "); //$NON-NLS-1$
 		successLabel.setOpaque(true);
 
+		successBarLineLabel = new BarLineLabel<>();
+		successBarLineLabel.setColorMap(getColorMap());
+		successBarLineLabel.setBackground(getColorMap().get(AnswerState.WAITING));
+
+		statusMessage = new JLabel("remaining");
+
 		StatusBar statusBar = new StatusBar();
 		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));
-		statusMessage = new JLabel("remaining");
 		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" }, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				new Component[] { successLabel, new JLabel("second"), statusMessage }, //$NON-NLS-1$ //$NON-NLS-2$
+				new Component[] { successLabel, successBarLineLabel, statusMessage }, // $NON-NLS-1$ //$NON-NLS-2$
 				new String[] { "25%", "25%", "*" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return statusBar;
+	}
+
+	/**
+	 * 
+	 */
+	private Map<AnswerState, Color> getColorMap() {
+		if (colorMap == null) {
+			colorMap = new EnumMap<>(AnswerState.class);
+			colorMap.put(AnswerState.RIGHT, Color.GREEN);
+			colorMap.put(AnswerState.WRONG, Color.RED);
+			colorMap.put(AnswerState.WAITING, Color.WHITE);
+		}
+		return colorMap;
 	}
 
 	/**
@@ -313,6 +369,8 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			@Override
 			public void run() {
 				statusMessage.setText(message);
+				successBarLineLabel.setValues(controller.getGlobalCounterValues());
+				successBarLineLabel.repaint();
 			}
 		});
 	}

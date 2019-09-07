@@ -34,7 +34,6 @@ import javax.swing.event.ChangeListener;
 
 import com.l2fprod.common.swing.StatusBar;
 
-import de.pfist.historicmusicnotationtraining.I18NComponentHelper.EnumComboItem;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.util.BarLineLabel;
@@ -199,9 +198,8 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		// mode selection
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.modeLabel"))); //$NON-NLS-1$
-		JComboBox<EnumComboItem<Mode>> modeCombo = I18NComponentHelper.createComboBox(Mode.class, otherButtonPanel, //
-				(t) -> controller.setMode(t));
-		I18NComponentHelper.setSelectedItem(modeCombo, controller.getMode());
+		 I18NComponentHelper.createComboBox(Mode.class, otherButtonPanel, //
+				(t) -> controller.setMode(t), controller.getMode());
 
 		// auto intervall
 		autoIntervallMenu = new JComboBox<>();
@@ -211,7 +209,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TOODO: autoIntervallMenu.getSelectedItem()).doubleValue());
+				// TODO: autoIntervallMenu.getSelectedItem()).doubleValue());
 			}
 		});
 		autoIntervallMenu.addItem(1);

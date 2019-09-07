@@ -1,6 +1,9 @@
 package de.pfist.historicmusicnotationtraining;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public class CClefNotePanel extends BaseClefNotePanel<CClefDomainSpecificState> {
 
@@ -20,14 +23,16 @@ public class CClefNotePanel extends BaseClefNotePanel<CClefDomainSpecificState> 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
-		final int width = getWidth();
-		final int height = getHeight();
-		final int xBase = 0;
-		final int yBase = 0;
-		drawLines(g, width, height, xBase, yBase);
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		final int width = effectiveDimensions.width;
+		final int height = effectiveDimensions.height;
+		drawLines(g, originX, originY, width, height);
 		if (initialized) {
-			drawClefAndNote(g, width, height, xBase, yBase, clefAndNote);
+			drawClefAndNote(g, originX, originY, width, height, clefAndNote);
 		}
 	}
 

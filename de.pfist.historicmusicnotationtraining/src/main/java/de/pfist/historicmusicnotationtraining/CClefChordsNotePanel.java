@@ -1,6 +1,12 @@
 package de.pfist.historicmusicnotationtraining;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
+import javax.swing.BorderFactory;
+
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpecificState> {
 
@@ -14,25 +20,28 @@ public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpe
 
 	public CClefChordsNotePanel(Controller controller) {
 		super(controller);
+//		// setBorder(BorderFactory.createLineBorder(Color.GREEN, 10, true));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
-		final int totalWidth = getWidth();
-		final int width = getWidth() / 2;
-		final int height = getHeight() / 2;
-		final int xBase = 0;
-		final int yBase = 0;
-		drawLines(g, totalWidth, height, xBase, yBase);
-		drawLines(g, totalWidth, height, xBase, yBase + height);
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		final int totalWidth = effectiveDimensions.width;
+		final int width = effectiveDimensions.width / 2;
+		final int height = effectiveDimensions.height / 2;
+		drawLines(g, originX, originY, totalWidth, height);
+		drawLines(g, originX, originY + height, totalWidth, height);
 		if (initialized) {
-			drawClefAndNote(g, width, height, xBase, yBase, clefAndNotes[0]);
-			drawClefAndNote(g, width, height, xBase + width, yBase, clefAndNotes[0]);
-			drawClefAndNote(g, width, height, xBase, yBase + height, clefAndNotes[0]);
-			drawClefAndNote(g, width, height, xBase + width, yBase + height, clefAndNotes[0]);
+			drawClefAndNote(g, originX, originY, width, height, clefAndNotes[0]);
+			drawClefAndNote(g, originX + width, originY, width, height, clefAndNotes[0]);
+			drawClefAndNote(g, originX, originY + height, width, height, clefAndNotes[0]);
+			drawClefAndNote(g, originX + width, originY + height, width, height, clefAndNotes[0]);
 		}
 	}
 

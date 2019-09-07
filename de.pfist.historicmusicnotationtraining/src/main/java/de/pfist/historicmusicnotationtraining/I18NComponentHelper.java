@@ -50,6 +50,13 @@ public class I18NComponentHelper {
 	}
 
 	public static <E extends Enum<E> & I18NEnum> JComboBox<EnumComboItem<E>> createComboBox(Class<E> enumClass,
+			JComponent parent, final Consumer<E> selectionHandler, final E selectedValue) {
+		JComboBox<EnumComboItem<E>> combo = createComboBox(enumClass, parent, selectionHandler);
+		setSelectedItem(combo, selectedValue);
+		return combo;
+	}
+
+	public static <E extends Enum<E> & I18NEnum> JComboBox<EnumComboItem<E>> createComboBox(Class<E> enumClass,
 			JComponent parent, final Consumer<E> selectionHandler) {
 		final E[] enumConstants = enumClass.getEnumConstants();
 		return createComboBox(enumClass, parent, selectionHandler, enumConstants);
@@ -126,67 +133,43 @@ public class I18NComponentHelper {
 	public static void createLuteStringModeCombo(JPanel specificPanel,
 			final AbstractLuteNoteDomainSpecificState domainSpecificState) {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.stringLabel"))); //$NON-NLS-1$
-		createComboBox(LuteStringMode.class, specificPanel, (t) -> {
+		JComboBox<EnumComboItem<LuteStringMode>> combo = createComboBox(LuteStringMode.class, specificPanel, (t) -> {
 			domainSpecificState.setLuteStringMode(t);
 		}, //
 				LuteStringMode.ALL, LuteStringMode.S5, LuteStringMode.S4, LuteStringMode.S3, LuteStringMode.S2,
 				LuteStringMode.S1, LuteStringMode.S0);
+		setSelectedItem(combo, domainSpecificState.getLuteStringMode());
 	}
 
 	public static void createKeyModeCombo(final JPanel specificPanel,
 			final AbstractLuteNoteDomainSpecificState domainSpecificState) {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.keyLabel"))); //$NON-NLS-1$
-		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void accept(KeyMode t) {
-				domainSpecificState.setKeyMode(t);
-			}
-		};
-		createComboBox(KeyMode.class, specificPanel, selectionHandler);
+		createComboBox(KeyMode.class, specificPanel, (t) -> domainSpecificState.setKeyMode(t),
+				domainSpecificState.getKeyMode());
 	}
 
 	public static void createRomanicLuteTablatureVariantCombo(final JPanel specificPanel,
 			final IRomanicLuteTablatureVariantState domainSpecificState) {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.romanicLuteTablatureVariantLabel"))); //$NON-NLS-1$
-		Consumer<RomanicLuteTablatureVariant> selectionHandler = new Consumer<RomanicLuteTablatureVariant>() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void accept(RomanicLuteTablatureVariant t) {
-				domainSpecificState.setRomanicLuteTablatureVariant(t);
-			}
-		};
-		createComboBox(RomanicLuteTablatureVariant.class, specificPanel, selectionHandler);
+		createComboBox(RomanicLuteTablatureVariant.class, specificPanel,
+				(t) -> domainSpecificState.setRomanicLuteTablatureVariant(t),
+				domainSpecificState.getRomanicLuteTablatureVariant());
 	}
 
 	public static void createGermanLuteTablatureNotationVariantCombo(final JPanel specificPanel,
 			final IGermanLuteTablatureVariantState domainSpecificState) {
 		specificPanel
 				.add(new JLabel(Messages.getString("I18NComponentHelper.germanLuteTablatureNotationVariantLabel"))); //$NON-NLS-1$
-		Consumer<GermanLuteTablatureNotationVariant> selectionHandler = new Consumer<GermanLuteTablatureNotationVariant>() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void accept(GermanLuteTablatureNotationVariant t) {
-				domainSpecificState.setGermanLuteTablatureNotationVariant(t);
-			}
-		};
-		createComboBox(GermanLuteTablatureNotationVariant.class, specificPanel, selectionHandler);
+		createComboBox(GermanLuteTablatureNotationVariant.class, specificPanel,
+				(t) -> domainSpecificState.setGermanLuteTablatureNotationVariant(t),
+				domainSpecificState.getGermanLuteTablatureNotationVariant());
 	}
 
 	public static void createGermanLuteTablatureFontVariantCombo(final JPanel specificPanel,
 			final IGermanLuteTablatureVariantState domainSpecificState) {
 		specificPanel.add(new JLabel(Messages.getString("I18NComponentHelper.germanLuteTablatureFontVariantLabel"))); //$NON-NLS-1$
-		Consumer<GermanLuteTablatureFontVariant> selectionHandler = new Consumer<GermanLuteTablatureFontVariant>() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void accept(GermanLuteTablatureFontVariant t) {
-				domainSpecificState.setGermanLuteTablatureFontVariant(t);
-			}
-		};
-		createComboBox(GermanLuteTablatureFontVariant.class, specificPanel, selectionHandler);
+		createComboBox(GermanLuteTablatureFontVariant.class, specificPanel,
+				(t) -> domainSpecificState.setGermanLuteTablatureFontVariant(t),
+				domainSpecificState.getGermanLuteTablatureFontVariant());
 	}
 }

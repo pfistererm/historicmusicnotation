@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants2;
 
 /**
@@ -51,6 +53,7 @@ class PianoPanel extends JPanel {
 		setBorder(BorderFactory.createLineBorder(Color.red));
 		setMinimumSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
 		setPreferredSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
+
 		final int midiNoteBase = getStartOctave() * 12;
 
 		for (int octave = 0; octave < getOctaves(); octave++) {
@@ -103,10 +106,13 @@ class PianoPanel extends JPanel {
 
 	private void setKeySizes(final int keyWidthParam, final int keyHeightParam) {
 		int keyIndex = 0;
-		int x = 0;
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		int x = originX;
 		for (int octave = 0; octave < getOctaves(); octave++) {
 			for (int j = 0; j < midiOffsetsWhiteKeys.length; j++) {
-				whiteKeys.get(keyIndex).setDimensions(x, 0, keyWidthParam, keyHeightParam);
+				whiteKeys.get(keyIndex).setDimensions(x, originY, keyWidthParam, keyHeightParam);
 				x += keyWidthParam;
 				keyIndex++;
 			}
@@ -115,10 +121,10 @@ class PianoPanel extends JPanel {
 		final int blackKeyHeight = (keyHeightParam * 2) / 3;
 		final int blackKeyXOffset = keyWidthParam / 4 - 1;
 		keyIndex = 0;
-		x = keyWidthParam - blackKeyXOffset;
+		x = originX + keyWidthParam - blackKeyXOffset;
 		for (int octave = 0; octave < getOctaves(); octave++) {
 			for (int j = 0; j < midiOffsetsBlackKeys.length; j++) {
-				blackKeys.get(keyIndex).setDimensions(x, 0, blackKeyWidth, blackKeyHeight);
+				blackKeys.get(keyIndex).setDimensions(x, originY, blackKeyWidth, blackKeyHeight);
 				keyIndex++;
 				if (j == 1 || j == 4) {
 					x += keyWidthParam;
@@ -133,7 +139,7 @@ class PianoPanel extends JPanel {
 	private PianoKey getKey(final Point point) {
 		/*
 		 * NOTE: this works correctly because black keys (that are overlapping white
-		 * keys) are tested first
+		 * keys) are tested first.
 		 */
 		for (PianoKey key : blackKeys) {
 			if (key.getDimensions().contains(point)) {
@@ -186,11 +192,8 @@ class PianoPanel extends JPanel {
 	/** {@inheritDoc} */
 	@Override
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		Dimension d = getSize();
-
-		g2.setBackground(getBackground());
-		g2.clearRect(0, 0, d.width, d.height);
 
 		g2.setColor(PianoKeyColors.WHITE);
 		int numWhiteKeys = getNumWhiteKeys();

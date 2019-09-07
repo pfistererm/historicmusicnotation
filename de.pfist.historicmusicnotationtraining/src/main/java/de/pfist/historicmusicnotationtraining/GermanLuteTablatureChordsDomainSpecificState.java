@@ -4,7 +4,7 @@ public class GermanLuteTablatureChordsDomainSpecificState extends AbstractLuteDo
 		implements IGermanLuteTablatureVariantState {
 
 	private GermanLuteTablatureNotationVariant germanLuteTablatureNotationVariant = GermanLuteTablatureNotationVariant.WAISSEL;
-	private GermanLuteTablatureFontVariant germanLuteTablatureFontVariant = GermanLuteTablatureFontVariant.ANTIQUA;
+	private GermanLuteTablatureFontVariant germanLuteTablatureFontVariant = GermanLuteTablatureFontVariant.FRACTURA;
 
 	/**
 	 * {@inheritDoc}

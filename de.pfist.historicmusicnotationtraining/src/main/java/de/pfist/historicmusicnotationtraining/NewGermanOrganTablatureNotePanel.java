@@ -3,6 +3,9 @@ package de.pfist.historicmusicnotationtraining;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGermanOrganTablatureDomainSpecificState> {
 
@@ -46,12 +49,15 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGerma
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void paintComponent(final Graphics g) {
-		int width = getWidth();
-		int height = getHeight();
+	protected void paintComponent(final Graphics g) {
+		super.paintComponent(g);
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		final int width = effectiveDimensions.width;
+		final int height = effectiveDimensions.height;
 
 		g.setFont(font);
-		g.clearRect(0, 0, width, height);
 		g.setColor(Color.black);
 		if (initialized) {
 			final int octave = (midiNote / 12) - 3;
@@ -64,8 +70,8 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGerma
 			System.out.println("noteOffset: " + noteOffset); //$NON-NLS-1$
 			System.out.println("characters to draw: " + letter); //$NON-NLS-1$
 			// draw letter
-			int letterY = height / 2;
-			int letterX = width / 2;
+			int letterY = originY + height / 2;
+			int letterX = originX + width / 2;
 			g.drawString(letter, letterX, letterY);
 		}
 	}

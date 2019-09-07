@@ -1,7 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
 import java.awt.event.KeyEvent;
-import java.util.function.Consumer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -54,15 +53,8 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 
 		// key mode selection
 		specificPanel.add(new JLabel(Messages.getString("NewGermanOrganTablatureDomain.keyLabel"))); //$NON-NLS-1$
-		Consumer<KeyMode> selectionHandler = new Consumer<KeyMode>() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void accept(KeyMode t) {
-				domainSpecificState.setKeyMode(t);
-			}
-		};
-		I18NComponentHelper.createComboBox(KeyMode.class, specificPanel, selectionHandler);
+		I18NComponentHelper.createComboBox(KeyMode.class, specificPanel, (t) -> domainSpecificState.setKeyMode(t),
+				domainSpecificState.getKeyMode());
 
 		return specificPanel;
 	}

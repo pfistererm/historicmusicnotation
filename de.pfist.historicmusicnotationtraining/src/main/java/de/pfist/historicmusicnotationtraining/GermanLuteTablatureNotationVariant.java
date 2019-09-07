@@ -8,6 +8,7 @@ public enum GermanLuteTablatureNotationVariant implements I18NEnum {
 	GERLE(false, true, "GermanLuteTablatureNameVariant.gerle"), //$NON-NLS-1$
 	;
 
+	// TODO: cleanup
 	private final boolean drawCharactersOnLine;
 	private final boolean highestStringTop;
 	private final String textKey;

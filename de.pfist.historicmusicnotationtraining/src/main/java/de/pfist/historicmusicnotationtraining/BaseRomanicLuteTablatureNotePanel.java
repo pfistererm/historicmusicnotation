@@ -3,8 +3,11 @@ package de.pfist.historicmusicnotationtraining;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
 
@@ -18,13 +21,12 @@ public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecific
 	private static final String[] LETTERS = new String[] { "\uebc0", "\uebc1", "\uebc2", "\uebc3", "\uebc4", "\uebc5", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 			"\uebc6", "\uebc7", "\uebc8", "\uebc9" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
-	private Font unscaledFont;
 	private Font scaledFont;
 	private float fontSize = 24;
 
 	public BaseRomanicLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
-		unscaledFont = getUnscaledSmuflFont();
+		getUnscaledSmuflFont();
 
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
@@ -40,20 +42,20 @@ public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecific
 	}
 
 	private void scaleFont() {
-		scaledFont = unscaledFont.deriveFont(fontSize);
+		scaledFont = getUnscaledSmuflFont().deriveFont(fontSize);
 	}
 
 	protected void prepareDraw(final Graphics g) {
 		g.setFont(scaledFont);
-		g.clearRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.black);
-		drawLines(g, getWidth(), getHeight(), 0, 0);
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		drawLines(g, effectiveDimensions.x, effectiveDimensions.y, effectiveDimensions.width,
+				effectiveDimensions.height);
 	}
 
-	protected static void drawLines(Graphics g, final int width, final int height, final int xBase, final int yBase) {
+	protected static void drawLines(Graphics g, final int xBase, final int yBase, final int width, final int height) {
 		// half of space between lines
 		final float halfLineSpaceUnit = height / 16.0F;
-		g.clearRect(xBase, yBase, width, height);
 		g.setColor(Color.black);
 		// draw lines
 		int xLeft = xBase;
@@ -67,8 +69,11 @@ public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecific
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote,
 			RomanicLuteTablatureVariant romanicLuteTablatureVariant) {
 		System.out.println("luteNote:" + luteNote); //$NON-NLS-1$
-		int width = getWidth();
-		int height = getHeight();
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		final int width = effectiveDimensions.width;
+		final int height = effectiveDimensions.height;
 		final float halfLineSpaceUnit = height / 16.0F;
 
 		String character = getNoteName(luteNote, romanicLuteTablatureVariant);
@@ -80,8 +85,8 @@ public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecific
 			positionInHalfUnits = 9 - stringIndex * 2 - (romanicLuteTablatureVariant.isDrawCharactersOnLine() ? 0 : 1);
 		}
 		// draw letter
-		int letterY = calculateY(positionInHalfUnits, halfLineSpaceUnit);
-		int letterX = (int) (width / 2 + noteIndex * fontSize);
+		int letterY = originY + calculateY(positionInHalfUnits, halfLineSpaceUnit);
+		int letterX = originX + (int) (width / 2 + noteIndex * fontSize);
 		g.drawString(character, letterX, letterY);
 	}
 

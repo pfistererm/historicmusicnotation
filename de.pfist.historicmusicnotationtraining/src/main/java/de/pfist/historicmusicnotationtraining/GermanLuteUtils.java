@@ -3,7 +3,7 @@ package de.pfist.historicmusicnotationtraining;
 public class GermanLuteUtils {
 
 	/**
-	 * Note names
+	 * Note names (Antiqua)
 	 */
 	private static final String[][] NOTE_NAMES_LATIN = { //
 			{ "A", "B", "C", "D", "E", "F", "G", "H" }, // S0 //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
@@ -15,7 +15,8 @@ public class GermanLuteUtils {
 	};
 
 	/**
-	 * Note names
+	 * Note names (Fractura, from SMuFL sections "German Renaissance lute tablature"
+	 * and "Italian and Spanish Renaissance lute tablature" [for digits])
 	 */
 	private static final String[][] NOTE_NAMES_SMUFL = { //
 			{ "\uEC17", "\uEC18", "\uEC19", "\uEC1A", "\uEC1B", "\uEC1C", "\uEC1D", "\uEC1E" }, // S0 //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
@@ -26,6 +27,7 @@ public class GermanLuteUtils {
 			{ "\uEBE5", "\uEC04", "\uEC09", "\uEC0E", "\uEC13", "\uEBE9", "\uEC04'", "\uEC09'", "\uEC0E'", "\uEC13'" }, // S5 //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$
 	};
 
+	// TODO: take notation variant into account
 	public static String getNoteName(final LuteNote luteNote, final GermanLuteTablatureNotationVariant notationVariant,
 			final GermanLuteTablatureFontVariant germanLuteTablatureFontVariant) {
 		return (germanLuteTablatureFontVariant.isUseSmufl() ? NOTE_NAMES_SMUFL : NOTE_NAMES_LATIN)[luteNote.getString()

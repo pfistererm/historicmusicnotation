@@ -21,8 +21,8 @@ public class GermanLuteTablatureChordsNotePanel
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void paintComponent(final Graphics g) {
-
+	protected void paintComponent(final Graphics g) {
+		super.paintComponent(g);
 		prepareDraw(g);
 		if (initialized) {
 			for (int noteIndex = 0; noteIndex < luteNotes.length; noteIndex++) {

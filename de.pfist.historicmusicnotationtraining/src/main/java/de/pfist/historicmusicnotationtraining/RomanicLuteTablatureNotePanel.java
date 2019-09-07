@@ -22,7 +22,8 @@ public class RomanicLuteTablatureNotePanel
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void paintComponent(final Graphics g) {
+	protected void paintComponent(final Graphics g) {
+		super.paintComponent(g);
 		prepareDraw(g);
 		if (initialized) {
 			drawSingleLetter(g, 0, luteNote, romanicLuteTablatureVariant);

@@ -6,8 +6,11 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTablatureVariantState & DomainSpecificState>
 		extends AbstractNotePanel<D> {
@@ -75,13 +78,15 @@ public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTabl
 		g.setFont(font);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setStroke(new BasicStroke(fontSize / 10));
-		g.clearRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.black);
 	}
 
 	protected void drawSingleLetter(final Graphics g, int noteIndex, LuteNote luteNote) {
-		int width = getWidth();
-		int height = getHeight();
+		final Rectangle effectiveDimensions = GuiUtils.getEffectiveDimensions(this);
+		final int originX = effectiveDimensions.x;
+		final int originY = effectiveDimensions.y;
+		final int width = effectiveDimensions.width;
+		final int height = effectiveDimensions.height;
 		String letter = GermanLuteUtils.getNoteName(luteNote, getGermanLuteTablatureNotationVariant(),
 				getGermanLuteTablatureFontVariant());
 		boolean paintBar = false;
@@ -91,13 +96,13 @@ public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTabl
 		}
 		// System.out.println("char (hex): "+ Integer.toHexString(letter.charAt(0)));
 		// draw letter
-		int letterY = height / 2;
-		int letterX = (int) (width / 2 + noteIndex * fontSize);
+		int letterY = originY + height / 2;
+		int letterX = originX + (int) (width / 2 + noteIndex * fontSize);
 		FontMetrics fontMetricesForLabel = g.getFontMetrics();
 		double LetterWidth = fontMetricesForLabel.getStringBounds(letter, g).getWidth();
 		g.drawString(letter, letterX, letterY);
 		if (paintBar) {
-			int lineY = (int) (letterY - fontSize);
+			int lineY = originY + (int) (letterY - fontSize);
 			g.drawLine(letterX, lineY, (int) (letterX + LetterWidth), lineY);
 		}
 	}

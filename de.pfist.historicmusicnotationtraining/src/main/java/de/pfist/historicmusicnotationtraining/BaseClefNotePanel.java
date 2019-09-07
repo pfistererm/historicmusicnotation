@@ -26,7 +26,7 @@ public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends A
 		unscaledFont = getUnscaledSmuflFont();
 	}
 
-	protected static void drawLines(Graphics g, final int width, final int height, final int xBase, final int yBase) {
+	protected static void drawLines(Graphics g, final int xBase, final int yBase, final int width, final int height) {
 		// half of space between lines
 		final float halfLineSpaceUnit = height / 16.0F;
 		g.clearRect(xBase, yBase, width, height);
@@ -40,7 +40,7 @@ public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends A
 		}
 	}
 
-	protected void drawClefAndNote(Graphics g, final int width, final int height, final int xBase, final int yBase,
+	protected void drawClefAndNote(Graphics g, final int xBase, final int yBase, final int width, final int height,
 			ClefAndNote clefAndNote) {
 		final float halfLineSpaceUnit = height / 16.0F;
 		final float fontSize = halfLineSpaceUnit * 8.0F;

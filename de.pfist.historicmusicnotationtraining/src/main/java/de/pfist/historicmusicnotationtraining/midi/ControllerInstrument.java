@@ -4,7 +4,7 @@ import javax.sound.midi.Instrument;
 import javax.swing.JComboBox;
 
 /**
- * Representation of a MIDI instrumnt.
+ * Representation of a MIDI instrument.
  * 
  * Abstracted for two reasons:
  * 

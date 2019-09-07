@@ -1,5 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -24,6 +25,7 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 
 	protected AbstractNotePanel(final Controller controller) {
 		this.controller = controller;
+		setBackground(Color.WHITE);
 		this.addMouseListener(new MouseAdapter() {
 
 			/**

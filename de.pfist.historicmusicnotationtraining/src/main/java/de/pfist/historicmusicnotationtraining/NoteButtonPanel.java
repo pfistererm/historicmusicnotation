@@ -63,8 +63,8 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 			final LuteStringMode string = strings[stringIndex];
 			final int availableFrets = string.getAvailableFrets(luteTuning);
 			for (int fretIndex = 0; fretIndex < availableFrets; fretIndex++) {
+				final int fretIndexFinal = fretIndex;
 				// TODO: remove hard coded tuning
-				final int midiNote = string.getOffset(luteTuning) + fretIndex;
 				final String buttonText = (fretIndex == 0) ? Messages.getString(string.getTextKey())
 						: "Bund " + fretIndex;
 				noteButtons[fretIndex] = new JButton(buttonText);
@@ -74,6 +74,7 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 					/** {@inheritDoc} */
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						final int midiNote = string.getOffset(luteTuning) + fretIndexFinal;
 						getController().noteButtonPressed(midiNote);
 					}
 				});

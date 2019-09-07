@@ -1,43 +1,28 @@
 package de.pfist.historicmusicnotationtraining;
 
+/**
+ * NOTE: do not change order! Order correlaates with arrays in
+ * {@link GermanLuteUtils}.
+ * 
+ * @author matthias
+ *
+ */
 public enum GermanLuteTablatureNotationVariant implements I18NEnum {
-	WAISSEL(true, false, "GermanLuteTablatureNotationVariant.waissel"), //$NON-NLS-1$
-	NEWSIDLER(true, true, "GermanLuteTablatureNotationVariant.newsidler"), //$NON-NLS-1$
-	JOBIN(false, true, "GermanLuteTablatureNameVariant.jobin"), //$NON-NLS-1$
-	HECKEL(false, true, "GermanLuteTablatureNameVariant.heckel"), //$NON-NLS-1$
-	GERLE(false, true, "GermanLuteTablatureNameVariant.gerle"), //$NON-NLS-1$
+	WAISSEL("GermanLuteTablatureNotationVariant.waissel"), //$NON-NLS-1$
+	NEWSIDLER("GermanLuteTablatureNotationVariant.newsidler"), //$NON-NLS-1$
+	JOBIN("GermanLuteTablatureNameVariant.jobin"), //$NON-NLS-1$
+	HECKEL("GermanLuteTablatureNameVariant.heckel"), //$NON-NLS-1$
+	GERLE("GermanLuteTablatureNameVariant.gerle"), //$NON-NLS-1$
 	;
 
-	// TODO: cleanup
-	private final boolean drawCharactersOnLine;
-	private final boolean highestStringTop;
 	private final String textKey;
 
 	/**
-	 * @param drawCharactersOnLine
 	 * @param textKey
 	 * @param lowestStringTop
 	 */
-	private GermanLuteTablatureNotationVariant(final boolean drawCharactersOnLine, final boolean highestStringTop,
-			final String textKey) {
-
-		this.drawCharactersOnLine = drawCharactersOnLine;
-		this.highestStringTop = highestStringTop;
+	private GermanLuteTablatureNotationVariant(final String textKey) {
 		this.textKey = textKey;
-	}
-
-	/**
-	 * @return the drawCharactersOnLine
-	 */
-	public final boolean isDrawCharactersOnLine() {
-		return drawCharactersOnLine;
-	}
-
-	/**
-	 * @return the lowestStringTop
-	 */
-	public final boolean isHighestStringTop() {
-		return highestStringTop;
 	}
 
 	/**

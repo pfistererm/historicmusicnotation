@@ -135,15 +135,15 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		int tabIndex = 0;
 		for (final MusicDomain domain : domains) {
-			JComponent tabPanel = new JPanel();
-			tabPanel.setLayout(new BorderLayout());
-			tabPanel.add(domain.createSpecificTopPanel(), BorderLayout.PAGE_START);
+			JComponent tabContentPanel = new JPanel();
+			tabContentPanel.setLayout(new BorderLayout());
+			tabContentPanel.add(domain.createSpecificTopPanel(), BorderLayout.PAGE_START);
 			controller.addDomainSpecificState(domain.getStateObject());
 			controller.addWorkerExtension(domain.createWorkerExtension());
 			AbstractNotePanel<?> notePanel = domain.createNotePanel(controller);
-			tabPanel.add(notePanel, BorderLayout.CENTER);
+			tabContentPanel.add(notePanel, BorderLayout.CENTER);
 			controller.addNotePanel(notePanel);
-			tabbedPane.addTab(domain.getName(), null, tabPanel, domain.getToolTip());
+			tabbedPane.addTab(domain.getName(), null, tabContentPanel, domain.getToolTip());
 			tabbedPane.setMnemonicAt(tabIndex, domain.getTabMnemonic());
 			tabIndex++;
 		}

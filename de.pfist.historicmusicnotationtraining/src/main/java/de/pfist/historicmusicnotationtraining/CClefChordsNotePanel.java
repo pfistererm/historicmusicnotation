@@ -1,10 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
-import javax.swing.BorderFactory;
 
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 

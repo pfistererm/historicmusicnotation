@@ -58,7 +58,7 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 	/** {@inheritDoc} */
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(100, 100);
+		return new Dimension(100, 200);
 	}
 
 	public abstract void setRandomResult(DomainRandomResult domainRandomResult);

@@ -53,6 +53,7 @@ class PianoPanel extends JPanel {
 		setBorder(BorderFactory.createLineBorder(Color.red));
 		setMinimumSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
 		setPreferredSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
+		setMaximumSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
 
 		final int midiNoteBase = getStartOctave() * 12;
 

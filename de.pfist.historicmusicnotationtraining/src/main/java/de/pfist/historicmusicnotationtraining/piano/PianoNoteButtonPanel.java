@@ -1,6 +1,7 @@
 package de.pfist.historicmusicnotationtraining.piano;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -62,12 +63,12 @@ public class PianoNoteButtonPanel extends AbstractNoteButtonPanel {
 	 */
 	@Override
 	protected void createInterface(JPanel noteButtonPanel) {
-		setLayout(new BorderLayout());
-
+		setLayout(new GridBagLayout());
 		EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
 		BevelBorder bevelBorder = new BevelBorder(BevelBorder.LOWERED);
 		noteButtonPanel.setBorder(GuiUtils.createCompoundBorder(emptyBorder, bevelBorder, emptyBorder));
+
 		PianoPanel piano = new PianoPanel(this, getOctaves(), getStartOctave());
-		noteButtonPanel.add(piano, BorderLayout.CENTER);
+		this.add(piano, new GridBagConstraints());
 	}
 }

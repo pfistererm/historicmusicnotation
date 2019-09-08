@@ -23,12 +23,19 @@ public class GermanLuteTablatureChordsNotePanel
 	@Override
 	protected void paintComponent(final Graphics g) {
 		super.paintComponent(g);
-		prepareDraw(g);
-		if (initialized) {
-			for (int noteIndex = 0; noteIndex < luteNotes.length; noteIndex++) {
-				LuteNote luteNote = luteNotes[noteIndex];
-				drawSingleLetter(g, noteIndex, luteNote);
+		// copy of Graphics needed because prepareDraw() sets the stroke,
+		// whiich leads to problems in border drawing
+		Graphics scratchGraphics = g.create();
+		try {
+			prepareDraw(scratchGraphics);
+			if (initialized) {
+				for (int noteIndex = 0; noteIndex < luteNotes.length; noteIndex++) {
+					LuteNote luteNote = luteNotes[noteIndex];
+					drawSingleLetter(scratchGraphics, noteIndex, luteNote);
+				}
 			}
+		} finally {
+			scratchGraphics.dispose();
 		}
 	}
 

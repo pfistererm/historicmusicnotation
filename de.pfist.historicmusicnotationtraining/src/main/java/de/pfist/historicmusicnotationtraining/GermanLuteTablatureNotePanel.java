@@ -23,10 +23,18 @@ public class GermanLuteTablatureNotePanel
 	@Override
 	protected void paintComponent(final Graphics g) {
 		super.paintComponent(g);
-		prepareDraw(g);
-		if (initialized) {
-			drawSingleLetter(g, 0, luteNote);
-		}
+		// copy of Graphics needed because prepareDraw() sets the stroke,
+		// whiich leads to problems in border drawing
+        Graphics scratchGraphics =g.create();
+        try {
+    		prepareDraw(scratchGraphics);
+    		if (initialized) {
+    			drawSingleLetter(scratchGraphics, 0, luteNote);
+    		}
+        }
+        finally {
+            scratchGraphics.dispose();
+        }
 	}
 
 	/**

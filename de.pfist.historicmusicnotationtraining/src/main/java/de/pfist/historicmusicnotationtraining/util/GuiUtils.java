@@ -5,7 +5,10 @@ import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 
 public class GuiUtils {
 
@@ -21,6 +24,27 @@ public class GuiUtils {
 			}
 			return current;
 		}
+	}
+
+	public static Border createTripleEtchedBorder(final int emptyOuterWidth, final int etchType,
+			final int emptyInnerWidth) {
+		final EtchedBorder etchedBorder = new EtchedBorder(etchType);
+		return createTripleBorder(emptyOuterWidth, etchedBorder, emptyInnerWidth);
+	}
+
+	public static Border createTripleBevelBorder(final int emptyOuterWidth, final int bevelType,
+			final int emptyInnerWidth) {
+		final BevelBorder bevelBorder = new BevelBorder(bevelType);
+		return createTripleBorder(emptyOuterWidth, bevelBorder, emptyInnerWidth);
+	}
+
+	private static Border createTripleBorder(final int emptyOuterWidth, final Border middleBorder,
+			final int emptyInnerWidth) {
+		final EmptyBorder outerEmptyBorder = new EmptyBorder(emptyOuterWidth, emptyOuterWidth, emptyOuterWidth,
+				emptyOuterWidth);
+		final EmptyBorder innerEmptyBorder = new EmptyBorder(emptyInnerWidth, emptyInnerWidth, emptyInnerWidth,
+				emptyInnerWidth);
+		return createCompoundBorder(outerEmptyBorder, middleBorder, innerEmptyBorder);
 	}
 
 	/**

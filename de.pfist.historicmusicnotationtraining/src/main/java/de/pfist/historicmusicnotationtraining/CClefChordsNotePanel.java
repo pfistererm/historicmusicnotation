@@ -17,7 +17,6 @@ public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpe
 
 	public CClefChordsNotePanel(Controller controller) {
 		super(controller);
-//		// setBorder(BorderFactory.createLineBorder(Color.GREEN, 10, true));
 	}
 
 	/**

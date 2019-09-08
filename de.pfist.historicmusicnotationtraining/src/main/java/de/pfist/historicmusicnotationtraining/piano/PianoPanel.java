@@ -49,8 +49,8 @@ class PianoPanel extends JPanel {
 		blackKeys = new ArrayList<>();
 		whiteKeys = new ArrayList<>();
 
+		setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(new BorderLayout());
-		setBorder(BorderFactory.createLineBorder(Color.red));
 		setMinimumSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
 		setPreferredSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));
 		setMaximumSize(new Dimension(getNumWhiteKeys() * keyWidth, keyHeight + 1));

@@ -26,8 +26,6 @@ public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTabl
 
 	public BaseGermanLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
-		// BevelBorder bb = new BevelBorder(BevelBorder.LOWERED);
-		// setBorder(bb);
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
 			/** {@inheritDoc} */

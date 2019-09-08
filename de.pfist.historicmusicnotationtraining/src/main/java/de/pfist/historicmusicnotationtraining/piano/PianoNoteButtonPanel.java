@@ -5,7 +5,6 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 
 import de.pfist.historicmusicnotationtraining.AbstractNoteButtonPanel;
 import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
@@ -64,9 +63,7 @@ public class PianoNoteButtonPanel extends AbstractNoteButtonPanel {
 	@Override
 	protected void createInterface(JPanel noteButtonPanel) {
 		setLayout(new GridBagLayout());
-		EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
-		BevelBorder bevelBorder = new BevelBorder(BevelBorder.LOWERED);
-		noteButtonPanel.setBorder(GuiUtils.createCompoundBorder(emptyBorder, bevelBorder, emptyBorder));
+		noteButtonPanel.setBorder(GuiUtils.createTripleBevelBorder(5, BevelBorder.LOWERED, 5));
 
 		PianoPanel piano = new PianoPanel(this, getOctaves(), getStartOctave());
 		this.add(piano, new GridBagConstraints());

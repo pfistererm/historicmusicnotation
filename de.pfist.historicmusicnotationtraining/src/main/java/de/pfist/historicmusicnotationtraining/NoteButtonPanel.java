@@ -1,6 +1,5 @@
 package de.pfist.historicmusicnotationtraining;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -9,11 +8,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;
 
 public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionListener {
@@ -48,10 +46,11 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 		}
 	}
 
-	private void createInterfaceLuteFretboard(final Container noteButtonPanel) {
+	private void createInterfaceLuteFretboard(final JPanel noteButtonPanel) {
 
 		final LuteTuning luteTuning = LuteTuning.A_TUNING;
 
+		noteButtonPanel.setBorder(GuiUtils.createTripleEtchedBorder(5, EtchedBorder.RAISED, 6));
 		noteButtonPanel.setLayout(new GridLayout(luteTuning.getStringCount(), 0));
 
 		final LuteStringMode[] strings = LuteStringMode.getStringValues();
@@ -88,11 +87,8 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 
 	private void createInterfaceStandard(final JPanel noteButtonPanel) {
 
+		noteButtonPanel.setBorder(GuiUtils.createTripleEtchedBorder(5, EtchedBorder.RAISED, 6));
 		noteButtonPanel.setLayout(new GridLayout(getLayouRows(), 0));
-		final EmptyBorder emptyBorder1 = new EmptyBorder(5, 5, 5, 5);
-		final EtchedBorder etchedBorder = new EtchedBorder(EtchedBorder.RAISED);
-		final EmptyBorder emptyBorder2 = new EmptyBorder(6, 6, 6, 6);
-		noteButtonPanel.setBorder(new CompoundBorder(emptyBorder1, new CompoundBorder(etchedBorder, emptyBorder2)));
 		final String[] noteNames = getNoteNames();
 		for (int i = 0; i < noteNames.length; i++) {
 			noteButtons[i] = new JButton(noteNames[i]);

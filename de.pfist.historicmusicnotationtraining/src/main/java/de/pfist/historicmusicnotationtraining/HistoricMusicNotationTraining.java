@@ -29,6 +29,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -37,6 +38,7 @@ import com.l2fprod.common.swing.StatusBar;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.util.BarLineLabel;
+import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public class HistoricMusicNotationTraining implements IMainGui {
 
@@ -74,7 +76,8 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		final JFrame frame = createFrame();
 		createInterface(frame, domains);
 
-		frame.setSize(700, 400);
+		frame.setSize(700, 500);
+		// frame.pack();
 		frame.setVisible(true);
 		controller.setCurrentDomainIndex(0);
 	}
@@ -104,26 +107,26 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	private void createInterface(final JFrame frame, final MusicDomain[] domains) {
 		final JTabbedPane tabbedPane = createDomainsTabbedPane(domains);
 
-		final Container contentPane2 = frame.getContentPane();
-		contentPane2.setLayout(new BorderLayout());
+		final Container outerContentPane = frame.getContentPane();
+		outerContentPane.setLayout(new BorderLayout());
 
-		JPanel contentPane = new JPanel();
-		contentPane2.add(contentPane, BorderLayout.CENTER);
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-		contentPane.add(tabbedPane);
+		JPanel innerContentPane = new JPanel();
+		outerContentPane.add(innerContentPane, BorderLayout.CENTER);
+		innerContentPane.setLayout(new BoxLayout(innerContentPane, BoxLayout.Y_AXIS));
+		innerContentPane.add(tabbedPane);
 
 		// Note: initializes noteButtonPanelContainer and noteButtonPanels
 		createNoteButtonPanels();
-		contentPane.add(noteButtonPanelContainer);
+		innerContentPane.add(noteButtonPanelContainer);
 
 		JPanel otherButtonPanel = createOtherButtonPanel();
-		contentPane.add(otherButtonPanel);
+		innerContentPane.add(otherButtonPanel);
 
 		JPanel midiPanel = createMidiPanel();
-		contentPane.add(midiPanel);
+		innerContentPane.add(midiPanel);
 
 		JComponent statusBar = createStatusBar();
-		contentPane2.add(statusBar, BorderLayout.SOUTH);
+		outerContentPane.add(statusBar, BorderLayout.SOUTH);
 	}
 
 	/**
@@ -141,6 +144,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			controller.addDomainSpecificState(domain.getStateObject());
 			controller.addWorkerExtension(domain.createWorkerExtension());
 			AbstractNotePanel<?> notePanel = domain.createNotePanel(controller);
+			notePanel.setBorder(GuiUtils.createTripleBevelBorder(5, BevelBorder.LOWERED, 5));
 			tabContentPanel.add(notePanel, BorderLayout.CENTER);
 			controller.addNotePanel(notePanel);
 			tabbedPane.addTab(domain.getName(), null, tabContentPanel, domain.getToolTip());
@@ -198,7 +202,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		// mode selection
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.modeLabel"))); //$NON-NLS-1$
-		 I18NComponentHelper.createComboBox(Mode.class, otherButtonPanel, //
+		I18NComponentHelper.createComboBox(Mode.class, otherButtonPanel, //
 				(t) -> controller.setMode(t), controller.getMode());
 
 		// auto intervall
@@ -295,13 +299,13 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	private JComponent createStatusBar() {
 		successLabel = new JLabel("      "); //$NON-NLS-1$
 		successLabel.setOpaque(true);
-
+		successLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		successBarLineLabel = new BarLineLabel<>();
 		successBarLineLabel.setColorMap(getColorMap());
 		successBarLineLabel.setBackground(getColorMap().get(AnswerState.WAITING));
 
 		statusMessage = new JLabel("remaining");
-
+		statusMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		StatusBar statusBar = new StatusBar();
 		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));
 		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" }, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

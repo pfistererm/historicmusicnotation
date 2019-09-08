@@ -15,7 +15,6 @@ import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -304,10 +303,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		successBarLineLabel.setColorMap(getColorMap());
 		successBarLineLabel.setBackground(getColorMap().get(AnswerState.WAITING));
 
-		statusMessage = new JLabel("remaining"); //$NON-NLS-1$
+		statusMessage = new JLabel(""); //$NON-NLS-1$
 		statusMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		StatusBar statusBar = new StatusBar();
-		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));
 		statusBar.setZones(new String[] { "first_zone", "second_zone", "remaining_zones" }, //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				new Component[] { successLabel, successBarLineLabel, statusMessage }, // $NON-NLS-1$ //$NON-NLS-2$
 				new String[] { "25%", "25%", "*" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

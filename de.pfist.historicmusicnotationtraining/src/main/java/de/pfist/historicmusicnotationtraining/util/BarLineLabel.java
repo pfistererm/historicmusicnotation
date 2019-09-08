@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Map;
 
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class BarLineLabel<T> extends JLabel {
+public class BarLineLabel<T> extends JPanel {
 
 	/**
 	 * 

@@ -304,7 +304,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		successBarLineLabel.setColorMap(getColorMap());
 		successBarLineLabel.setBackground(getColorMap().get(AnswerState.WAITING));
 
-		statusMessage = new JLabel("remaining");
+		statusMessage = new JLabel("remaining"); //$NON-NLS-1$
 		statusMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		StatusBar statusBar = new StatusBar();
 		statusBar.setZoneBorder(BorderFactory.createLineBorder(Color.GRAY));

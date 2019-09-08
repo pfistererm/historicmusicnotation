@@ -68,7 +68,7 @@ public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends A
 		case F_CLEF:
 			return F_CLEF_CHAR;
 		default:
-			throw new RuntimeException("Unsupported clef type: " + clef.getClefType());
+			throw new RuntimeException("Unsupported clef type: " + clef.getClefType()); //$NON-NLS-1$
 		}
 	}
 

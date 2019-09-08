@@ -8,6 +8,7 @@ import java.util.List;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.SwingUtilities;
 
+import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.midi.MidiHelper;
 
@@ -51,8 +52,8 @@ public class Controller {
 				if (event.getPropertyName().equals(GlobalCounter.COUNTER_PROPERTY)) {
 
 					GlobalCounter g = ((GlobalCounter) event.getSource());
-					String message = "Success: " + g.getSuccessCount() + "  Failure: " + g.getFailureCount()
-							+ "  Missed: " + g.getMissedCount();
+					String message = String.format(Messages.getString("Controller.statusMessage"), g.getSuccessCount(), //$NON-NLS-1$
+							g.getFailureCount(), g.getMissedCount());
 					getMainGui().setStatusMesssage(message);
 				}
 			}
@@ -226,7 +227,7 @@ public class Controller {
 			}
 		}
 		throw new RuntimeException(
-				"No domain specific stat found with type: " + domainSpecificStateClass.getSimpleName());
+				"No domain specific stat found with type: " + domainSpecificStateClass.getSimpleName()); //$NON-NLS-1$
 	}
 
 	public void addDomainSpecificState(final DomainSpecificState domainSpecificState) {

@@ -30,14 +30,14 @@ public class GermanLuteUtils {
 	 * Note names (Antiqua) for string S0 - different notation variants.
 	 */
 	private static final String[][] NOTE_NAMES_LATIN_S0 = { //
-			{ "A", "B", "C", "D", "E", "F", "G", "H", "I" }, // WAISSEL //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
-			{ "1'", "A", "B", "C", "D", "E", "F", "G", "H" }, // NEWSIDLER //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
+			{ "A", "B", "C", "D", "E", "F", "G", "H", "I" }, // WAISSEL //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
+			{ "1'", "A", "B", "C", "D", "E", "F", "G", "H" }, // NEWSIDLER //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
 			// $NON-NLS-9$ //$NON-NLS-10$
-			{ "1'", "a'", "f'", "l'", "q'", "x'", "aa", "ff", "ll" }, // JOBIN //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
+			{ "1'", "a'", "f'", "l'", "q'", "x'", "aa", "ff", "ll" }, // JOBIN //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
 			// $NON-NLS-9$ //$NON-NLS-10$
-			{ "7'", "a'", "f'", "l'", "q'", "x'", "aa'", "ff'", "ll'" }, // HECKEL //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
+			{ "7'", "a'", "f'", "l'", "q'", "x'", "aa'", "ff'", "ll'" }, // HECKEL //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
 			// $NON-NLS-9$ //$NON-NLS-10$
-			{ "1'", "2'", "3'", "4'", "5'", "6'", "7'", "8'", "9'" }, // GERLE //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
+			{ "1'", "2'", "3'", "4'", "5'", "6'", "7'", "8'", "9'" }, // GERLE //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
 			// $NON-NLS-9$ //$NON-NLS-10$
 	};
 	/**

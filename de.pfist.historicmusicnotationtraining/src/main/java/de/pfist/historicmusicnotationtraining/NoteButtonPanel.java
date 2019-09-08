@@ -65,7 +65,7 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 				final int fretIndexFinal = fretIndex;
 				// TODO: remove hard coded tuning
 				final String buttonText = (fretIndex == 0) ? Messages.getString(string.getTextKey())
-						: "Bund " + fretIndex;
+						: Messages.getString("NoteButtonPanel.fret") + fretIndex; //$NON-NLS-1$
 				noteButtons[fretIndex] = new JButton(buttonText);
 				noteButtons[fretIndex].setMargin(new Insets(2, 1, 2, 1));
 				noteButtons[fretIndex].addActionListener(new ActionListener() {

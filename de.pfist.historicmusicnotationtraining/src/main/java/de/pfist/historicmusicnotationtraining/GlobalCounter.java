@@ -8,7 +8,7 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 public class GlobalCounter {
 
-	public static final String COUNTER_PROPERTY = "COUNTER_PROPERTY";
+	public static final String COUNTER_PROPERTY = "COUNTER_PROPERTY"; //$NON-NLS-1$
 
 	private int successCount = 0;
 	private int failureCount = 0;

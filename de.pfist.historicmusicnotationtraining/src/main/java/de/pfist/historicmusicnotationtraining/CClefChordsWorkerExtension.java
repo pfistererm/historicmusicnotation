@@ -6,33 +6,15 @@ package de.pfist.historicmusicnotationtraining;
 public class CClefChordsWorkerExtension
 		implements WorkerExtension<CClefChordsDomainSpecificState, CClefChordsRandomResult> {
 
-	public static class ChordDescription {
-		private final Chord chord;
-		private final ClefAndNote[] notes;
+	private static class ChordDescription extends GenericChordDescription<Chord, ClefAndNote> {
 
 		/**
 		 * @param chord
 		 * @param notes
 		 */
 		public ChordDescription(final Chord chord, ClefAndNote... notes) {
-			this.chord = chord;
-			this.notes = notes;
+			super(chord, notes);
 		}
-
-		/**
-		 * @return the chord
-		 */
-		public final Chord getChord() {
-			return chord;
-		}
-
-		/**
-		 * @return the notes
-		 */
-		public final ClefAndNote[] getNotes() {
-			return notes;
-		}
-
 	}
 
 	private static final ChordDescription[] CHORDS = new ChordDescription[] {

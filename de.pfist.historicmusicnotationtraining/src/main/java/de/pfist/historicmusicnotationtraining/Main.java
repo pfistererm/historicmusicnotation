@@ -10,6 +10,7 @@ public class Main {
 				new GermanLuteTablatureDomain(), //
 				new GermanLuteTablatureChordsDomain(), //
 				new RomanicLuteTablatureDomain(), //
+				// TODO: add romanic lute chord domain
 				new NewGermanOrganTablatureDomain() //
 		};
 		new HistoricMusicNotationTraining(domains);

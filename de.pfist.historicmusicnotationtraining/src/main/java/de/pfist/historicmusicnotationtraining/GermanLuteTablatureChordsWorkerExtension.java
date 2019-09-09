@@ -92,18 +92,22 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		final ChordDescription chordDescription = chords[chordDescriptionIndex];
 
 		final LuteNote[] luteNotes = chordDescription.getNotes();
-		final int[] midiNotes = new int[luteNotes.length];
-		for (int i = 0; i < luteNotes.length; i++) {
-			midiNotes[i] = luteNotes[i].getMidiNote(luteTuning);
-		}
+		final int[] midiNotes = getMidiNotes(luteTuning, luteNotes);
 
 		final Chord absoluteChord = luteTuning.getAbsoluteChord(chordDescription.getChord());
-		// final Chord absoluteChord = chordDescription.getChord();
 		final GermanLuteTablatureChordsRandomResult randomResult = new GermanLuteTablatureChordsRandomResult(
 				absoluteChord, luteNotes, midiNotes);
 		System.out.println("absolute chord: " + absoluteChord); //$NON-NLS-1$
 		// System.out.println("midiNote: " + midiNote); //$NON-NLS-1$
 		return randomResult;
+	}
+
+	private static int[] getMidiNotes(final LuteTuning luteTuning, final LuteNote[] luteNotes) {
+		final int[] midiNotes = new int[luteNotes.length];
+		for (int i = 0; i < luteNotes.length; i++) {
+			midiNotes[i] = luteNotes[i].getMidiNote(luteTuning);
+		}
+		return midiNotes;
 	}
 
 }

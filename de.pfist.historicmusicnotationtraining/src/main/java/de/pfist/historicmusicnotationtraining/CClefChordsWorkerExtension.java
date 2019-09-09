@@ -47,15 +47,20 @@ public class CClefChordsWorkerExtension
 		}
 
 		final ClefAndNote[] clefAndNotes = chordDescription.getNotes();
-		final int[] midiNotes = new int[clefAndNotes.length];
-		for (int i = 0; i < clefAndNotes.length; i++) {
-			midiNotes[i] = clefAndNotes[i].getMidiNote();
-		}
+		final int[] midiNotes = getMidiNotes(clefAndNotes);
 
 		final CClefChordsRandomResult randomResult = new CClefChordsRandomResult(chordDescription.getChord(),
 				clefAndNotes, midiNotes);
 		System.out.println("chord: " + chordDescription.getChord()); //$NON-NLS-1$
 		return randomResult;
+	}
+
+	private int[] getMidiNotes(final ClefAndNote[] clefAndNotes) {
+		final int[] midiNotes = new int[clefAndNotes.length];
+		for (int i = 0; i < clefAndNotes.length; i++) {
+			midiNotes[i] = clefAndNotes[i].getMidiNote();
+		}
+		return midiNotes;
 	}
 
 }

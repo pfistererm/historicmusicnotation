@@ -14,15 +14,9 @@ public class GermanLuteTablatureWorkerExtension
 	 */
 	@Override
 	public GermanLuteTablatureRandomResult doRandom(final DomainSpecificState domainSpecificState) {
-		LuteStringMode string;
 		GermanLuteTablatureDomainSpecificState domainSpecificState2 = (GermanLuteTablatureDomainSpecificState) domainSpecificState;
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
-		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {
-			int stringIndex = Worker.randomInteger(luteTuning.getStringCount());
-			string = LuteStringMode.values()[stringIndex];
-		} else {
-			string = domainSpecificState2.getLuteStringMode();
-		}
+		final LuteStringMode string = getString(domainSpecificState2, luteTuning);
 		final int fretPosition;
 		final int availableFrets = string.getAvailableFrets(luteTuning);
 		if (domainSpecificState2.getKeyMode() == KeyMode.CHROMATIC) {
@@ -39,6 +33,18 @@ public class GermanLuteTablatureWorkerExtension
 		// System.out.println("fretPosition: " + fretPosition); //$NON-NLS-1$
 		// System.out.println("midiNote: " + midiNote); //$NON-NLS-1$
 		return randomResult;
+	}
+
+	private LuteStringMode getString(GermanLuteTablatureDomainSpecificState domainSpecificState2,
+			final LuteTuning luteTuning) {
+		LuteStringMode string;
+		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {
+			int stringIndex = Worker.randomInteger(luteTuning.getStringCount());
+			string = LuteStringMode.values()[stringIndex];
+		} else {
+			string = domainSpecificState2.getLuteStringMode();
+		}
+		return string;
 	}
 
 	private static List<Integer> getFretPositonTableForKey(

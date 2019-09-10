@@ -206,21 +206,23 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 		// auto intervall
 		autoIntervallMenu = new JComboBox<>();
-		autoIntervallMenu.addActionListener(new ActionListener() {
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO: autoIntervallMenu.getSelectedItem()).doubleValue());
-			}
-		});
 		autoIntervallMenu.addItem(1);
 		autoIntervallMenu.addItem(2);
 		autoIntervallMenu.addItem(3);
 		autoIntervallMenu.addItem(4);
 		autoIntervallMenu.addItem(5);
 		autoIntervallMenu.addItem(6);
+		GuiUtils.setIntegerInitialValue(autoIntervallMenu, controller.getAutomaticInterval());
+		autoIntervallMenu.addActionListener(new ActionListener() {
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int automaticInterval = ((Integer) autoIntervallMenu.getSelectedItem()).intValue();
+				controller.setAutomaticInterval(automaticInterval);
+			}
+		});
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.autoIntervallLabel"))); //$NON-NLS-1$
 		otherButtonPanel.add(autoIntervallMenu);
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.seconsLabel"))); //$NON-NLS-1$

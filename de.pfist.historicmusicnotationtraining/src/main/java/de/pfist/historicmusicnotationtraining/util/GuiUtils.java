@@ -4,6 +4,7 @@ import java.awt.Insets;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -57,5 +58,20 @@ public class GuiUtils {
 		int width = component.getWidth() - insets.left - insets.right;
 		int height = component.getHeight() - insets.top - insets.bottom;
 		return new Rectangle(insets.left, insets.top, width, height);
+	}
+
+	/**
+	 * Sets the selected value on an Integer ComoBox.
+	 * 
+	 * @param integerCombo
+	 * @param value
+	 */
+	public static void setIntegerInitialValue(final JComboBox<Integer> integerCombo, final int value) {
+		for (int i = 0; i < integerCombo.getItemCount(); i++) {
+			Integer item = integerCombo.getItemAt(i);
+			if (item.intValue() == value) {
+				integerCombo.setSelectedItem(item);
+			}
+		}
 	}
 }

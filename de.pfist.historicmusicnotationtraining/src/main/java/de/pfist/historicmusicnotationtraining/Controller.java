@@ -35,6 +35,7 @@ public class Controller {
 	private GlobalCounter globalCounter;
 	private AnswerState answerState = null;
 	private boolean automaticMode;
+	private int automaticInterval = 3;
 
 	public Controller(final MusicDomain[] domains) {
 		super();
@@ -267,6 +268,34 @@ public class Controller {
 	 */
 	public final void setMode(Mode mode) {
 		this.mode = mode;
+	}
+
+	/**
+	 * @return the automaticMode
+	 */
+	public final boolean isAutomaticMode() {
+		return automaticMode;
+	}
+
+	/**
+	 * @param automaticMode the automaticMode to set
+	 */
+	public final void setAutomaticMode(boolean automaticMode) {
+		this.automaticMode = automaticMode;
+	}
+
+	/**
+	 * @return the automaticInterval
+	 */
+	public final int getAutomaticInterval() {
+		return automaticInterval;
+	}
+
+	/**
+	 * @param automaticInterval the automaticInterval to set
+	 */
+	public final void setAutomaticInterval(int automaticInterval) {
+		this.automaticInterval = automaticInterval;
 	}
 
 	public void setNoteButtonPanel(final NoteButtonPanelType noteButtonPanelType) {

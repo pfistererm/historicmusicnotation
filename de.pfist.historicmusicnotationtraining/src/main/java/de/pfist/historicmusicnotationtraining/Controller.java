@@ -34,6 +34,7 @@ public class Controller {
 	private MidiHelper midiHelper;
 	private GlobalCounter globalCounter;
 	private AnswerState answerState = null;
+	private boolean automaticMode;
 
 	public Controller(final MusicDomain[] domains) {
 		super();
@@ -68,13 +69,24 @@ public class Controller {
 		midiHelper.setIntrument(instrument);
 	}
 
-	public void noteButtonPressed(int midiNote) {
+	public void noteButtonPressed(final int midiNote) {
 		// System.out.println("noteButtonPressed(): midiNote: " + midiNote);
 		// $NON-NLS-1$
+		final boolean comparisonResult = midiNote == expectedMidiNote;
+		buttonPressed(comparisonResult, () -> playNote(midiNote));
+	}
+
+	public void chordButtonPressed(final Chord chord) {
+		System.out.println("chordButtonPressed(): chord: " + chord); //$NON-NLS-1$
+		final boolean comparisonResult = chord == expectedChord;
+		buttonPressed(comparisonResult, () -> playNotes());
+	}
+
+	private void buttonPressed(final boolean comparisonResult, Runnable playMethod) {
 		boolean doNext = false;
-		if (midiNote == expectedMidiNote) {
+		if (comparisonResult) {
 			if (playNotes) {
-				playNote(midiNote);
+				playMethod.run();
 			}
 			setAnswerState(AnswerState.RIGHT);
 			globalCounter.increaseSuccessCount();
@@ -103,44 +115,14 @@ public class Controller {
 		midiHelper.playNote(midiNote, getMidiNoteVelocity());
 	}
 
-	private void beep() {
-		midiHelper.beep(getMidiNoteVelocity());
-	}
-
-	public void chordButtonPressed(final Chord chord) {
-		System.out.println("chordButtonPressed(): chord: " + chord); //$NON-NLS-1$
-		boolean doNext = false;
-		if (chord == expectedChord) {
-			if (playNotes) {
-				playNotes();
-			}
-			setAnswerState(AnswerState.RIGHT);
-			globalCounter.increaseSuccessCount();
-			doNext = getMode() == Mode.AUTO_NEXT_ON_RIGHT;
-		} else {
-			if (playNotes) {
-				beep();
-			}
-			setAnswerState(AnswerState.WRONG);
-			globalCounter.increaseFailureCount();
-			doNext = getMode() == Mode.AUTO_NEXT_ALWAYS;
-		}
-		if (doNext) {
-			SwingUtilities.invokeLater(new Runnable() {
-
-				/** {@inheritDoc} */
-				@Override
-				public void run() {
-					doNext(true);
-				}
-			});
-		}
-	}
-
 	private void playNotes() {
 		if (chordMidiNotes != null && chordMidiNotes.length > 0) {
 			midiHelper.playNotes(chordMidiNotes, getMidiNoteVelocity());
 		}
+	}
+
+	private void beep() {
+		midiHelper.beep(getMidiNoteVelocity());
 	}
 
 	public void doNext(boolean withDelay) {

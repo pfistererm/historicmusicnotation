@@ -55,7 +55,7 @@ public class CClefChordsWorkerExtension
 		return randomResult;
 	}
 
-	private int[] getMidiNotes(final ClefAndNote[] clefAndNotes) {
+	private static int[] getMidiNotes(final ClefAndNote[] clefAndNotes) {
 		final int[] midiNotes = new int[clefAndNotes.length];
 		for (int i = 0; i < clefAndNotes.length; i++) {
 			midiNotes[i] = clefAndNotes[i].getMidiNote();

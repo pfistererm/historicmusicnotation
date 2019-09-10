@@ -36,7 +36,7 @@ public class RomanicLuteTablatureWorkerExtension
 		return randomResult;
 	}
 
-	private LuteStringMode getString(RomanicLuteTablatureDomainSpecificState domainSpecificState2,
+	private static LuteStringMode getString(RomanicLuteTablatureDomainSpecificState domainSpecificState2,
 			final LuteTuning luteTuning) {
 		LuteStringMode string;
 		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {

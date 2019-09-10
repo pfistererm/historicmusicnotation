@@ -35,7 +35,7 @@ public class GermanLuteTablatureWorkerExtension
 		return randomResult;
 	}
 
-	private LuteStringMode getString(GermanLuteTablatureDomainSpecificState domainSpecificState2,
+	private static LuteStringMode getString(GermanLuteTablatureDomainSpecificState domainSpecificState2,
 			final LuteTuning luteTuning) {
 		LuteStringMode string;
 		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {

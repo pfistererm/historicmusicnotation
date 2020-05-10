@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
 /**
- * @author matthias
  *
  */
 public class NewGermanOrganTablatureDomain implements MusicDomain {

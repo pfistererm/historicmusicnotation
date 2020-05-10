@@ -4,7 +4,6 @@ package de.pfist.historicmusicnotationtraining;
  * NOTE: do not change order! Order correlaates with arrays in
  * {@link GermanLuteUtils}.
  * 
- * @author matthias
  *
  */
 public enum GermanLuteTablatureNotationVariant implements I18NEnum {

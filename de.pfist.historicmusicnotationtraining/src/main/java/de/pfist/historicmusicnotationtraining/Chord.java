@@ -1,5 +1,10 @@
 package de.pfist.historicmusicnotationtraining;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "chord")
+@XmlEnum
 public enum Chord implements I18NEnum {
 	C_MAJOR(0, ChordType.MAJOR, "Chord.C"), //$NON-NLS-1$
 	C_MINOR(0, ChordType.MINOR, "Chord.c"), //$NON-NLS-1$

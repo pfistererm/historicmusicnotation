@@ -41,6 +41,12 @@ public class GermanLuteTablatureWorkerExtension
 		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {
 			int stringIndex = Worker.randomInteger(luteTuning.getStringCount());
 			string = LuteStringMode.values()[stringIndex];
+		} else if (domainSpecificState2.getLuteStringMode() == LuteStringMode.S45) {
+			int stringIndex = 4 + Worker.randomInteger(2);
+			string = LuteStringMode.values()[stringIndex];
+		} else if (domainSpecificState2.getLuteStringMode() == LuteStringMode.S345) {
+			int stringIndex = 3 + Worker.randomInteger(3);
+			string = LuteStringMode.values()[stringIndex];
 		} else {
 			string = domainSpecificState2.getLuteStringMode();
 		}

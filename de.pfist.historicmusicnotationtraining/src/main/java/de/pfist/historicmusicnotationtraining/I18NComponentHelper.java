@@ -136,7 +136,7 @@ public class I18NComponentHelper {
 		JComboBox<EnumComboItem<LuteStringMode>> combo = createComboBox(LuteStringMode.class, specificPanel, (t) -> {
 			domainSpecificState.setLuteStringMode(t);
 		}, //
-				LuteStringMode.ALL, LuteStringMode.S5, LuteStringMode.S4, LuteStringMode.S3, LuteStringMode.S2,
+				LuteStringMode.ALL, LuteStringMode.S45, LuteStringMode.S345, LuteStringMode.S5, LuteStringMode.S4, LuteStringMode.S3, LuteStringMode.S2,
 				LuteStringMode.S1, LuteStringMode.S0);
 		setSelectedItem(combo, domainSpecificState.getLuteStringMode());
 	}

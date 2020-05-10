@@ -15,7 +15,6 @@ import de.pfist.historicmusicnotationtraining.util.NoteConstants;
  * {@link NoteConstants#NOTE_MIDI_NOTE_TABLE_DIATONIC}.</li>
  * </ul>
  * 
- * @author matthias
  *
  */
 public enum Clef implements I18NEnum {

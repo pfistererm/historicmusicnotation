@@ -7,7 +7,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * @author matthias
  *
  */
 public class Worker implements Runnable {

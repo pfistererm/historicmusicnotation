@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<chords>
+    <chorddescription chord="A_MAJOR">
+        <title>Book1</title>
+        <date>2020-05-10T06:31:04.488+02:00</date>
+    </chorddescription>
+    <chorddescription chord="C_MAJOR">
+        <title>Book2</title>
+        <date>2020-05-10T06:31:04.488+02:00</date>
+        <note>S0_0</note>
+        <note>S0_8</note>
+    </chorddescription>
+</chords>

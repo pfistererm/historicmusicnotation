@@ -7,7 +7,9 @@ public enum LuteStringMode implements I18NEnum {
 	S3(3, "LuteStringMode.3"), //$NON-NLS-1$
 	S4(4, "LuteStringMode.4"), //$NON-NLS-1$
 	S5(5, "LuteStringMode.5"), //$NON-NLS-1$
-	ALL(-1, "LuteStringMode.all"); //$NON-NLS-1$
+	ALL(-1, "LuteStringMode.all"), //$NON-NLS-1$
+	S45(-2, "LuteStringMode.45"), //$NON-NLS-1$
+	S345(-3, "LuteStringMode.345"); //$NON-NLS-1$
 
 	private static final LuteStringMode[] REAL_STRINGS = new LuteStringMode[] { S0, S1, S2, S3, S4, S5 };
 	private final int stringIndex;

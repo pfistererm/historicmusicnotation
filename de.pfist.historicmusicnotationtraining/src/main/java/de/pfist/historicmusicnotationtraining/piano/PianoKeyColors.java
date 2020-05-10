@@ -4,6 +4,9 @@ import java.awt.Color;
 
 import javax.swing.UIDefaults;
 
+/**
+ * Colors for painting piano keys.
+ */
 public abstract class PianoKeyColors {
 	public static final Color BLACK = Color.black;
 	public static final Color WHITE = Color.white;

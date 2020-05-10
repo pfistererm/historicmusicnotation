@@ -6,7 +6,7 @@ package de.pfist.historicmusicnotationtraining;
 public class GermanLuteTablatureChordsWorkerExtension implements
 		WorkerExtension<GermanLuteTablatureChordsDomainSpecificState, GermanLuteTablatureChordsRandomResult> {
 
-	private static class ChordDescription extends GenericChordDescription<RelativeChord, LuteNote> {
+	public static class ChordDescription extends GenericChordDescription<RelativeChord, LuteNote> {
 
 		/**
 		 * @param chord
@@ -14,6 +14,12 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		 */
 		public ChordDescription(final RelativeChord chord, LuteNote... luteNotes) {
 			super(chord, luteNotes);
+		}
+
+		/**
+		 */
+		public ChordDescription() {
+			super();
 		}
 	}
 
@@ -101,6 +107,14 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		// System.out.println("midiNote: " + midiNote); //$NON-NLS-1$
 		return randomResult;
 	}
+
+//
+//	private void doJaxB() throws JAXBException {
+//		JAXBContext context = JAXBContext.newInstance(ChordDescription.class);
+//		Marshaller mar = context.createMarshaller();
+//		mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//		mar.marshal(CHORDS, new File("./chords-glt.xml"));
+//	}
 
 	private static int[] getMidiNotes(final LuteTuning luteTuning, final LuteNote[] luteNotes) {
 		final int[] midiNotes = new int[luteNotes.length];

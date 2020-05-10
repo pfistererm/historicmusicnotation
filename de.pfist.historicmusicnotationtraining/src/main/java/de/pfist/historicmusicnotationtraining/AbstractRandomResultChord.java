@@ -1,7 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
 /**
- * @author matthias
  * 
  * @see AbstractRandomResultNote
  */

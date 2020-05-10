@@ -1,5 +1,10 @@
 package de.pfist.historicmusicnotationtraining;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "RelativeChord")
+@XmlEnum
 public enum RelativeChord {
 	_0_MAJOR(0, ChordType.MAJOR), //
 	_0_MINOR(0, ChordType.MINOR), //

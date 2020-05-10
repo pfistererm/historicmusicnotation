@@ -8,7 +8,6 @@ import de.pfist.historicmusicnotationtraining.messages.Messages;
 /**
  * Interface for enumerations that provide a key for i18n.
  * 
- * @author matthias
  *
  */
 public interface I18NEnum {

@@ -1,9 +1,18 @@
 package de.pfist.historicmusicnotationtraining;
 
+import javax.xml.bind.JAXBException;
+
+import de.pfist.historicmusicnotationtraining.data.JaxbTest;
+
 public class Main {
 
 	@SuppressWarnings("unused")
 	public static void main(final String[] args) {
+		try {
+			JaxbTest.test();
+		} catch (JAXBException  e) {
+			e.printStackTrace();
+		}
 		MusicDomain[] domains = new MusicDomain[] { //
 				new CClefDomain(), //
 				new CClefChordsDomain(), //
@@ -15,5 +24,6 @@ public class Main {
 		};
 		new HistoricMusicNotationTraining(domains);
 	}
+
 
 }

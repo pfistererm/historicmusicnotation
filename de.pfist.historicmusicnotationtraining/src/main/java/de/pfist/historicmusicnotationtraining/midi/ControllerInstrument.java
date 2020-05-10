@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
  * 
  * GUI does not depend on javax.midi directly
  * 
- * @author matthias
  *
  */
 public class ControllerInstrument {

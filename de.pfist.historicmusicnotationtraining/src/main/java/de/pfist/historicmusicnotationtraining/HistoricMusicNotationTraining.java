@@ -34,6 +34,7 @@ import javax.swing.event.ChangeListener;
 
 import com.l2fprod.common.swing.StatusBar;
 
+import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.util.BarLineLabel;

@@ -6,6 +6,9 @@ package de.pfist.historicmusicnotationtraining;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
+import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+
 /**
  *
  */

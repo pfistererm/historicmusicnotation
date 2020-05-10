@@ -8,6 +8,11 @@ import java.util.List;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.SwingUtilities;
 
+import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
+import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultNote;
+import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
+import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.midi.MidiHelper;

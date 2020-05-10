@@ -9,7 +9,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import de.pfist.historicmusicnotationtraining.Chord;
-import de.pfist.historicmusicnotationtraining.LuteNote;
 
 public class JaxbTest {
 

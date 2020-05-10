@@ -1,5 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureVariant;
+
 public interface IRomanicLuteTablatureVariantState {
 
 	/**

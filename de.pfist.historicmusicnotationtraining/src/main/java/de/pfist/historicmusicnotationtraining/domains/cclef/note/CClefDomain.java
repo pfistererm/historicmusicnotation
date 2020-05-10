@@ -1,0 +1,89 @@
+package de.pfist.historicmusicnotationtraining.domains.cclef.note;
+
+import java.awt.event.KeyEvent;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.Clef;
+import de.pfist.historicmusicnotationtraining.Controller;
+import de.pfist.historicmusicnotationtraining.I18NComponentHelper;
+import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
+import de.pfist.historicmusicnotationtraining.WorkerExtension;
+import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
+import de.pfist.historicmusicnotationtraining.messages.Messages;
+
+public class CClefDomain implements MusicDomain {
+
+	private static final String NAME = Messages.getString("CClefDomain.domainName"); //$NON-NLS-1$
+
+	private CClefDomainSpecificState domainSpecificState;
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getName() {
+		return NAME;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getTabMnemonic() {
+		return KeyEvent.VK_C;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public NoteButtonPanelType[] getNoteButtonPanelTypes() {
+		return new NoteButtonPanelType[] { NoteButtonPanelType.SINGLE_DIATONIC, NoteButtonPanelType.SINGLE_KEYBOARD };
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public JPanel createSpecificTopPanel() {
+
+		domainSpecificState = new CClefDomainSpecificState();
+		JPanel specificPanel = new JPanel();
+
+		// clef selection
+		specificPanel.add(new JLabel(Messages.getString("CClefDomain.Clef"))); //$NON-NLS-1$
+		I18NComponentHelper.createComboBox(Clef.class, specificPanel, //
+				(t) -> domainSpecificState.setClefSelection(t), //
+				Clef.ALL, Clef.G2, Clef.G1, Clef.C1, Clef.C2, Clef.C3, Clef.C4, Clef.F4, Clef.F3);
+		return specificPanel;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public DomainSpecificState getStateObject() {
+		return domainSpecificState;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public WorkerExtension<?, ?> createWorkerExtension() {
+		return new CClefWorkerExtension();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public AbstractNotePanel<?> createNotePanel(Controller controller) {
+		return new CClefNotePanel(controller);
+	}
+
+}

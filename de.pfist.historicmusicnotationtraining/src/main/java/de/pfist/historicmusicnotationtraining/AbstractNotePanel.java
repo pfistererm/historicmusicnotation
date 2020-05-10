@@ -11,6 +11,9 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
+import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+
 public abstract class AbstractNotePanel<D extends DomainSpecificState> extends JPanel {
 	/**
 	 * 

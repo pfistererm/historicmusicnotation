@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import de.pfist.historicmusicnotationtraining.Chord;
-import de.pfist.historicmusicnotationtraining.LuteNote;
 
 // TODO: use reading chord descriptions from XML
 @XmlRootElement(name = "book")

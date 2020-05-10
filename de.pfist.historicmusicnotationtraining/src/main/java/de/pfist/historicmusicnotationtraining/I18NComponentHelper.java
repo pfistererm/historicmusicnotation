@@ -11,6 +11,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteDomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteNoteDomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureFontVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNotationVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureVariant;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
 public class I18NComponentHelper {

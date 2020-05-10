@@ -14,15 +14,15 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 /**
  *
  */
-public class GermanLuteTablatureWorkerExtension
-		implements WorkerExtension<GermanLuteTablatureDomainSpecificState, GermanLuteTablatureRandomResult> {
+public class GermanLuteTablatureNoteWorkerExtension
+		implements WorkerExtension<GermanLuteTablatureNoteDomainSpecificState, GermanLuteTablatureNoteRandomResult> {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public GermanLuteTablatureRandomResult doRandom(final DomainSpecificState domainSpecificState) {
-		GermanLuteTablatureDomainSpecificState domainSpecificState2 = (GermanLuteTablatureDomainSpecificState) domainSpecificState;
+	public GermanLuteTablatureNoteRandomResult doRandom(final DomainSpecificState domainSpecificState) {
+		GermanLuteTablatureNoteDomainSpecificState domainSpecificState2 = (GermanLuteTablatureNoteDomainSpecificState) domainSpecificState;
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
 		final LuteStringMode string = getString(domainSpecificState2, luteTuning);
 		final int fretPosition;
@@ -36,14 +36,14 @@ public class GermanLuteTablatureWorkerExtension
 		LuteNote luteNote = LuteNote.getNote(string, fretPosition);
 		final int midiNote = luteNote.getMidiNote(luteTuning);
 
-		GermanLuteTablatureRandomResult randomResult = new GermanLuteTablatureRandomResult(luteNote, midiNote);
+		GermanLuteTablatureNoteRandomResult randomResult = new GermanLuteTablatureNoteRandomResult(luteNote, midiNote);
 		// System.out.println("string: " + string); //$NON-NLS-1$
 		// System.out.println("fretPosition: " + fretPosition); //$NON-NLS-1$
 		// System.out.println("midiNote: " + midiNote); //$NON-NLS-1$
 		return randomResult;
 	}
 
-	private static LuteStringMode getString(GermanLuteTablatureDomainSpecificState domainSpecificState2,
+	private static LuteStringMode getString(GermanLuteTablatureNoteDomainSpecificState domainSpecificState2,
 			final LuteTuning luteTuning) {
 		LuteStringMode string;
 		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {
@@ -62,7 +62,7 @@ public class GermanLuteTablatureWorkerExtension
 	}
 
 	private static List<Integer> getFretPositonTableForKey(
-			final GermanLuteTablatureDomainSpecificState domainSpecificState2, LuteStringMode luteString) {
+			final GermanLuteTablatureNoteDomainSpecificState domainSpecificState2, LuteStringMode luteString) {
 		List<Integer> fretPositions = new ArrayList<>();
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
 		int[] offsetTableOnce = domainSpecificState2.getKeyMode().getOffsets();

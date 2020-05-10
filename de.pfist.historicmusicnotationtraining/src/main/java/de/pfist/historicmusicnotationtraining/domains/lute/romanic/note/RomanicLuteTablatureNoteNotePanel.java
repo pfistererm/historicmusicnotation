@@ -6,9 +6,10 @@ import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.BaseRomanicLuteTablatureNotePanel;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.RomanicLuteTablatureVariant;
 
-public class RomanicLuteTablatureNotePanel
-		extends BaseRomanicLuteTablatureNotePanel<RomanicLuteTablatureDomainSpecificState> {
+public class RomanicLuteTablatureNoteNotePanel
+		extends BaseRomanicLuteTablatureNotePanel<RomanicLuteTablatureNoteDomainSpecificState> {
 
 	/**
 	 * 
@@ -19,7 +20,7 @@ public class RomanicLuteTablatureNotePanel
 	private LuteNote luteNote;
 	private RomanicLuteTablatureVariant romanicLuteTablatureVariant;
 
-	public RomanicLuteTablatureNotePanel(final Controller controller) {
+	public RomanicLuteTablatureNoteNotePanel(final Controller controller) {
 		super(controller);
 	}
 
@@ -40,7 +41,7 @@ public class RomanicLuteTablatureNotePanel
 	 */
 	@Override
 	public void setRandomResult(DomainRandomResult domainRandomResult) {
-		final RomanicLuteTablatureRandomResult randomResult = (RomanicLuteTablatureRandomResult) domainRandomResult;
+		final RomanicLuteTablatureNoteRandomResult randomResult = (RomanicLuteTablatureNoteRandomResult) domainRandomResult;
 		this.luteNote = randomResult.getLuteNote();
 		this.romanicLuteTablatureVariant = randomResult.getRomanicLuteTablatureVariant();
 		this.initialized = true;

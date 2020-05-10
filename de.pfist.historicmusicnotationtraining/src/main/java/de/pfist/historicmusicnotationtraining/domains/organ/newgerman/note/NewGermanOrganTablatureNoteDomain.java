@@ -18,11 +18,11 @@ import de.pfist.historicmusicnotationtraining.messages.Messages;
 /**
  *
  */
-public class NewGermanOrganTablatureDomain implements MusicDomain {
+public class NewGermanOrganTablatureNoteDomain implements MusicDomain {
 
 	private static final String NAME = Messages.getString("NewGermanOrganTablatureDomain.domainTitle"); //$NON-NLS-1$
 
-	private NewGermanOrganTablatureDomainSpecificState domainSpecificState;
+	private NewGermanOrganTablatureNoteDomainSpecificState domainSpecificState;
 
 	/**
 	 * {@inheritDoc}
@@ -37,7 +37,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public int getTabMnemonic() {
-		return KeyEvent.VK_G;
+		return KeyEvent.VK_O;
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new NewGermanOrganTablatureDomainSpecificState();
+		domainSpecificState = new NewGermanOrganTablatureNoteDomainSpecificState();
 		JPanel specificPanel = new JPanel();
 
 		// key mode selection
@@ -79,7 +79,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
-		return new NewGermanOrganTablatureWorkerExtension();
+		return new NewGermanOrganTablatureNoteWorkerExtension();
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class NewGermanOrganTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public AbstractNotePanel<?> createNotePanel(Controller controller) {
-		return new NewGermanOrganTablatureNotePanel(controller);
+		return new NewGermanOrganTablatureNoteNotePanel(controller);
 	}
 
 }

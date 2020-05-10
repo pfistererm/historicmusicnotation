@@ -14,15 +14,15 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 /**
  *
  */
-public class RomanicLuteTablatureWorkerExtension
-		implements WorkerExtension<RomanicLuteTablatureDomainSpecificState, RomanicLuteTablatureRandomResult> {
+public class RomanicLuteTablatureNoteWorkerExtension
+		implements WorkerExtension<RomanicLuteTablatureNoteDomainSpecificState, RomanicLuteTablatureNoteRandomResult> {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RomanicLuteTablatureRandomResult doRandom(final DomainSpecificState domainSpecificState) {
-		RomanicLuteTablatureDomainSpecificState domainSpecificState2 = (RomanicLuteTablatureDomainSpecificState) domainSpecificState;
+	public RomanicLuteTablatureNoteRandomResult doRandom(final DomainSpecificState domainSpecificState) {
+		RomanicLuteTablatureNoteDomainSpecificState domainSpecificState2 = (RomanicLuteTablatureNoteDomainSpecificState) domainSpecificState;
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
 		final LuteStringMode string = getString(domainSpecificState2, luteTuning);
 		final int fretPosition;
@@ -36,7 +36,7 @@ public class RomanicLuteTablatureWorkerExtension
 		LuteNote luteNote = LuteNote.getNote(string, fretPosition);
 		final int midiNote = luteNote.getMidiNote(luteTuning);
 
-		RomanicLuteTablatureRandomResult randomResult = new RomanicLuteTablatureRandomResult(luteNote, midiNote,
+		RomanicLuteTablatureNoteRandomResult randomResult = new RomanicLuteTablatureNoteRandomResult(luteNote, midiNote,
 				domainSpecificState2.getRomanicLuteTablatureVariant());
 		// System.out.println("string: " + string); //$NON-NLS-1$
 		// System.out.println("fretPosition: " + fretPosition); //$NON-NLS-1$
@@ -44,7 +44,7 @@ public class RomanicLuteTablatureWorkerExtension
 		return randomResult;
 	}
 
-	private static LuteStringMode getString(RomanicLuteTablatureDomainSpecificState domainSpecificState2,
+	private static LuteStringMode getString(RomanicLuteTablatureNoteDomainSpecificState domainSpecificState2,
 			final LuteTuning luteTuning) {
 		LuteStringMode string;
 		if (domainSpecificState2.getLuteStringMode() == LuteStringMode.ALL) {
@@ -57,7 +57,7 @@ public class RomanicLuteTablatureWorkerExtension
 	}
 
 	private static List<Integer> getFretPositonTableForKey(
-			final RomanicLuteTablatureDomainSpecificState domainSpecificState2, LuteStringMode luteString) {
+			final RomanicLuteTablatureNoteDomainSpecificState domainSpecificState2, LuteStringMode luteString) {
 		List<Integer> fretPositions = new ArrayList<>();
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
 		int[] offsetTableOnce = domainSpecificState2.getKeyMode().getOffsets();

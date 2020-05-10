@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.domains.lute.romanic.note;
+package de.pfist.historicmusicnotationtraining.domains.lute.romanic;
 
 import de.pfist.historicmusicnotationtraining.I18NEnum;
 

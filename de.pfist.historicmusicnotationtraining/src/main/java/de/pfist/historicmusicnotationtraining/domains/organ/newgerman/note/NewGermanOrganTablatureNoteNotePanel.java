@@ -10,7 +10,7 @@ import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
-public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGermanOrganTablatureDomainSpecificState> {
+public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewGermanOrganTablatureNoteDomainSpecificState> {
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGerma
 	private Font font;
 	private float fontSize = 40;
 
-	public NewGermanOrganTablatureNotePanel(final Controller controller) {
+	public NewGermanOrganTablatureNoteNotePanel(final Controller controller) {
 		super(controller);
 		font = getUnscaledSmuflFont();
 		if (font != null) {
@@ -84,7 +84,7 @@ public class NewGermanOrganTablatureNotePanel extends AbstractNotePanel<NewGerma
 	 */
 	@Override
 	public void setRandomResult(DomainRandomResult domainRandomResult) {
-		final NewGermanOrganTablatureRandomResult randomResult = (NewGermanOrganTablatureRandomResult) domainRandomResult;
+		final NewGermanOrganTablatureNoteRandomResult randomResult = (NewGermanOrganTablatureNoteRandomResult) domainRandomResult;
 		this.midiNote = randomResult.getMidiNote();
 		this.initialized = true;
 	}

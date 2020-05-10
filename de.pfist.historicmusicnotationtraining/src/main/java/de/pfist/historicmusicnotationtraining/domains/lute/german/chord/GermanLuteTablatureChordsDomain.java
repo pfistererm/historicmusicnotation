@@ -32,7 +32,7 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	 */
 	@Override
 	public int getTabMnemonic() {
-		return KeyEvent.VK_1;
+		return KeyEvent.VK_E;
 	}
 
 	/**

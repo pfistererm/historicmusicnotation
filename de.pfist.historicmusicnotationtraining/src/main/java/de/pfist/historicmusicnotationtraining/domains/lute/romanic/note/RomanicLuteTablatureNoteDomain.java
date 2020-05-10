@@ -13,11 +13,11 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
-public class RomanicLuteTablatureDomain implements MusicDomain {
+public class RomanicLuteTablatureNoteDomain implements MusicDomain {
 
 	private static final String NAME = Messages.getString("RomanicLuteTablatureDomain.domainTitle"); //$NON-NLS-1$
 
-	private RomanicLuteTablatureDomainSpecificState domainSpecificState;
+	private RomanicLuteTablatureNoteDomainSpecificState domainSpecificState;
 
 	/**
 	 * {@inheritDoc}
@@ -49,7 +49,7 @@ public class RomanicLuteTablatureDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new RomanicLuteTablatureDomainSpecificState();
+		domainSpecificState = new RomanicLuteTablatureNoteDomainSpecificState();
 		JPanel specificPanel = new JPanel();
 		I18NComponentHelper.createRomanicLuteTablatureVariantCombo(specificPanel, domainSpecificState);
 
@@ -75,7 +75,7 @@ public class RomanicLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
-		return new RomanicLuteTablatureWorkerExtension();
+		return new RomanicLuteTablatureNoteWorkerExtension();
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class RomanicLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public AbstractNotePanel<?> createNotePanel(Controller controller) {
-		return new RomanicLuteTablatureNotePanel(controller);
+		return new RomanicLuteTablatureNoteNotePanel(controller);
 	}
 
 }

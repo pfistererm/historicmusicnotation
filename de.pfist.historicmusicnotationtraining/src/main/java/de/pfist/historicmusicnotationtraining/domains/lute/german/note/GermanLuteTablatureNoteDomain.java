@@ -16,11 +16,11 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
-public class GermanLuteTablatureDomain implements MusicDomain {
+public class GermanLuteTablatureNoteDomain implements MusicDomain {
 
 	private static final String NAME = Messages.getString("GermanLuteTablatureDomain.domainTitle"); //$NON-NLS-1$
 
-	private GermanLuteTablatureDomainSpecificState domainSpecificState;
+	private GermanLuteTablatureNoteDomainSpecificState domainSpecificState;
 
 	/**
 	 * {@inheritDoc}
@@ -53,7 +53,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	@Override
 	public JComponent createSpecificTopPanel() {
 
-		domainSpecificState = new GermanLuteTablatureDomainSpecificState();
+		domainSpecificState = new GermanLuteTablatureNoteDomainSpecificState();
 		Box specificPanel = new Box(BoxLayout.Y_AXIS);
 		JPanel specificPanel1 = new JPanel();
 		JPanel specificPanel2 = new JPanel();
@@ -83,7 +83,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public WorkerExtension<?, ?> createWorkerExtension() {
-		return new GermanLuteTablatureWorkerExtension();
+		return new GermanLuteTablatureNoteWorkerExtension();
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class GermanLuteTablatureDomain implements MusicDomain {
 	 */
 	@Override
 	public AbstractNotePanel<?> createNotePanel(Controller controller) {
-		return new GermanLuteTablatureNotePanel(controller);
+		return new GermanLuteTablatureNoteNotePanel(controller);
 	}
 
 }

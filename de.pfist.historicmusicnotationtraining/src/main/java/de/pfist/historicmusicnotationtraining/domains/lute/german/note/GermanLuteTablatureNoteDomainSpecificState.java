@@ -2,8 +2,10 @@ package de.pfist.historicmusicnotationtraining.domains.lute.german.note;
 
 import de.pfist.historicmusicnotationtraining.IGermanLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteNoteDomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureFontVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureNotationVariant;
 
-public class GermanLuteTablatureDomainSpecificState extends AbstractLuteNoteDomainSpecificState
+public class GermanLuteTablatureNoteDomainSpecificState extends AbstractLuteNoteDomainSpecificState
 		implements IGermanLuteTablatureVariantState {
 
 	private GermanLuteTablatureNotationVariant germanLuteTablatureNotationVariant = GermanLuteTablatureNotationVariant.WAISSEL;
@@ -13,7 +15,7 @@ public class GermanLuteTablatureDomainSpecificState extends AbstractLuteNoteDoma
 	 * {@inheritDoc}
 	 */
 	@Override
-	public de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNotationVariant getGermanLuteTablatureNotationVariant() {
+	public de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureNotationVariant getGermanLuteTablatureNotationVariant() {
 		return germanLuteTablatureNotationVariant;
 	}
 

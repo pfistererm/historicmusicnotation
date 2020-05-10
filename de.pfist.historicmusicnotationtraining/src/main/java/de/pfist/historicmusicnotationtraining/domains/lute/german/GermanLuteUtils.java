@@ -2,8 +2,6 @@ package de.pfist.historicmusicnotationtraining.domains.lute.german;
 
 import de.pfist.historicmusicnotationtraining.LuteStringMode;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureFontVariant;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNotationVariant;
 
 public class GermanLuteUtils {
 

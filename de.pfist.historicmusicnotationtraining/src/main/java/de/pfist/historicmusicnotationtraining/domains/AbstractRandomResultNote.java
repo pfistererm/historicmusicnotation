@@ -1,6 +1,16 @@
 package de.pfist.historicmusicnotationtraining.domains;
 
+import de.pfist.historicmusicnotationtraining.WorkerExtension;
+
 /**
+ * Base class for random results that represent a single note.
+ * 
+ * <p>Contains:</p>
+ * <ul>
+ * <li>A single MIDI note number</li>
+ * </ul>
+ * 
+ * <p>For use in implementations of {@link WorkerExtension}.</p>
  * 
  * @see AbstractRandomResultChord
  */

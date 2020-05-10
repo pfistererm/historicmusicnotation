@@ -2,8 +2,9 @@ package de.pfist.historicmusicnotationtraining.domains.lute.romanic.note;
 
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteTablatureRandomResult;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.RomanicLuteTablatureVariant;
 
-public class RomanicLuteTablatureRandomResult extends AbstractLuteTablatureRandomResult {
+public class RomanicLuteTablatureNoteRandomResult extends AbstractLuteTablatureRandomResult {
 
 	private final RomanicLuteTablatureVariant romanicLuteTablatureVariant;
 
@@ -12,7 +13,7 @@ public class RomanicLuteTablatureRandomResult extends AbstractLuteTablatureRando
 	 * @param midiNote
 	 * @param romanicLuteTablatureVariant
 	 */
-	public RomanicLuteTablatureRandomResult(LuteNote luteNote, final int midiNote,
+	public RomanicLuteTablatureNoteRandomResult(LuteNote luteNote, final int midiNote,
 			final RomanicLuteTablatureVariant romanicLuteTablatureVariant) {
 		super(luteNote, midiNote);
 		this.romanicLuteTablatureVariant = romanicLuteTablatureVariant;

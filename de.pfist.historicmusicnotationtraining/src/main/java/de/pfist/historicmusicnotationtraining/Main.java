@@ -7,9 +7,9 @@ import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.domains.cclef.chord.CClefChordsDomain;
 import de.pfist.historicmusicnotationtraining.domains.cclef.note.CClefDomain;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.chord.GermanLuteTablatureChordsDomain;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureDomain;
-import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureDomain;
-import de.pfist.historicmusicnotationtraining.domains.organ.newgerman.note.NewGermanOrganTablatureDomain;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNoteDomain;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureNoteDomain;
+import de.pfist.historicmusicnotationtraining.domains.organ.newgerman.note.NewGermanOrganTablatureNoteDomain;
 
 public class Main {
 
@@ -23,11 +23,11 @@ public class Main {
 		MusicDomain[] domains = new MusicDomain[] { //
 				new CClefDomain(), //
 				new CClefChordsDomain(), //
-				new GermanLuteTablatureDomain(), //
+				new GermanLuteTablatureNoteDomain(), //
 				new GermanLuteTablatureChordsDomain(), //
-				new RomanicLuteTablatureDomain(), //
+				new RomanicLuteTablatureNoteDomain(), //
 				// TODO: add romanic lute chord domain
-				new NewGermanOrganTablatureDomain() //
+				new NewGermanOrganTablatureNoteDomain() //
 		};
 		new HistoricMusicNotationTraining(domains);
 	}

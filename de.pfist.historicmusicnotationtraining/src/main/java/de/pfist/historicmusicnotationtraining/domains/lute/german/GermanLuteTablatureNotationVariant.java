@@ -1,7 +1,6 @@
-package de.pfist.historicmusicnotationtraining.domains.lute.german.note;
+package de.pfist.historicmusicnotationtraining.domains.lute.german;
 
 import de.pfist.historicmusicnotationtraining.I18NEnum;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteUtils;
 
 /**
  * NOTE: do not change order! Order correlaates with arrays in

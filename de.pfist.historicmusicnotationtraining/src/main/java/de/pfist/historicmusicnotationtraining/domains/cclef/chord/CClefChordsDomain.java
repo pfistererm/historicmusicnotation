@@ -29,7 +29,8 @@ public class CClefChordsDomain implements MusicDomain {
 	 */
 	@Override
 	public int getTabMnemonic() {
-		return KeyEvent.VK_C;
+		// TODO: configure via properties (to allow language specific mnemonics)
+		return KeyEvent.VK_H;
 	}
 
 	/**

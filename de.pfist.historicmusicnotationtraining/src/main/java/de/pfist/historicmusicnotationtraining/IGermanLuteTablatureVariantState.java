@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureFontVariant;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNotationVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureFontVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureNotationVariant;
 
 public interface IGermanLuteTablatureVariantState {
 

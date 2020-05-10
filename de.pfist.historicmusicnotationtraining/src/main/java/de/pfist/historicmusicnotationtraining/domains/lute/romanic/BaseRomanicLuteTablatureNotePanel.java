@@ -11,7 +11,6 @@ import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureVariant;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {

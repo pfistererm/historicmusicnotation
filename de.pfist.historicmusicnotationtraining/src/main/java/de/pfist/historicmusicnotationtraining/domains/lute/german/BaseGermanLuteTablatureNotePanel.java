@@ -15,8 +15,6 @@ import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.IGermanLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureFontVariant;
-import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNotationVariant;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
 public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTablatureVariantState & DomainSpecificState>

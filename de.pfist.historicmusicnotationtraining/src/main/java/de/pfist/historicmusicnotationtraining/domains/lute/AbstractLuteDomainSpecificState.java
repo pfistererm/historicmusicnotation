@@ -3,6 +3,9 @@ package de.pfist.historicmusicnotationtraining.domains.lute;
 import de.pfist.historicmusicnotationtraining.LuteTuning;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
+/**
+ * <p>Contains a {@link LuteTuning}.</p>
+ */
 public class AbstractLuteDomainSpecificState implements DomainSpecificState {
 
 	private LuteTuning luteTuning = LuteTuning.A_TUNING;

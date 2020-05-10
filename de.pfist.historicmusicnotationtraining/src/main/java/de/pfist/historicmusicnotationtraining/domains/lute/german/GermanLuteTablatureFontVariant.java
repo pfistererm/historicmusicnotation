@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.domains.lute.german.note;
+package de.pfist.historicmusicnotationtraining.domains.lute.german;
 
 import de.pfist.historicmusicnotationtraining.I18NEnum;
 

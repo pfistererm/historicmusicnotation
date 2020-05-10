@@ -46,10 +46,20 @@ public class Worker implements Runnable {
 		propertyChangeSupport.firePropertyChange(RANDOM_RESULT, null, randomResult);
 	}
 
+	/**
+	 * <p>This method is especially intended for use in the implementation of {@link WorkerExtension#doRandom(DomainSpecificState)}.</p>
+	 * @param range
+	 * @return a random integer value
+	 */
 	public static int randomInteger(final int range) {
 		return (int) (Math.random() * range);
 	}
 
+	/**
+	 * Adds a property change listener.
+	 * 
+	 * @param listener
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		propertyChangeSupport.addPropertyChangeListener(listener);
 	}

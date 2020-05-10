@@ -3,7 +3,7 @@ package de.pfist.historicmusicnotationtraining.domains.organ.newgerman.note;
 import de.pfist.historicmusicnotationtraining.KeyMode;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
-public class NewGermanOrganTablatureDomainSpecificState implements DomainSpecificState {
+public class NewGermanOrganTablatureNoteDomainSpecificState implements DomainSpecificState {
 
 	private KeyMode keyMode = KeyMode.CHROMATIC;
 

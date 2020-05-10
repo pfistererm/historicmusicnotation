@@ -7,8 +7,8 @@ import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.BaseGermanLuteTablatureNotePanel;
 
-public class GermanLuteTablatureNotePanel
-		extends BaseGermanLuteTablatureNotePanel<GermanLuteTablatureDomainSpecificState> {
+public class GermanLuteTablatureNoteNotePanel
+		extends BaseGermanLuteTablatureNotePanel<GermanLuteTablatureNoteDomainSpecificState> {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class GermanLuteTablatureNotePanel
 	private boolean initialized = false;
 	private LuteNote luteNote;
 
-	public GermanLuteTablatureNotePanel(final Controller controller) {
+	public GermanLuteTablatureNoteNotePanel(final Controller controller) {
 		super(controller);
 	}
 
@@ -47,7 +47,7 @@ public class GermanLuteTablatureNotePanel
 	 */
 	@Override
 	public void setRandomResult(DomainRandomResult domainRandomResult) {
-		final GermanLuteTablatureRandomResult randomResult = (GermanLuteTablatureRandomResult) domainRandomResult;
+		final GermanLuteTablatureNoteRandomResult randomResult = (GermanLuteTablatureNoteRandomResult) domainRandomResult;
 		this.luteNote = randomResult.getLuteNote();
 		this.initialized = true;
 	}

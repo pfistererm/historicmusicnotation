@@ -64,6 +64,10 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 		return new Dimension(100, 200);
 	}
 
+	/**
+	 * <p>Note: cannot be made generic because of call in an event handler in Controller.</p>
+	 * @param domainRandomResult
+	 */
 	public abstract void setRandomResult(DomainRandomResult domainRandomResult);
 
 	/**

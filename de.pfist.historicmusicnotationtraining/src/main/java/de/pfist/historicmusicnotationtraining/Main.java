@@ -5,7 +5,7 @@ import javax.xml.bind.JAXBException;
 import de.pfist.historicmusicnotationtraining.data.JaxbTest;
 import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.domains.cclef.chord.CClefChordsDomain;
-import de.pfist.historicmusicnotationtraining.domains.cclef.note.CClefDomain;
+import de.pfist.historicmusicnotationtraining.domains.cclef.note.CClefNoteDomain;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.chord.GermanLuteTablatureChordsDomain;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNoteDomain;
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureNoteDomain;
@@ -21,7 +21,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		MusicDomain[] domains = new MusicDomain[] { //
-				new CClefDomain(), //
+				new CClefNoteDomain(), //
 				new CClefChordsDomain(), //
 				new GermanLuteTablatureNoteDomain(), //
 				new GermanLuteTablatureChordsDomain(), //

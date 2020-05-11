@@ -1,7 +1,5 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.note;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,31 +9,9 @@ import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.I18NComponentHelper;
 import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
-import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
-import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
 
-public class CClefDomain implements MusicDomain {
-
-	private static final String NAME = Messages.getString("CClefDomain.domainName"); //$NON-NLS-1$
-
-	private CClefDomainSpecificState domainSpecificState;
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getName() {
-		return NAME;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int getTabMnemonic() {
-		return KeyEvent.VK_C;
-	}
+public class CClefNoteDomain extends AbstractMusicDomain<CClefDomainSpecificState> {
 
 	/**
 	 * {@inheritDoc}
@@ -51,13 +27,13 @@ public class CClefDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new CClefDomainSpecificState();
+		init();
 		JPanel specificPanel = new JPanel();
 
 		// clef selection
-		specificPanel.add(new JLabel(Messages.getString("CClefDomain.Clef"))); //$NON-NLS-1$
+		specificPanel.add(new JLabel(getMessageString("Clef"))); //$NON-NLS-1$
 		I18NComponentHelper.createComboBox(Clef.class, specificPanel, //
-				(t) -> domainSpecificState.setClefSelection(t), //
+				(t) -> getStateObject().setClefSelection(t), //
 				Clef.ALL, Clef.G2, Clef.G1, Clef.C1, Clef.C2, Clef.C3, Clef.C4, Clef.F4, Clef.F3);
 		return specificPanel;
 	}
@@ -66,8 +42,8 @@ public class CClefDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DomainSpecificState getStateObject() {
-		return domainSpecificState;
+	protected CClefDomainSpecificState createDomainSpecificState() {
+		return new CClefDomainSpecificState();
 	}
 
 	/**

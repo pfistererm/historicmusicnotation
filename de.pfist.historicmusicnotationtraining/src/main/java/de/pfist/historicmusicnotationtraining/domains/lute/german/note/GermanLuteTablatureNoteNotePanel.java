@@ -30,16 +30,15 @@ public class GermanLuteTablatureNoteNotePanel
 		super.paintComponent(g);
 		// copy of Graphics needed because prepareDraw() sets the stroke,
 		// whiich leads to problems in border drawing
-        Graphics scratchGraphics =g.create();
-        try {
-    		prepareDraw(scratchGraphics);
-    		if (initialized) {
-    			drawSingleLetter(scratchGraphics, 0, luteNote);
-    		}
-        }
-        finally {
-            scratchGraphics.dispose();
-        }
+		Graphics scratchGraphics = g.create();
+		try {
+			prepareDraw(scratchGraphics);
+			if (initialized) {
+				drawSingleLetter(scratchGraphics, 0, luteNote);
+			}
+		} finally {
+			scratchGraphics.dispose();
+		}
 	}
 
 	/**

@@ -1,37 +1,14 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JPanel;
 
 import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
-import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
-import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
 
-public class CClefChordsDomain implements MusicDomain {
-
-	private static final String NAME = Messages.getString("CClefChordsDomain.domainName"); //$NON-NLS-1$
-
-	private CClefChordsDomainSpecificState domainSpecificState;
-
-	/** {@inheritDoc} */
-	@Override
-	public String getName() {
-		return NAME;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int getTabMnemonic() {
-		// TODO: configure via properties (to allow language specific mnemonics)
-		return KeyEvent.VK_H;
-	}
+public class CClefChordsDomain extends AbstractMusicDomain<CClefChordsDomainSpecificState> {
 
 	/**
 	 * {@inheritDoc}
@@ -47,7 +24,7 @@ public class CClefChordsDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new CClefChordsDomainSpecificState();
+		init();
 		JPanel specificPanel = new JPanel();
 
 		// clef selection
@@ -63,8 +40,8 @@ public class CClefChordsDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DomainSpecificState getStateObject() {
-		return domainSpecificState;
+	protected CClefChordsDomainSpecificState createDomainSpecificState() {
+		return new CClefChordsDomainSpecificState();
 	}
 
 	/**

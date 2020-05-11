@@ -13,6 +13,7 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
 
 	private static final String G_CLEF_CHAR = "\ue050"; //$NON-NLS-1$
+	// TODO: make configurable
 	// modern
 	// private static final String C_CLEF_CHAR = "\ue05c"; //$NON-NLS-1$
 	// renaissance

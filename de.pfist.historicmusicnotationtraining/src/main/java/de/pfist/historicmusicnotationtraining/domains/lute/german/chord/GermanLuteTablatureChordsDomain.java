@@ -1,7 +1,5 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.german.chord;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JPanel;
 
 import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
@@ -9,31 +7,9 @@ import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.I18NComponentHelper;
 import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
-import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
-import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
 
-public class GermanLuteTablatureChordsDomain implements MusicDomain {
-
-	private static final String NAME = Messages.getString("GermanLuteTablatureChordsDomain.domainTitle"); //$NON-NLS-1$
-
-	private GermanLuteTablatureChordsDomainSpecificState domainSpecificState;
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getName() {
-		return NAME;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int getTabMnemonic() {
-		return KeyEvent.VK_E;
-	}
+public class GermanLuteTablatureChordsDomain extends AbstractMusicDomain<GermanLuteTablatureChordsDomainSpecificState> {
 
 	/**
 	 * {@inheritDoc}
@@ -49,14 +25,14 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	@Override
 	public JPanel createSpecificTopPanel() {
 
-		domainSpecificState = new GermanLuteTablatureChordsDomainSpecificState();
+		init();
 		JPanel specificPanel = new JPanel();
 
 		// tuning selection
-		I18NComponentHelper.createLuteTuningCombo(specificPanel, domainSpecificState);
+		I18NComponentHelper.createLuteTuningCombo(specificPanel, getStateObject());
 
-		I18NComponentHelper.createGermanLuteTablatureNotationVariantCombo(specificPanel, domainSpecificState);
-		I18NComponentHelper.createGermanLuteTablatureFontVariantCombo(specificPanel, domainSpecificState);
+		I18NComponentHelper.createGermanLuteTablatureNotationVariantCombo(specificPanel, getStateObject());
+		I18NComponentHelper.createGermanLuteTablatureFontVariantCombo(specificPanel, getStateObject());
 
 		return specificPanel;
 	}
@@ -65,8 +41,8 @@ public class GermanLuteTablatureChordsDomain implements MusicDomain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public DomainSpecificState getStateObject() {
-		return domainSpecificState;
+	protected GermanLuteTablatureChordsDomainSpecificState createDomainSpecificState() {
+		return new GermanLuteTablatureChordsDomainSpecificState();
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
+// TODO: implement automatic preference save of panel type per domain
 public enum NoteButtonPanelType implements I18NEnum {
 	SINGLE_LUTE_FRETBOARD("NoteButtonPanelType.singleLuteFretboard"), //$NON-NLS-1$
 	SINGLE_KEYBOARD("NoteButtonPanelType.singleKeyboard"), //$NON-NLS-1$

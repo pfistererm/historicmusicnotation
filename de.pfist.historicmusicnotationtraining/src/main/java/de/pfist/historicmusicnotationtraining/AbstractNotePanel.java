@@ -11,11 +11,12 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
 // TODO: find a new base name ..DisplayPanel..PaintingPanel...
-public abstract class AbstractNotePanel<D extends DomainSpecificState> extends JPanel {
+public abstract class AbstractNotePanel<D extends DomainSpecificState, O> extends JPanel {
 	/**
 	 * 
 	 */
@@ -27,7 +28,8 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 
 	private final Controller controller;
 
-	protected boolean initialized = false;
+	protected O domainObject;
+	private boolean initialized = false;
 	protected float fontSize ;
 
 	protected AbstractNotePanel(final Controller controller) {
@@ -52,6 +54,13 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 		return controller;
 	}
 
+	/**
+	 * @return the initialized
+	 */
+	protected final boolean isInitialized() {
+		return initialized;
+	}
+
 	@SuppressWarnings("unchecked")
 	protected D getDomainSpecificState() {
 		return (D) getController().getCurrentDomainSpecificState();
@@ -62,6 +71,20 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 		return (D) getController().getDomainSpecificState(domainSpecificStateClass);
 	}
 
+	/**
+	 * @return the domainObject
+	 */
+	protected final O getDomainObject() {
+		return domainObject;
+	}
+
+	/**
+	 * @return the fontSize
+	 */
+	protected final float getFontSize() {
+		return fontSize;
+	}
+
 	/** {@inheritDoc} */
 	@Override
 	public Dimension getPreferredSize() {
@@ -69,10 +92,16 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 	}
 
 	/**
+	 * <p>If you override this method make sure to call super.</p>
 	 * <p>Note: cannot be made generic because of call in an event handler in Controller.</p>
 	 * @param domainRandomResult
 	 */
-	public abstract void setRandomResult(DomainRandomResult domainRandomResult);
+	public void setRandomResult(DomainRandomResult domainRandomResult) {
+		@SuppressWarnings("unchecked")
+		final AbstractRandomResult<O> randomResult = (AbstractRandomResult<O>) domainRandomResult;
+		this.domainObject = randomResult.getDomainObject();
+		initialized = true;
+	}
 
 	/**
 	 * Loads a truetype font from the resources directory.

@@ -57,7 +57,7 @@ public class GermanLuteTablatureChordsDomain extends AbstractMusicDomain<GermanL
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel<?> createNotePanel(Controller controller) {
+	public AbstractNotePanel<?, ?> createNotePanel(Controller controller) {
 		return new GermanLuteTablatureChordsNotePanel(controller);
 	}
 

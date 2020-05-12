@@ -7,10 +7,9 @@ import java.awt.Rectangle;
 
 import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
-import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
-public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewGermanOrganTablatureNoteDomainSpecificState> {
+public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewGermanOrganTablatureNoteDomainSpecificState, Integer> {
 
 	/**
 	 * 
@@ -35,7 +34,6 @@ public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewG
 			"", "", "\uEE18", "\uEE19", "\uEE19\uEE18" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 	};
 
-	private int midiNote = 0;
 	private Font font;
 
 	public NewGermanOrganTablatureNoteNotePanel(final Controller controller) {
@@ -61,13 +59,13 @@ public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewG
 
 		g.setFont(font);
 		g.setColor(Color.black);
-		if (initialized) {
-			final int octave = (midiNote / 12) - 3;
-			final int noteOffset = midiNote % 12;
+		if (isInitialized()) {
+			final int octave = (getDomainObject() / 12) - 3;
+			final int noteOffset = getDomainObject() % 12;
 			final boolean upperCase = octave == 0;
 			String letter = (upperCase ? NOTE_NAMES_UPPER[noteOffset] : NOTE_NAMES_LOWER[noteOffset])
 					+ OCTAVE_ADDITIONS[octave];
-			System.out.println("midiNote: " + midiNote); //$NON-NLS-1$
+			System.out.println("midiNote: " + getDomainObject()); //$NON-NLS-1$
 			System.out.println("octave: " + octave); //$NON-NLS-1$
 			System.out.println("noteOffset: " + noteOffset); //$NON-NLS-1$
 			System.out.println("characters to draw: " + letter); //$NON-NLS-1$
@@ -76,16 +74,6 @@ public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewG
 			int letterX = originX + width / 2;
 			g.drawString(letter, letterX, letterY);
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setRandomResult(DomainRandomResult domainRandomResult) {
-		final NewGermanOrganTablatureNoteRandomResult randomResult = (NewGermanOrganTablatureNoteRandomResult) domainRandomResult;
-		this.midiNote = randomResult.getMidiNote();
-		this.initialized = true;
 	}
 
 }

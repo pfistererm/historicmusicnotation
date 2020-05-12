@@ -17,8 +17,8 @@ import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
-public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTablatureVariantState & DomainSpecificState>
-		extends AbstractNotePanel<D> {
+public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTablatureVariantState & DomainSpecificState, O>
+		extends AbstractNotePanel<D, O> {
 
 	/**
 	 * 

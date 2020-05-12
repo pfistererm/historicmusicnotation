@@ -69,5 +69,5 @@ public interface MusicDomain {
 	 */
 	public WorkerExtension<?, ?> createWorkerExtension();
 
-	public AbstractNotePanel<?> createNotePanel(Controller controller);
+	public AbstractNotePanel<?, ?> createNotePanel(Controller controller);
 }

@@ -9,14 +9,13 @@ import de.pfist.historicmusicnotationtraining.domains.lute.romanic.BaseRomanicLu
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.RomanicLuteTablatureVariant;
 
 public class RomanicLuteTablatureNoteNotePanel
-		extends BaseRomanicLuteTablatureNotePanel<RomanicLuteTablatureNoteDomainSpecificState> {
+		extends BaseRomanicLuteTablatureNotePanel<RomanicLuteTablatureNoteDomainSpecificState, LuteNote> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private LuteNote luteNote;
 	private RomanicLuteTablatureVariant romanicLuteTablatureVariant;
 
 	public RomanicLuteTablatureNoteNotePanel(final Controller controller) {
@@ -30,8 +29,8 @@ public class RomanicLuteTablatureNoteNotePanel
 	protected void paintComponent(final Graphics g) {
 		super.paintComponent(g);
 		prepareDraw(g);
-		if (initialized) {
-			drawSingleLetter(g, 0, luteNote, romanicLuteTablatureVariant);
+		if (isInitialized()) {
+			drawSingleLetter(g, 0, getDomainObject(), romanicLuteTablatureVariant);
 		}
 	}
 
@@ -41,9 +40,8 @@ public class RomanicLuteTablatureNoteNotePanel
 	@Override
 	public void setRandomResult(DomainRandomResult domainRandomResult) {
 		final RomanicLuteTablatureNoteRandomResult randomResult = (RomanicLuteTablatureNoteRandomResult) domainRandomResult;
-		this.luteNote = randomResult.getLuteNote();
+		super.setRandomResult(domainRandomResult);
 		this.romanicLuteTablatureVariant = randomResult.getRomanicLuteTablatureVariant();
-		this.initialized = true;
 	}
 
 }

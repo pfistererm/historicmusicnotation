@@ -10,7 +10,7 @@ import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
-public abstract class BaseClefNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
+public abstract class BaseClefNotePanel<D extends DomainSpecificState, O> extends AbstractNotePanel<D, O> {
 
 	private static final String G_CLEF_CHAR = "\ue050"; //$NON-NLS-1$
 	// TODO: make configurable

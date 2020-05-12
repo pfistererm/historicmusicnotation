@@ -58,7 +58,7 @@ public class RomanicLuteTablatureNoteDomain extends AbstractMusicDomain<RomanicL
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel<?> createNotePanel(Controller controller) {
+	public AbstractNotePanel<?, ?> createNotePanel(Controller controller) {
 		return new RomanicLuteTablatureNoteNotePanel(controller);
 	}
 

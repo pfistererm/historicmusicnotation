@@ -27,11 +27,11 @@ public class Controller {
 	private MusicDomain currentDomain;
 	private DomainSpecificState currentDomainSpecificState;
 	private WorkerExtension<?, ?> currentWorkerExtension;
-	private AbstractNotePanel<?> currentNotePanel;
+	private AbstractNotePanel<?, ?> currentNotePanel;
 
 	private List<DomainSpecificState> domainSpecificStates = new ArrayList<>();
 	private List<WorkerExtension<?, ?>> workerExtensions = new ArrayList<>();
-	private List<AbstractNotePanel<?>> notePanels = new ArrayList<>();
+	private List<AbstractNotePanel<?, ?>> notePanels = new ArrayList<>();
 	private boolean playNotes = true;
 	private int midiNoteVelocity = 80;
 	private Mode mode = Mode.AUTO_NEXT_ON_RIGHT;
@@ -145,12 +145,12 @@ public class Controller {
 					currentNotePanel.setRandomResult(randomResult);
 					repaintNotePanel();
 					if (randomResult instanceof AbstractRandomResultNote) {
-						final AbstractRandomResultNote abstractRandomResult = (AbstractRandomResultNote) randomResult;
+						final AbstractRandomResultNote<?> abstractRandomResult = (AbstractRandomResultNote<?>) randomResult;
 						expectedMidiNote = abstractRandomResult.getMidiNote();
 						expectedChord = null;
 						// System.out.println("expectedMidiNote: " + expectedMidiNote); //$NON-NLS-1$
 					} else if (randomResult instanceof AbstractRandomResultChord) {
-						final AbstractRandomResultChord abstractRandomResult = (AbstractRandomResultChord) randomResult;
+						final AbstractRandomResultChord<?> abstractRandomResult = (AbstractRandomResultChord<?>) randomResult;
 						expectedMidiNote = 0;
 						expectedChord = abstractRandomResult.getChord();
 						chordMidiNotes = abstractRandomResult.getMidiNotes();
@@ -226,7 +226,7 @@ public class Controller {
 		workerExtensions.add(workerExtension);
 	}
 
-	public void addNotePanel(final AbstractNotePanel<?> notePanel) {
+	public void addNotePanel(final AbstractNotePanel<?, ?> notePanel) {
 		notePanels.add(notePanel);
 	}
 

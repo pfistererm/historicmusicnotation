@@ -14,9 +14,11 @@ import de.pfist.historicmusicnotationtraining.WorkerExtension;
  * 
  * <p>For use in implementations of {@link WorkerExtension}.</p>
  * 
+ * @param <O> the type of the domain object
+ * 
  * @see AbstractRandomResultNote
  */
-public abstract class AbstractRandomResultChord implements DomainRandomResult {
+public abstract class AbstractRandomResultChord<O> extends AbstractRandomResult<O> {
 
 	private final Chord chord;
 	private final int[] midiNotes;
@@ -25,7 +27,8 @@ public abstract class AbstractRandomResultChord implements DomainRandomResult {
 	 * @param chord
 	 * @param midiNotes
 	 */
-	protected AbstractRandomResultChord(final Chord chord, final int[] midiNotes) {
+	protected AbstractRandomResultChord(final O domainObject, final Chord chord, final int[] midiNotes) {
+		super(domainObject);
 		this.chord = chord;
 		this.midiNotes = midiNotes;
 	}

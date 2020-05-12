@@ -143,7 +143,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			tabContentPanel.add(domain.createSpecificTopPanel(), BorderLayout.PAGE_START);
 			controller.addDomainSpecificState(domain.getStateObject());
 			controller.addWorkerExtension(domain.createWorkerExtension());
-			AbstractNotePanel<?> notePanel = domain.createNotePanel(controller);
+			AbstractNotePanel<?, ?> notePanel = domain.createNotePanel(controller);
 			notePanel.setBorder(GuiUtils.createTripleBevelBorder(5, BevelBorder.LOWERED, 5));
 			tabContentPanel.add(notePanel, BorderLayout.CENTER);
 			controller.addNotePanel(notePanel);

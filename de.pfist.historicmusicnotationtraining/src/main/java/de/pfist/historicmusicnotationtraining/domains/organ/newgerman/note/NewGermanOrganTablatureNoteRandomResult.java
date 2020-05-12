@@ -9,8 +9,10 @@ import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultNote;
  * <ul>
  * <li>A single MIDI note number</li>
  * </ul>
+ * 
+ * <p>Note: uses the MIDI note number also as domain specific object
  */
-public class NewGermanOrganTablatureNoteRandomResult extends AbstractRandomResultNote {
+public class NewGermanOrganTablatureNoteRandomResult extends AbstractRandomResultNote<Integer> {
 
 	/**
 	 * Constructor.
@@ -18,7 +20,6 @@ public class NewGermanOrganTablatureNoteRandomResult extends AbstractRandomResul
 	 * @param midiNote
 	 */
 	public NewGermanOrganTablatureNoteRandomResult(int midiNote) {
-		super(midiNote);
+		super(midiNote, midiNote);
 	}
-
 }

@@ -63,7 +63,7 @@ public class NewGermanOrganTablatureNoteDomain
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel<?> createNotePanel(Controller controller) {
+	public AbstractNotePanel<?, ?> createNotePanel(Controller controller) {
 		return new NewGermanOrganTablatureNoteNotePanel(controller);
 	}
 

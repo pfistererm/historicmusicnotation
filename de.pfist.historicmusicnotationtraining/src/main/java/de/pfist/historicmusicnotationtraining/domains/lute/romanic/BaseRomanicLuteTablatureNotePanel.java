@@ -13,7 +13,7 @@ import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
-public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState> extends AbstractNotePanel<D> {
+public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState, O> extends AbstractNotePanel<D, O> {
 
 	/**
 	 * 

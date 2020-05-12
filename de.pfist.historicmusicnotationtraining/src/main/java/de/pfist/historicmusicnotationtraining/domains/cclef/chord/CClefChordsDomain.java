@@ -56,7 +56,7 @@ public class CClefChordsDomain extends AbstractMusicDomain<CClefChordsDomainSpec
 	 * {@inheritDoc}
 	 */
 	@Override
-	public AbstractNotePanel<?> createNotePanel(Controller controller) {
+	public AbstractNotePanel<?, ?> createNotePanel(Controller controller) {
 		return new CClefChordsNotePanel(controller);
 	}
 

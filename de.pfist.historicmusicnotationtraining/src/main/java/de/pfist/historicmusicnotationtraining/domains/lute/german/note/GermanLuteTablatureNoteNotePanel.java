@@ -4,18 +4,15 @@ import java.awt.Graphics;
 
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
-import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.BaseGermanLuteTablatureNotePanel;
 
 public class GermanLuteTablatureNoteNotePanel
-		extends BaseGermanLuteTablatureNotePanel<GermanLuteTablatureNoteDomainSpecificState> {
+		extends BaseGermanLuteTablatureNotePanel<GermanLuteTablatureNoteDomainSpecificState, LuteNote> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
-
-	private LuteNote luteNote;
 
 	public GermanLuteTablatureNoteNotePanel(final Controller controller) {
 		super(controller);
@@ -32,22 +29,12 @@ public class GermanLuteTablatureNoteNotePanel
 		Graphics scratchGraphics = g.create();
 		try {
 			prepareDraw(scratchGraphics);
-			if (initialized) {
-				drawSingleLetter(scratchGraphics, 0, luteNote);
+			if (isInitialized()) {
+				drawSingleLetter(scratchGraphics, 0, getDomainObject());
 			}
 		} finally {
 			scratchGraphics.dispose();
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setRandomResult(DomainRandomResult domainRandomResult) {
-		final GermanLuteTablatureNoteRandomResult randomResult = (GermanLuteTablatureNoteRandomResult) domainRandomResult;
-		this.luteNote = randomResult.getLuteNote();
-		this.initialized = true;
 	}
 
 }

@@ -4,9 +4,7 @@ import de.pfist.historicmusicnotationtraining.Chord;
 import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
 
-public class CClefChordsRandomResult extends AbstractRandomResultChord {
-
-	private final ClefAndNote[] clefAndNotes;
+public class CClefChordsRandomResult extends AbstractRandomResultChord<ClefAndNote[]> {
 
 	/**
 	 * @param chord
@@ -14,15 +12,6 @@ public class CClefChordsRandomResult extends AbstractRandomResultChord {
 	 * @param midiNotes
 	 */
 	public CClefChordsRandomResult(final Chord chord, final ClefAndNote[] clefAndNotes, final int[] midiNotes) {
-		super(chord, midiNotes);
-		this.clefAndNotes = clefAndNotes;
+		super(clefAndNotes, chord, midiNotes);
 	}
-
-	/**
-	 * @return the clefAndNote
-	 */
-	public final ClefAndNote[] getClefAndNotes() {
-		return clefAndNotes;
-	}
-
 }

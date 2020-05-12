@@ -26,7 +26,6 @@ public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecific
 			"\uebc6", "\uebc7", "\uebc8", "\uebc9" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 	private Font scaledFont;
-	private float fontSize = 24;
 
 	public BaseRomanicLuteTablatureNotePanel(final Controller controller) {
 		super(controller);

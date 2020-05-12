@@ -16,7 +16,6 @@ public class CClefNotePanel extends BaseClefNotePanel<CClefDomainSpecificState> 
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private boolean initialized = false;
 	private ClefAndNote clefAndNote;
 
 	public CClefNotePanel(Controller controller) {

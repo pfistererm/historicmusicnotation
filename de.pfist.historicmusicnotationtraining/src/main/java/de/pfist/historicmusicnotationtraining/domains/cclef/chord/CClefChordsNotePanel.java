@@ -16,7 +16,6 @@ public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpe
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private boolean initialized = false;
 	private ClefAndNote[] clefAndNotes;
 
 	public CClefChordsNotePanel(Controller controller) {

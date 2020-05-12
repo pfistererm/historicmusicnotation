@@ -35,13 +35,12 @@ public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewG
 			"", "", "\uEE18", "\uEE19", "\uEE19\uEE18" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 	};
 
-	private boolean initialized = false;
 	private int midiNote = 0;
 	private Font font;
-	private float fontSize = 40;
 
 	public NewGermanOrganTablatureNoteNotePanel(final Controller controller) {
 		super(controller);
+		fontSize = 40;
 		font = getUnscaledSmuflFont();
 		if (font != null) {
 			font = font.deriveFont(Font.BOLD, fontSize);

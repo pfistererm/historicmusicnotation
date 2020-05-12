@@ -26,11 +26,11 @@ public abstract class BaseGermanLuteTablatureNotePanel<D extends IGermanLuteTabl
 	private static final long serialVersionUID = 6912518755149078029L;
 
 	private Font font;
-	private float fontSize = 24;
 	private boolean fontIsSmufl;
 
 	public BaseGermanLuteTablatureNotePanel(final Controller controller) {
 		super(controller);
+		fontSize = 24;
 		scaleFont();
 		this.addComponentListener(new ComponentAdapter() {
 			/** {@inheritDoc} */

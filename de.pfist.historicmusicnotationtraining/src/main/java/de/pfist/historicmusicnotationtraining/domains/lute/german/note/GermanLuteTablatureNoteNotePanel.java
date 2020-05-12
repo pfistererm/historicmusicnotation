@@ -15,7 +15,6 @@ public class GermanLuteTablatureNoteNotePanel
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private boolean initialized = false;
 	private LuteNote luteNote;
 
 	public GermanLuteTablatureNoteNotePanel(final Controller controller) {

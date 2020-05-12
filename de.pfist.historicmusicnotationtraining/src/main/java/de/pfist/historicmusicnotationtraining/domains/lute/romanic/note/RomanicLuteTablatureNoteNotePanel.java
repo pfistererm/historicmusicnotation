@@ -16,7 +16,6 @@ public class RomanicLuteTablatureNoteNotePanel
 	 */
 	private static final long serialVersionUID = -8039585713624309532L;
 
-	private boolean initialized = false;
 	private LuteNote luteNote;
 	private RomanicLuteTablatureVariant romanicLuteTablatureVariant;
 

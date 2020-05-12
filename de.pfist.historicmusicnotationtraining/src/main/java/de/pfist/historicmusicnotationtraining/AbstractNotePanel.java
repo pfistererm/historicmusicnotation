@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
+// TODO: find a new base name ..DisplayPanel..PaintingPanel...
 public abstract class AbstractNotePanel<D extends DomainSpecificState> extends JPanel {
 	/**
 	 * 
@@ -25,6 +26,9 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState> extends J
 	private static Font unscaledSmuflFont = null;
 
 	private final Controller controller;
+
+	protected boolean initialized = false;
+	protected float fontSize ;
 
 	protected AbstractNotePanel(final Controller controller) {
 		this.controller = controller;

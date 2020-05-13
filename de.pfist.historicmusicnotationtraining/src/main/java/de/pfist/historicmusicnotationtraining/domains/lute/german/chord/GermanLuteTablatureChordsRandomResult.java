@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.german.chord;
 
-import de.pfist.historicmusicnotationtraining.Chord;
+import de.pfist.historicmusicnotationtraining.data.Chord;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
 

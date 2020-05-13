@@ -1,5 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.RelativeChord;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
 public class LuteTuning {

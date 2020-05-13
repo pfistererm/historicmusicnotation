@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 
-import de.pfist.historicmusicnotationtraining.Chord;
 import de.pfist.historicmusicnotationtraining.ClefAndNote;
+import de.pfist.historicmusicnotationtraining.data.Chord;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
 
 public class CClefChordsRandomResult extends AbstractRandomResultChord<ClefAndNote[]> {

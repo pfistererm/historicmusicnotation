@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains;
 
-import de.pfist.historicmusicnotationtraining.Chord;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
+import de.pfist.historicmusicnotationtraining.data.Chord;
 
 /**
  * Base class for random results that represent a chord.

@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import de.pfist.historicmusicnotationtraining.data.Chord;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;

@@ -1,11 +1,11 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 
-import de.pfist.historicmusicnotationtraining.Chord;
 import de.pfist.historicmusicnotationtraining.Clef;
 import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.GenericChordDescription;
 import de.pfist.historicmusicnotationtraining.Worker;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
+import de.pfist.historicmusicnotationtraining.data.Chord;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
 /**

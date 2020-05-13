@@ -8,8 +8,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import de.pfist.historicmusicnotationtraining.Chord;
-
 public class JaxbTest {
 
 	public static void test() throws JAXBException {

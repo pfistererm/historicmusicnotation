@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.data;
 
 public enum ChordType {
 	MAJOR, MINOR, POWER;

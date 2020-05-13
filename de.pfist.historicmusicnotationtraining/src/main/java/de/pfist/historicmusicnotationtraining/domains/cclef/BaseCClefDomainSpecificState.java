@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef;
 
-import de.pfist.historicmusicnotationtraining.Clef;
+import de.pfist.historicmusicnotationtraining.data.Clef;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
 public class BaseCClefDomainSpecificState implements DomainSpecificState {

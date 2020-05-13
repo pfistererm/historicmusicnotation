@@ -8,6 +8,14 @@ import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
 import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
 
+/**
+ * Domain for C clef chords.
+ * 
+ * @see CClefChordsDomainSpecificState
+ * @see CClefChordsNotePanel
+ * @see CClefChordsRandomResult
+ * @see CClefChordsWorkerExtension
+ */
 public class CClefChordsDomain extends AbstractMusicDomain<CClefChordsDomainSpecificState> {
 
 	/**

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<chorddescriptions>
+	<!-- A -->
+    <chorddescription chord="_0_MINOR"><note>S4_0</note><note>S3_1</note><note>S2_2</note></chorddescription>
+	<!-- 4cg -->
+    <chorddescription chord="_0_POWER"><note>S4_0</note><note>S2_2</note><note>S1_2</note></chorddescription>
+	<!-- 4gf -->
+    <chorddescription chord="_0_MINOR"><note>S4_0</note><note>S3_1</note><note>S0_0</note></chorddescription>
+	<!-- 4cA -->
+    <chorddescription chord="_0_POWER"><note>S4_0</note><note>S2_2</note><note>S0_0</note></chorddescription>
+	<!-- 4gA -->
+    <chorddescription chord="_0_MINOR"><note>S4_5</note><note>S3_5</note><note>S2_5</note></chorddescription>
+	<!-- 7zy -->
+    <chorddescription chord="_0_POWER"><note>S4_5</note><note>S3_5</note><note>S1_2</note></chorddescription>
+	<!-- 7zf -->
+    <chorddescription chord="_0_MAJOR"><note>S4_0</note><note>S3_2</note><note>S2_2</note></chorddescription>
+	<!-- 4hg -->
+    <chorddescription chord="_0_MAJOR"><note>S4_0</note><note>S3_2</note><note>S2_2</note></chorddescription>
+	<!-- 4hA -->
+    <chorddescription chord="_0_MAJOR"><note>S4_0</note><note>S3_2</note><note>S0_0</note></chorddescription>
+	<!-- hgA -->
+    <chorddescription chord="_0_MAJOR"><note>S3_2</note><note>S2_2</note><note>S0_0</note></chorddescription>
+
+	<!-- B -->
+	<!-- isr -->
+    <chorddescription chord="_2_MAJOR"><note>S4_2</note><note>S3_4</note><note>S2_4</note></chorddescription>
+	<!-- isC -->
+    <chorddescription chord="_2_MAJOR"><note>S4_2</note><note>S3_4</note><note>S0_2</note></chorddescription>
+	<!-- irC -->
+    <chorddescription chord="_2_POWER"><note>S4_2</note><note>S2_4</note><note>S0_2</note></chorddescription>
+	<!-- nrC -->
+    <chorddescription chord="_2_MINOR"><note>S3_3</note><note>S2_4</note><note>S0_2</note></chorddescription>
+	<!-- inC -->
+    <chorddescription chord="_2_MINOR"><note>S4_2</note><note>S3_3</note><note>S0_2</note></chorddescription>
+
+	<!-- C -->
+	<!-- c2D -->
+    <chorddescription chord="_3_POWER"><note>S3_1</note><note>S2_0</note><note>S0_3</note></chorddescription>
+	<!-- 42D -->
+    <chorddescription chord="_3_MAJOR"><note>S4_0</note><note>S2_0</note><note>S0_3</note></chorddescription>
+	<!-- zyf -->
+    <chorddescription chord="_3_MAJOR"><note>S3_5</note><note>S2_5</note><note>S1_2</note></chorddescription>
+	<!-- oyD -->
+    <chorddescription chord="_3_POWER"><note>S4_3</note><note>S2_5</note><note>S0_3</note></chorddescription>
+	<!-- c2f -->
+    <chorddescription chord="_3_MAJOR"><note>S3_1</note><note>S2_0</note><note>S1_2</note></chorddescription>
+	<!-- ozD -->
+    <chorddescription chord="_3_MAJOR"><note>S4_3</note><note>S3_5</note><note>S0_3</note></chorddescription>
+	<!-- zyD -->
+    <chorddescription chord="_3_MAJOR"><note>S3_5</note><note>S2_5</note><note>S0_3</note></chorddescription>
+	<!-- o'n'y -->
+    <chorddescription chord="_3_POWER"><note>S4_8</note><note>S3_8</note><note>S2_5</note></chorddescription>
+	<!-- ocD -->
+    <chorddescription chord="_3_POWER"><note>S4_3</note><note>S3_1</note><note>S0_3</note></chorddescription>
+
+	<!-- D -->
+<!-- 
+			// D
+			new ChordDescription(RelativeChord._5_MINOR, LuteNote.S4_1, LuteNote.S3_3, LuteNote.S1_0), // dn1
+			new ChordDescription(RelativeChord._5_MINOR, LuteNote.S4_5, LuteNote.S3_6, LuteNote.S2_7), // 7c'g'
+			new ChordDescription(RelativeChord._5_POWER, LuteNote.S3_3, LuteNote.S2_2, LuteNote.S1_0), // ng1
+			new ChordDescription(RelativeChord._5_MAJOR, LuteNote.S4_2, LuteNote.S3_3, LuteNote.S1_0), // in1
+			new ChordDescription(RelativeChord._5_MAJOR, LuteNote.S4_5, LuteNote.S3_7, LuteNote.S0_5), // 7h'F
+			new ChordDescription(RelativeChord._5_POWER, LuteNote.S4_5, LuteNote.S2_7, LuteNote.S0_5), // 7g'F
+-->
+	<!-- E -->
+<!-- 
+			// E
+			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S4_0, LuteNote.S3_0, LuteNote.S2_0), // 432
+			new ChordDescription(RelativeChord._7_POWER, LuteNote.S3_5, LuteNote.S2_4, LuteNote.S1_2), // zrf
+			new ChordDescription(RelativeChord._7_POWER, LuteNote.S4_0, LuteNote.S3_0, LuteNote.S1_2), // 43f
+			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S3_0, LuteNote.S2_0, LuteNote.S1_2), // 32f
+			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S4_3, LuteNote.S3_0, LuteNote.S1_2), // o3f
+			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_0, LuteNote.S2_1, LuteNote.S1_2), // 4bf
+			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_4, LuteNote.S3_5, LuteNote.S1_2), // tzf
+			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_7, LuteNote.S3_9, LuteNote.S0_7), // i's'H
+-->
+	<!-- F -->
+<!-- 
+			// F
+			new ChordDescription(RelativeChord._8_MAJOR, LuteNote.S3_1, LuteNote.S2_2, LuteNote.S1_3), // cgL
+			new ChordDescription(RelativeChord._8_POWER, LuteNote.S4_1, LuteNote.S3_1, LuteNote.S1_3), // dcL
+-->
+	<!-- F# -->
+<!-- 
+			// F#
+			new ChordDescription(RelativeChord._9_POWER, LuteNote.S4_2, LuteNote.S3_2, LuteNote.S1_4), // ihq
+-->
+	<!-- G -->
+<!-- 
+			// G
+			new ChordDescription(RelativeChord._10_POWER, LuteNote.S4_3, LuteNote.S3_3, LuteNote.S2_0), // on2
+			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_3, LuteNote.S3_3, LuteNote.S2_4, LuteNote.S0_2), // onrC
+			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_7, LuteNote.S3_8, LuteNote.S0_2), // i'n'C
+			new ChordDescription(RelativeChord._10_POWER, LuteNote.S3_8, LuteNote.S2_7, LuteNote.S0_5), // n'g'F
+			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_3, LuteNote.S2_4, LuteNote.S0_2), // orC
+ -->
+ 	
+	<!--  -->
+	<!--  -->
+	<!-- 
+    <chorddescription chord="AAAAA"><note>AAAAA</note><note>AAAAA</note><note>AAAAA</note></chorddescription>
+
+    <chorddescription chord=""><note></note><note></note><note></note></chorddescription>
+
+    <chorddescription chord="AAAAA"><note>AAAAA</note><note>AAAAA</note><note>AAAAA</note><note>AAAAA</note></chorddescription>
+ 	-->
+ </chorddescriptions>

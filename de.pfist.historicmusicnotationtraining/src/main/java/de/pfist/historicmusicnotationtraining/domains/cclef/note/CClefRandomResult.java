@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.note;
 
-import de.pfist.historicmusicnotationtraining.ClefAndNote;
+import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultNote;
 
 public class CClefRandomResult extends AbstractRandomResultNote<ClefAndNote> {

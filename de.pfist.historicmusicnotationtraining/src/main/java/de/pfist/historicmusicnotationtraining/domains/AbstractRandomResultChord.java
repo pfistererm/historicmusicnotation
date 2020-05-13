@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains;
 
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 
 /**
  * Base class for random results that represent a chord.
@@ -20,14 +20,14 @@ import de.pfist.historicmusicnotationtraining.data.Chord;
  */
 public abstract class AbstractRandomResultChord<O> extends AbstractRandomResult<O> {
 
-	private final Chord chord;
+	private final AbsoluteChord chord;
 	private final int[] midiNotes;
 
 	/**
 	 * @param chord
 	 * @param midiNotes
 	 */
-	protected AbstractRandomResultChord(final O domainObject, final Chord chord, final int[] midiNotes) {
+	protected AbstractRandomResultChord(final O domainObject, final AbsoluteChord chord, final int[] midiNotes) {
 		super(domainObject);
 		this.chord = chord;
 		this.midiNotes = midiNotes;
@@ -36,7 +36,7 @@ public abstract class AbstractRandomResultChord<O> extends AbstractRandomResult<
 	/**
 	 * @return the chord
 	 */
-	public final Chord getChord() {
+	public final AbsoluteChord getChord() {
 		return chord;
 	}
 

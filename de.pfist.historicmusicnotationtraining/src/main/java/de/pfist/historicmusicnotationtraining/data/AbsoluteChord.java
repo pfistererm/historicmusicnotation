@@ -7,7 +7,7 @@ import de.pfist.historicmusicnotationtraining.I18NEnum;
 
 @XmlType(name = "chord")
 @XmlEnum
-public enum Chord implements I18NEnum {
+public enum AbsoluteChord implements I18NEnum {
 	C_MAJOR(0, ChordType.MAJOR, "Chord.C"), //$NON-NLS-1$
 	C_MINOR(0, ChordType.MINOR, "Chord.c"), //$NON-NLS-1$
 	C_POWER(0, ChordType.POWER, "Chord.cp"), //$NON-NLS-1$
@@ -55,7 +55,7 @@ public enum Chord implements I18NEnum {
 	 * @param chordType
 	 * @param textKey
 	 */
-	private Chord(int relativeIndex, ChordType chordType, String textKey) {
+	private AbsoluteChord(int relativeIndex, ChordType chordType, String textKey) {
 		this.relativeIndex = relativeIndex;
 		this.chordType = chordType;
 		this.textKey = textKey;
@@ -76,8 +76,8 @@ public enum Chord implements I18NEnum {
 		return textKey;
 	}
 
-	public static Chord getChord(int relativeIndex, ChordType chordType) {
-		for (Chord chord : values()) {
+	public static AbsoluteChord getChord(int relativeIndex, ChordType chordType) {
+		for (AbsoluteChord chord : values()) {
 			if (chord.relativeIndex == relativeIndex && chord.getChordType() == chordType) {
 				return chord;
 			}

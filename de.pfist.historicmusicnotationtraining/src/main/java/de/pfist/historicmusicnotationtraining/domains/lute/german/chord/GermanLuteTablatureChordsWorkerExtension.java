@@ -1,12 +1,17 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.german.chord;
 
-import de.pfist.historicmusicnotationtraining.GenericChordDescription;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+
 import de.pfist.historicmusicnotationtraining.LuteTuning;
 import de.pfist.historicmusicnotationtraining.Worker;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
+import de.pfist.historicmusicnotationtraining.data.ChordDescriptionUtil;
+import de.pfist.historicmusicnotationtraining.data.LuteChordDescription;
+import de.pfist.historicmusicnotationtraining.data.LuteChordDescriptions;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
-import de.pfist.historicmusicnotationtraining.data.RelativeChord;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
 /**
@@ -15,83 +20,14 @@ import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 public class GermanLuteTablatureChordsWorkerExtension implements
 		WorkerExtension<GermanLuteTablatureChordsDomainSpecificState, GermanLuteTablatureChordsRandomResult> {
 
-	public static class ChordDescription extends GenericChordDescription<RelativeChord, LuteNote> {
-
-		/**
-		 * @param chord
-		 * @param luteNotes
-		 */
-		public ChordDescription(final RelativeChord chord, LuteNote... luteNotes) {
-			super(chord, luteNotes);
+	private static List<LuteChordDescription> getChords(final LuteTuning luteTuning) {
+		LuteChordDescriptions chordDescriptions = null;
+		try {
+			chordDescriptions = ChordDescriptionUtil.readLuteChordDescriptions("./chords-germanlutetablature.xml");
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
-
-		/**
-		 */
-		public ChordDescription() {
-			super();
-		}
-	}
-
-	private static final ChordDescription[] CHORDS = new ChordDescription[] {
-			// A
-			new ChordDescription(RelativeChord._0_MINOR, LuteNote.S4_0, LuteNote.S3_1, LuteNote.S2_2), // 4cg
-			new ChordDescription(RelativeChord._0_POWER, LuteNote.S4_0, LuteNote.S2_2, LuteNote.S1_2), // 4gf
-			new ChordDescription(RelativeChord._0_MINOR, LuteNote.S4_0, LuteNote.S3_1, LuteNote.S0_0), // 4cA
-			new ChordDescription(RelativeChord._0_POWER, LuteNote.S4_0, LuteNote.S2_2, LuteNote.S0_0), // 4gA
-			new ChordDescription(RelativeChord._0_MINOR, LuteNote.S4_5, LuteNote.S3_5, LuteNote.S2_5), // 7zy
-			new ChordDescription(RelativeChord._0_POWER, LuteNote.S4_5, LuteNote.S3_5, LuteNote.S1_2), // 7zf
-			new ChordDescription(RelativeChord._0_MAJOR, LuteNote.S4_0, LuteNote.S3_2, LuteNote.S2_2), // 4hg
-			new ChordDescription(RelativeChord._0_MAJOR, LuteNote.S4_0, LuteNote.S3_2, LuteNote.S0_0), // 4hA
-			new ChordDescription(RelativeChord._0_MAJOR, LuteNote.S3_2, LuteNote.S2_2, LuteNote.S0_0), // hgA
-			// B
-			new ChordDescription(RelativeChord._2_MAJOR, LuteNote.S4_2, LuteNote.S3_4, LuteNote.S2_4), // isr
-			new ChordDescription(RelativeChord._2_MAJOR, LuteNote.S4_2, LuteNote.S3_4, LuteNote.S0_2), // isC
-			new ChordDescription(RelativeChord._2_POWER, LuteNote.S4_2, LuteNote.S2_4, LuteNote.S0_2), // irC
-			new ChordDescription(RelativeChord._2_MINOR, LuteNote.S3_3, LuteNote.S2_4, LuteNote.S0_2), // nrC
-			new ChordDescription(RelativeChord._2_MINOR, LuteNote.S4_2, LuteNote.S3_3, LuteNote.S0_2), // inC
-			// C
-			new ChordDescription(RelativeChord._3_POWER, LuteNote.S3_1, LuteNote.S2_0, LuteNote.S0_3), // c2D
-			new ChordDescription(RelativeChord._3_MAJOR, LuteNote.S4_0, LuteNote.S2_0, LuteNote.S0_3), // 42D
-			new ChordDescription(RelativeChord._3_MAJOR, LuteNote.S3_5, LuteNote.S2_5, LuteNote.S1_2), // zyf
-			new ChordDescription(RelativeChord._3_POWER, LuteNote.S4_3, LuteNote.S2_5, LuteNote.S0_3), // oyD
-			new ChordDescription(RelativeChord._3_MAJOR, LuteNote.S3_1, LuteNote.S2_0, LuteNote.S1_2), // c2f
-			new ChordDescription(RelativeChord._3_MAJOR, LuteNote.S4_3, LuteNote.S3_5, LuteNote.S0_3), // ozD
-			new ChordDescription(RelativeChord._3_MAJOR, LuteNote.S3_5, LuteNote.S2_5, LuteNote.S0_3), // zyD
-			new ChordDescription(RelativeChord._3_POWER, LuteNote.S4_8, LuteNote.S3_8, LuteNote.S2_5), // o'n'y
-			new ChordDescription(RelativeChord._3_POWER, LuteNote.S4_3, LuteNote.S3_1, LuteNote.S0_3), // ocD
-			// D
-			new ChordDescription(RelativeChord._5_MINOR, LuteNote.S4_1, LuteNote.S3_3, LuteNote.S1_0), // dn1
-			new ChordDescription(RelativeChord._5_MINOR, LuteNote.S4_5, LuteNote.S3_6, LuteNote.S2_7), // 7c'g'
-			new ChordDescription(RelativeChord._5_POWER, LuteNote.S3_3, LuteNote.S2_2, LuteNote.S1_0), // ng1
-			new ChordDescription(RelativeChord._5_MAJOR, LuteNote.S4_2, LuteNote.S3_3, LuteNote.S1_0), // in1
-			new ChordDescription(RelativeChord._5_MAJOR, LuteNote.S4_5, LuteNote.S3_7, LuteNote.S0_5), // 7h'F
-			new ChordDescription(RelativeChord._5_POWER, LuteNote.S4_5, LuteNote.S2_7, LuteNote.S0_5), // 7g'F
-			// E
-			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S4_0, LuteNote.S3_0, LuteNote.S2_0), // 432
-			new ChordDescription(RelativeChord._7_POWER, LuteNote.S3_5, LuteNote.S2_4, LuteNote.S1_2), // zrf
-			new ChordDescription(RelativeChord._7_POWER, LuteNote.S4_0, LuteNote.S3_0, LuteNote.S1_2), // 43f
-			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S3_0, LuteNote.S2_0, LuteNote.S1_2), // 32f
-			new ChordDescription(RelativeChord._7_MINOR, LuteNote.S4_3, LuteNote.S3_0, LuteNote.S1_2), // o3f
-			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_0, LuteNote.S2_1, LuteNote.S1_2), // 4bf
-			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_4, LuteNote.S3_5, LuteNote.S1_2), // tzf
-			new ChordDescription(RelativeChord._7_MAJOR, LuteNote.S4_7, LuteNote.S3_9, LuteNote.S0_7), // i's'H
-			// F
-			new ChordDescription(RelativeChord._8_MAJOR, LuteNote.S3_1, LuteNote.S2_2, LuteNote.S1_3), // cgL
-			new ChordDescription(RelativeChord._8_POWER, LuteNote.S4_1, LuteNote.S3_1, LuteNote.S1_3), // dcL
-			// F#
-			new ChordDescription(RelativeChord._9_POWER, LuteNote.S4_2, LuteNote.S3_2, LuteNote.S1_4), // ihq
-			// G
-			new ChordDescription(RelativeChord._10_POWER, LuteNote.S4_3, LuteNote.S3_3, LuteNote.S2_0), // on2
-			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_3, LuteNote.S3_3, LuteNote.S2_4, LuteNote.S0_2), // onrC
-			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_7, LuteNote.S3_8, LuteNote.S0_2), // i'n'C
-			new ChordDescription(RelativeChord._10_POWER, LuteNote.S3_8, LuteNote.S2_7, LuteNote.S0_5), // n'g'F
-			new ChordDescription(RelativeChord._10_MAJOR, LuteNote.S4_3, LuteNote.S2_4, LuteNote.S0_2), // orC
-	};
-
-	// int chordDescriptionIndex = 0;
-
-	private static ChordDescription[] getChords(final LuteTuning luteTuning) {
-		return CHORDS;
+		return chordDescriptions.getChordDescriptions();
 	}
 
 	/**
@@ -101,15 +37,15 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 	public GermanLuteTablatureChordsRandomResult doRandom(final DomainSpecificState domainSpecificState) {
 		final GermanLuteTablatureChordsDomainSpecificState domainSpecificState2 = (GermanLuteTablatureChordsDomainSpecificState) domainSpecificState;
 		final LuteTuning luteTuning = domainSpecificState2.getLuteTuning();
-		final ChordDescription[] chords = getChords(luteTuning);
-		final int chordDescriptionIndex = Worker.randomInteger(chords.length);
+		final List<LuteChordDescription> chords = getChords(luteTuning);
+		final int chordDescriptionIndex = Worker.randomInteger(chords.size());
 		System.out.println("chordDescriptionIndex: " + chordDescriptionIndex); //$NON-NLS-1$
-		final ChordDescription chordDescription = chords[chordDescriptionIndex];
+		final LuteChordDescription chordDescription = chords.get(chordDescriptionIndex);
 
 		final LuteNote[] luteNotes = chordDescription.getNotes();
 		final int[] midiNotes = getMidiNotes(luteTuning, luteNotes);
 
-		final Chord absoluteChord = luteTuning.getAbsoluteChord(chordDescription.getChord());
+		final AbsoluteChord absoluteChord = luteTuning.getAbsoluteChord(chordDescription.getChord());
 		final GermanLuteTablatureChordsRandomResult randomResult = new GermanLuteTablatureChordsRandomResult(
 				absoluteChord, luteNotes, midiNotes);
 		System.out.println("absolute chord: " + absoluteChord); //$NON-NLS-1$

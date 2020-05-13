@@ -3,11 +3,16 @@ package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.Controller;
+import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.cclef.BaseClefNotePanel;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 
+/**
+ * Note panel for C clef chords domain.
+ * 
+ * @see CClefChordsDomain
+ */
 public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpecificState, ClefAndNote[]> {
 
 	/**
@@ -35,9 +40,15 @@ public class CClefChordsNotePanel extends BaseClefNotePanel<CClefChordsDomainSpe
 		drawLines(g, originX, originY + height, totalWidth, height);
 		if (isInitialized()) {
 			drawClefAndNote(g, originX, originY, width, height, getDomainObject()[0]);
-			drawClefAndNote(g, originX + width, originY, width, height, getDomainObject()[0]);
-			drawClefAndNote(g, originX, originY + height, width, height, getDomainObject()[0]);
-			drawClefAndNote(g, originX + width, originY + height, width, height, getDomainObject()[0]);
+			if (getDomainObject().length >= 2) {
+				drawClefAndNote(g, originX + width, originY, width, height, getDomainObject()[1]);
+			}
+			if (getDomainObject().length >= 3) {
+				drawClefAndNote(g, originX, originY + height, width, height, getDomainObject()[2]);
+			}
+			if (getDomainObject().length >= 4) {
+				drawClefAndNote(g, originX + width, originY + height, width, height, getDomainObject()[3]);
+			}
 		}
 	}
 

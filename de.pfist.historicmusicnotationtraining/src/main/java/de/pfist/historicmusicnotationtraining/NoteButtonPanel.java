@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;
@@ -129,10 +129,10 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 		case SINGLE_DIATONIC:
 			return NoteConstants.NOTE_NAMES_DIATONIC;
 		case CHORDS:
-			final Chord[] chords = NoteConstants.CHORDS;
+			final AbsoluteChord[] chords = NoteConstants.CHORDS;
 			final String[] names = new String[chords.length];
 			int namesIndex = 0;
-			for (final Chord chord : chords) {
+			for (final AbsoluteChord chord : chords) {
 				names[namesIndex] = Messages.getString(chord.getTextKey());
 				namesIndex++;
 			}

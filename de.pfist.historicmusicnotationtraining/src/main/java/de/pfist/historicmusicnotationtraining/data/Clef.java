@@ -1,5 +1,9 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.data;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
+
+import de.pfist.historicmusicnotationtraining.I18NEnum;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;
 
 /**
@@ -15,8 +19,9 @@ import de.pfist.historicmusicnotationtraining.util.NoteConstants;
  * {@link NoteConstants#NOTE_MIDI_NOTE_TABLE_DIATONIC}.</li>
  * </ul>
  * 
- *
  */
+@XmlType(name = "Clef")
+@XmlEnum
 public enum Clef implements I18NEnum {
 	G1(ClefType.G_CLEF, 1, 18, "Clef.g1"), //$NON-NLS-1$
 	G2(ClefType.G_CLEF, 2, 16, "Clef.g2"), //$NON-NLS-1$

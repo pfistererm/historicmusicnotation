@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.data;
 
 public enum ClefType {
 	G_CLEF(0, "ClefType.g"), //$NON-NLS-1$

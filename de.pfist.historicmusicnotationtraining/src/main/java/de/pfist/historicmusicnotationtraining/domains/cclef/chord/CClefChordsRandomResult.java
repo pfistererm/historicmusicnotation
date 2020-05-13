@@ -1,9 +1,14 @@
 package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 
-import de.pfist.historicmusicnotationtraining.ClefAndNote;
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
+import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
 
+/**
+ * Random result for C clef chords domain.
+ * 
+ * @see CClefChordsDomain
+ */
 public class CClefChordsRandomResult extends AbstractRandomResultChord<ClefAndNote[]> {
 
 	/**
@@ -11,7 +16,7 @@ public class CClefChordsRandomResult extends AbstractRandomResultChord<ClefAndNo
 	 * @param clefAndNotes
 	 * @param midiNotes
 	 */
-	public CClefChordsRandomResult(final Chord chord, final ClefAndNote[] clefAndNotes, final int[] midiNotes) {
+	public CClefChordsRandomResult(final AbsoluteChord chord, final ClefAndNote[] clefAndNotes, final int[] midiNotes) {
 		super(clefAndNotes, chord, midiNotes);
 	}
 }

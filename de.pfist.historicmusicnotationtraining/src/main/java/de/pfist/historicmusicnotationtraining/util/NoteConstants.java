@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.util;
 
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 import de.pfist.historicmusicnotationtraining.data.ChordType;
 
 public abstract class NoteConstants {
@@ -25,13 +25,13 @@ public abstract class NoteConstants {
 			"a#'' / b''", "h''" };
 	public static final int BASE_MIDI_NOTE_CROMATIC_4_OCTAVES = 36;
 
-	public static final Chord[] CHORDS = initChords();
+	public static final AbsoluteChord[] CHORDS = initChords();
 
-	private static Chord[] initChords() {
-		Chord[] chords = new Chord[Chord.values().length];
+	private static AbsoluteChord[] initChords() {
+		AbsoluteChord[] chords = new AbsoluteChord[AbsoluteChord.values().length];
 		int chordIndex = 0;
 		for (ChordType chordType : ChordType.values()) {
-			for (Chord chord : Chord.values()) {
+			for (AbsoluteChord chord : AbsoluteChord.values()) {
 				if (chord.getChordType() == chordType) {
 					chords[chordIndex] = chord;
 					chordIndex++;

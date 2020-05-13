@@ -3,8 +3,8 @@ package de.pfist.historicmusicnotationtraining.domains.cclef.note;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.Controller;
+import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.cclef.BaseClefNotePanel;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
 

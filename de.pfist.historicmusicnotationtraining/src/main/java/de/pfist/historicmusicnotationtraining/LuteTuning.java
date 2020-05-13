@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining;
 
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 import de.pfist.historicmusicnotationtraining.data.RelativeChord;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 
@@ -62,8 +62,8 @@ public class LuteTuning {
 		return getName();
 	}
 
-	public Chord getAbsoluteChord(RelativeChord relativeChord) {
+	public AbsoluteChord getAbsoluteChord(RelativeChord relativeChord) {
 		int relativeIndex = (relativeChord.getRelativeIndex() + relativeNoteIndex) % 12;
-		return Chord.getChord(relativeIndex, relativeChord.getChordType());
+		return AbsoluteChord.getChord(relativeIndex, relativeChord.getChordType());
 	}
 }

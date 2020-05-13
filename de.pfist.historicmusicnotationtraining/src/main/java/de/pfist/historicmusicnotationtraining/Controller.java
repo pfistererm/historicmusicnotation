@@ -8,7 +8,7 @@ import java.util.List;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.SwingUtilities;
 
-import de.pfist.historicmusicnotationtraining.data.Chord;
+import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultChord;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResultNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
@@ -22,7 +22,7 @@ public class Controller {
 
 	private final MusicDomain[] domains;
 	private int expectedMidiNote;
-	private Chord expectedChord;
+	private AbsoluteChord expectedChord;
 	private int[] chordMidiNotes;
 	private IMainGui mainGui;
 	private MusicDomain currentDomain;
@@ -83,7 +83,7 @@ public class Controller {
 		buttonPressed(comparisonResult, () -> playNote(midiNote));
 	}
 
-	public void chordButtonPressed(final Chord chord) {
+	public void chordButtonPressed(final AbsoluteChord chord) {
 		System.out.println("chordButtonPressed(): chord: " + chord); //$NON-NLS-1$
 		final boolean comparisonResult = chord == expectedChord;
 		buttonPressed(comparisonResult, () -> playNotes());

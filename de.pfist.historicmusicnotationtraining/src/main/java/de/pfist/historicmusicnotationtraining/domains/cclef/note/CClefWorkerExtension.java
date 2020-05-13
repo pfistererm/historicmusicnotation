@@ -3,10 +3,10 @@
  */
 package de.pfist.historicmusicnotationtraining.domains.cclef.note;
 
-import de.pfist.historicmusicnotationtraining.Clef;
-import de.pfist.historicmusicnotationtraining.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.Worker;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
+import de.pfist.historicmusicnotationtraining.data.Clef;
+import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
 /**

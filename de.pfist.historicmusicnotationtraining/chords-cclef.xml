@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<chorddescriptions>
+    <chorddescription chord="A_MAJOR">
+        <note clef="G2" noteRelative="0"/>
+        <note clef="C2" noteRelative="0"/>
+        <note clef="C3" noteRelative="0"/>
+        <note clef="F4" noteRelative="0"/>
+    </chorddescription>
+</chorddescriptions>

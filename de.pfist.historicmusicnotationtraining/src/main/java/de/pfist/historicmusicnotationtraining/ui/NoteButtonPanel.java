@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
 
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -12,7 +12,10 @@ import javax.swing.border.EtchedBorder;
 
 import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
+import de.pfist.historicmusicnotationtraining.util.LuteStringMode;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;
 
 public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionListener {

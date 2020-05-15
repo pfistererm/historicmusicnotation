@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.piano;
+package de.pfist.historicmusicnotationtraining.ui.piano;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -6,9 +6,9 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-import de.pfist.historicmusicnotationtraining.AbstractNoteButtonPanel;
-import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNoteButtonPanel;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 /**
  * 

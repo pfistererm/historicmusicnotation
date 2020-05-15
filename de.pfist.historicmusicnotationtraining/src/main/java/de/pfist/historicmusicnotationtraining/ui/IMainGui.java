@@ -1,4 +1,7 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
+
+import de.pfist.historicmusicnotationtraining.AnswerState;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 public interface IMainGui {
 

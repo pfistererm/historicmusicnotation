@@ -3,13 +3,13 @@ package de.pfist.historicmusicnotationtraining.domains.cclef.note;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
-import de.pfist.historicmusicnotationtraining.I18NComponentHelper;
-import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
 import de.pfist.historicmusicnotationtraining.data.Clef;
 import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.util.I18NComponentHelper;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 public class CClefNoteDomain extends AbstractMusicDomain<CClefDomainSpecificState> {
 

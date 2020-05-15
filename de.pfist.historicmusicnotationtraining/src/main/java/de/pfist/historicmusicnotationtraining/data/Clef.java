@@ -3,7 +3,7 @@ package de.pfist.historicmusicnotationtraining.data;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
-import de.pfist.historicmusicnotationtraining.I18NEnum;
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants;
 
 /**

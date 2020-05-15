@@ -7,11 +7,11 @@ import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
 
 public abstract class BaseRomanicLuteTablatureNotePanel<D extends DomainSpecificState, O> extends AbstractNotePanel<D, O> {
 

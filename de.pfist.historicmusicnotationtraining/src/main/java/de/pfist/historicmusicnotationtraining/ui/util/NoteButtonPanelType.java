@@ -1,4 +1,6 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui.util;
+
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
 
 // TODO: implement automatic preference save of panel type per domain
 public enum NoteButtonPanelType implements I18NEnum {

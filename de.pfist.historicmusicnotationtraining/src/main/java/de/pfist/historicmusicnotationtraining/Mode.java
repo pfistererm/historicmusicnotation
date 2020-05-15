@@ -1,5 +1,7 @@
 package de.pfist.historicmusicnotationtraining;
 
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
+
 public enum Mode implements I18NEnum {
 	MANUAL("Mode.manual"), //$NON-NLS-1$
 	AUTO_NEXT_ON_RIGHT("Mode.next_on_right"), //$NON-NLS-1$

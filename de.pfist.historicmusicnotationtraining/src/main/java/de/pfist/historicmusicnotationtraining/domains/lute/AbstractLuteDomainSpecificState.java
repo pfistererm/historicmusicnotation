@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains.lute;
 
-import de.pfist.historicmusicnotationtraining.LuteTuning;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 
 /**
  * <p>Contains a {@link LuteTuning}.</p>

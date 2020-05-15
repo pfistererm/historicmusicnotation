@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.german;
 
-import de.pfist.historicmusicnotationtraining.I18NEnum;
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
 
 public enum GermanLuteTablatureFontVariant implements I18NEnum {
 	FRACTURA(true, "GermanLuteTablatureFontVariant.fractura"), //$NON-NLS-1$

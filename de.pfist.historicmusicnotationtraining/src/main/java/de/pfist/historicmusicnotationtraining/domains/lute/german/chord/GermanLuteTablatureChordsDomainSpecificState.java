@@ -1,9 +1,9 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.german.chord;
 
-import de.pfist.historicmusicnotationtraining.IGermanLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteDomainSpecificState;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureFontVariant;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureNotationVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.IGermanLuteTablatureVariantState;
 
 public class GermanLuteTablatureChordsDomainSpecificState extends AbstractLuteDomainSpecificState
 		implements IGermanLuteTablatureVariantState {

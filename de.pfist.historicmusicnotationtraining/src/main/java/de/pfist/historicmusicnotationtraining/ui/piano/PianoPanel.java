@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.piano;
+package de.pfist.historicmusicnotationtraining.ui.piano;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,7 +15,7 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
 import de.pfist.historicmusicnotationtraining.util.NoteConstants2;
 
 /**

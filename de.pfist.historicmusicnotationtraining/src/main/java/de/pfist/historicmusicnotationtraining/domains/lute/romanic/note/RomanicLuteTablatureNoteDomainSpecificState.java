@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.romanic.note;
 
-import de.pfist.historicmusicnotationtraining.IRomanicLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteNoteDomainSpecificState;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.IRomanicLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.RomanicLuteTablatureVariant;
 
 public class RomanicLuteTablatureNoteDomainSpecificState extends AbstractLuteNoteDomainSpecificState

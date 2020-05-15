@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui.util;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -15,8 +15,14 @@ import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteDomainSpe
 import de.pfist.historicmusicnotationtraining.domains.lute.AbstractLuteNoteDomainSpecificState;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureFontVariant;
 import de.pfist.historicmusicnotationtraining.domains.lute.german.GermanLuteTablatureNotationVariant;
+import de.pfist.historicmusicnotationtraining.domains.lute.german.IGermanLuteTablatureVariantState;
+import de.pfist.historicmusicnotationtraining.domains.lute.romanic.IRomanicLuteTablatureVariantState;
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.RomanicLuteTablatureVariant;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
+import de.pfist.historicmusicnotationtraining.util.KeyMode;
+import de.pfist.historicmusicnotationtraining.util.LuteStringMode;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 
 public class I18NComponentHelper {
 

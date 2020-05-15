@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
 
 import java.awt.BorderLayout;
 
@@ -7,7 +7,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
+import de.pfist.historicmusicnotationtraining.ui.util.I18NComponentHelper;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 public class NoteButtonPanelContainer extends JPanel {
 

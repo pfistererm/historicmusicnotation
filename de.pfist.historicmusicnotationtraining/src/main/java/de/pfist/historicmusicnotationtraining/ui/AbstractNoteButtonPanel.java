@@ -1,8 +1,10 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
 
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.piano.PianoNoteButtonPanel;
+import de.pfist.historicmusicnotationtraining.Controller;
+import de.pfist.historicmusicnotationtraining.ui.piano.PianoNoteButtonPanel;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 public abstract class AbstractNoteButtonPanel extends JPanel {
 

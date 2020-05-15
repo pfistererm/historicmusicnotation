@@ -1,6 +1,6 @@
 package de.pfist.historicmusicnotationtraining.domains.lute.romanic;
 
-import de.pfist.historicmusicnotationtraining.I18NEnum;
+import de.pfist.historicmusicnotationtraining.util.I18NEnum;
 
 public enum RomanicLuteTablatureVariant implements I18NEnum {
 	FRENCH(true, false, true, "RomanicLuteTablatureVariant.french"), //$NON-NLS-1$

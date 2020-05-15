@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains.lute;
 
-import de.pfist.historicmusicnotationtraining.KeyMode;
-import de.pfist.historicmusicnotationtraining.LuteStringMode;
+import de.pfist.historicmusicnotationtraining.util.KeyMode;
+import de.pfist.historicmusicnotationtraining.util.LuteStringMode;
 
 public class AbstractLuteNoteDomainSpecificState extends AbstractLuteDomainSpecificState {
 

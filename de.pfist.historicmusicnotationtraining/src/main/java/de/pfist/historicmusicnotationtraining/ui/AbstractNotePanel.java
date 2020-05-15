@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
+import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;

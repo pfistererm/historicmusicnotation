@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.piano;
+package de.pfist.historicmusicnotationtraining.ui.piano;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;

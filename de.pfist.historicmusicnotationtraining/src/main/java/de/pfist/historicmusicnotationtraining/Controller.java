@@ -17,6 +17,9 @@ import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.midi.MidiHelper;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.IMainGui;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.util.PreferencesUtils;
 
 public class Controller {
@@ -194,7 +197,7 @@ public class Controller {
 		return currentDomainSpecificState;
 	}
 
-	protected DomainSpecificState getDomainSpecificState(final Class<?> domainSpecificStateClass) {
+	public DomainSpecificState getDomainSpecificState(final Class<?> domainSpecificStateClass) {
 		for (DomainSpecificState domainSpecificState : domainSpecificStates) {
 			if (domainSpecificStateClass.isAssignableFrom(domainSpecificState.getClass())) {
 				return domainSpecificState;

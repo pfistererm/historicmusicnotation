@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.util;
 
 public enum LuteStringMode implements I18NEnum {
 	S0(0, "LuteStringMode.0"), //$NON-NLS-1$

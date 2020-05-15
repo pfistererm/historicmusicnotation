@@ -4,11 +4,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JComponent;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
-import de.pfist.historicmusicnotationtraining.HistoricMusicNotationTraining;
-import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.HistoricMusicNotationTraining;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 /**
  * A domain in this context is a musical area that is available to the user of the program

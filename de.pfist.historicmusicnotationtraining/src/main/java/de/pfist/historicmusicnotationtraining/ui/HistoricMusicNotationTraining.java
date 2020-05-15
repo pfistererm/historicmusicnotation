@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,11 +29,16 @@ import javax.swing.border.BevelBorder;
 
 import com.l2fprod.common.swing.StatusBar;
 
+import de.pfist.historicmusicnotationtraining.AnswerState;
+import de.pfist.historicmusicnotationtraining.Controller;
+import de.pfist.historicmusicnotationtraining.Mode;
 import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
-import de.pfist.historicmusicnotationtraining.util.BarLineLabel;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.BarLineLabel;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.I18NComponentHelper;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.util.PreferencesUtils;
 
 public class HistoricMusicNotationTraining implements IMainGui {

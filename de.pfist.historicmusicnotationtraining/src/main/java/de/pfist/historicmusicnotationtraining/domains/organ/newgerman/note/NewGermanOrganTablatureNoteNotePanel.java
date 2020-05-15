@@ -5,9 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
 
 public class NewGermanOrganTablatureNoteNotePanel extends AbstractNotePanel<NewGermanOrganTablatureNoteDomainSpecificState, Integer> {
 

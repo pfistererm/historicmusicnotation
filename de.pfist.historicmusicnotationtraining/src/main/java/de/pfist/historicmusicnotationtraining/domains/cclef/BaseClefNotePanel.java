@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.Clef;
 import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
 
 public abstract class BaseClefNotePanel<D extends DomainSpecificState, O> extends AbstractNotePanel<D, O> {
 

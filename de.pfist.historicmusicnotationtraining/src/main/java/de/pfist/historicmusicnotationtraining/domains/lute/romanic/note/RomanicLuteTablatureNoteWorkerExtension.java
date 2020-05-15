@@ -3,13 +3,13 @@ package de.pfist.historicmusicnotationtraining.domains.lute.romanic.note;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.pfist.historicmusicnotationtraining.KeyMode;
-import de.pfist.historicmusicnotationtraining.LuteStringMode;
-import de.pfist.historicmusicnotationtraining.LuteTuning;
 import de.pfist.historicmusicnotationtraining.Worker;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.util.KeyMode;
+import de.pfist.historicmusicnotationtraining.util.LuteStringMode;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 
 /**
  *

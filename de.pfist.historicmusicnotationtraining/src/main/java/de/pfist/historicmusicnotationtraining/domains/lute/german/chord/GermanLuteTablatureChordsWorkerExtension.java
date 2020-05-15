@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
-import de.pfist.historicmusicnotationtraining.LuteTuning;
 import de.pfist.historicmusicnotationtraining.Worker;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
 import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
@@ -13,6 +12,7 @@ import de.pfist.historicmusicnotationtraining.data.LuteChordDescription;
 import de.pfist.historicmusicnotationtraining.data.LuteChordDescriptions;
 import de.pfist.historicmusicnotationtraining.data.LuteNote;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 
 /**
  *

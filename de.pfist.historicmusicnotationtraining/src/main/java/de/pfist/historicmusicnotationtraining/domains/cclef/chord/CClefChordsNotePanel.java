@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import de.pfist.historicmusicnotationtraining.Controller;
 import de.pfist.historicmusicnotationtraining.data.ClefAndNote;
 import de.pfist.historicmusicnotationtraining.domains.cclef.BaseClefNotePanel;
-import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.ui.util.GuiUtils;
 
 /**
  * Note panel for C clef chords domain.

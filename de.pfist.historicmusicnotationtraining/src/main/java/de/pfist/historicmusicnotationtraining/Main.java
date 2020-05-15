@@ -7,6 +7,7 @@ import de.pfist.historicmusicnotationtraining.domains.lute.german.chord.GermanLu
 import de.pfist.historicmusicnotationtraining.domains.lute.german.note.GermanLuteTablatureNoteDomain;
 import de.pfist.historicmusicnotationtraining.domains.lute.romanic.note.RomanicLuteTablatureNoteDomain;
 import de.pfist.historicmusicnotationtraining.domains.organ.newgerman.note.NewGermanOrganTablatureNoteDomain;
+import de.pfist.historicmusicnotationtraining.ui.HistoricMusicNotationTraining;
 
 public class Main {
 

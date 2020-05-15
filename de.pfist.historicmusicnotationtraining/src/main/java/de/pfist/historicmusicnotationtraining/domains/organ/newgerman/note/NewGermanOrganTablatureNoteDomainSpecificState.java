@@ -1,7 +1,7 @@
 package de.pfist.historicmusicnotationtraining.domains.organ.newgerman.note;
 
-import de.pfist.historicmusicnotationtraining.KeyMode;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
+import de.pfist.historicmusicnotationtraining.util.KeyMode;
 
 public class NewGermanOrganTablatureNoteDomainSpecificState implements DomainSpecificState {
 

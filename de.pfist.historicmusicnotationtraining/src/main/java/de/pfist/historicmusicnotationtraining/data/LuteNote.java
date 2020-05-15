@@ -1,14 +1,14 @@
 package de.pfist.historicmusicnotationtraining.data;
 
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S0;
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S1;
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S2;
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S3;
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S4;
-import static de.pfist.historicmusicnotationtraining.LuteStringMode.S5;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S0;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S1;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S2;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S3;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S4;
+import static de.pfist.historicmusicnotationtraining.util.LuteStringMode.S5;
 
-import de.pfist.historicmusicnotationtraining.LuteStringMode;
-import de.pfist.historicmusicnotationtraining.LuteTuning;
+import de.pfist.historicmusicnotationtraining.util.LuteStringMode;
+import de.pfist.historicmusicnotationtraining.util.LuteTuning;
 
 public enum LuteNote {
 	// String 0

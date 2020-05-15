@@ -2,11 +2,11 @@ package de.pfist.historicmusicnotationtraining.domains.cclef.chord;
 
 import javax.swing.JPanel;
 
-import de.pfist.historicmusicnotationtraining.AbstractNotePanel;
 import de.pfist.historicmusicnotationtraining.Controller;
-import de.pfist.historicmusicnotationtraining.NoteButtonPanelType;
 import de.pfist.historicmusicnotationtraining.WorkerExtension;
 import de.pfist.historicmusicnotationtraining.domains.AbstractMusicDomain;
+import de.pfist.historicmusicnotationtraining.ui.AbstractNotePanel;
+import de.pfist.historicmusicnotationtraining.ui.util.NoteButtonPanelType;
 
 /**
  * Domain for C clef chords.

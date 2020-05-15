@@ -1,4 +1,4 @@
-package de.pfist.historicmusicnotationtraining.util;
+package de.pfist.historicmusicnotationtraining.ui.util;
 
 import java.awt.Color;
 import java.awt.Graphics;

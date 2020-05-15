@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.pfist.historicmusicnotationtraining;
+package de.pfist.historicmusicnotationtraining.util;
 
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 

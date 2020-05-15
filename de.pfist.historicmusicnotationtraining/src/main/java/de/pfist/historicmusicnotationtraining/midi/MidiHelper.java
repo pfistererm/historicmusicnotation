@@ -54,20 +54,13 @@ public class MidiHelper {
 
 	public void playNote(final int midiNote, int midiNoteVelocity) {
 
-		final Runnable runnable = new Runnable() {
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void run() {
-				midiChannel.noteOn(midiNote, midiNoteVelocity);
-				try {
-					Thread.sleep(400);
-				} catch (InterruptedException e) {
-				}
-				midiChannel.noteOff(midiNote);
+		final Runnable runnable = () -> {
+			midiChannel.noteOn(midiNote, midiNoteVelocity);
+			try {
+				Thread.sleep(400);
+			} catch (InterruptedException e) {
 			}
+			midiChannel.noteOff(midiNote);
 		};
 		new Thread(runnable).start();
 	}
@@ -75,23 +68,16 @@ public class MidiHelper {
 	public void playNotes(final int[] midiNotes, final int midiNoteVelocity) {
 
 		final int noteCount = Math.min(midiNotes.length, midiChannels.size());
-		final Runnable runnable = new Runnable() {
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void run() {
-				for (int i = 0; i < noteCount; i++) {
-					midiChannels.get(i).noteOn(midiNotes[i], midiNoteVelocity);
-				}
-				try {
-					Thread.sleep(400);
-				} catch (InterruptedException e) {
-				}
-				for (int i = 0; i < noteCount; i++) {
-					midiChannels.get(i).noteOff(midiNotes[i]);
-				}
+		final Runnable runnable = () -> {
+			for (int i = 0; i < noteCount; i++) {
+				midiChannels.get(i).noteOn(midiNotes[i], midiNoteVelocity);
+			}
+			try {
+				Thread.sleep(400);
+			} catch (InterruptedException e) {
+			}
+			for (int i = 0; i < noteCount; i++) {
+				midiChannels.get(i).noteOff(midiNotes[i]);
 			}
 		};
 		new Thread(runnable).start();

@@ -5,9 +5,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.EnumMap;
@@ -29,8 +26,6 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import com.l2fprod.common.swing.StatusBar;
 
@@ -39,6 +34,7 @@ import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.util.BarLineLabel;
 import de.pfist.historicmusicnotationtraining.util.GuiUtils;
+import de.pfist.historicmusicnotationtraining.util.PreferencesUtils;
 
 public class HistoricMusicNotationTraining implements IMainGui {
 
@@ -46,6 +42,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 
 	private Controller controller;
 
+	private JTabbedPane tabbedPane;
 	private JButton stopButton, nextButton;
 	private JComboBox<Integer> autoIntervallMenu;
 	private JLabel successLabel;
@@ -79,7 +76,16 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		frame.setSize(700, 500);
 		// frame.pack();
 		frame.setVisible(true);
-		controller.setCurrentDomainIndex(0);
+		MusicDomain lastUsedDomain = PreferencesUtils.getLastUsedDomain(domains);
+		int domainIndex = 0;
+		if (lastUsedDomain != null) {
+			int lastUsedDomainIndex = controller.getDomainIndex(lastUsedDomain);
+			if (lastUsedDomainIndex >= 0) {
+				domainIndex = lastUsedDomainIndex;
+			}
+		}
+		tabbedPane.setSelectedIndex(domainIndex);
+		controller.setCurrentDomainIndex(domainIndex);
 	}
 
 	/**
@@ -105,7 +111,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	 * @param domains
 	 */
 	private void createInterface(final JFrame frame, final MusicDomain[] domains) {
-		final JTabbedPane tabbedPane = createDomainsTabbedPane(domains);
+		tabbedPane = createDomainsTabbedPane(domains);
 
 		final Container outerContentPane = frame.getContentPane();
 		outerContentPane.setLayout(new BorderLayout());
@@ -134,7 +140,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	 * @return
 	 */
 	private JTabbedPane createDomainsTabbedPane(final MusicDomain[] domains) {
-		final JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane = new JTabbedPane();
 
 		int tabIndex = 0;
 		for (final MusicDomain domain : domains) {
@@ -151,13 +157,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			tabbedPane.setMnemonicAt(tabIndex, domain.getTabMnemonic());
 			tabIndex++;
 		}
-		tabbedPane.addChangeListener(new ChangeListener() {
-			/** {@inheritDoc} */
-			@Override
-			public void stateChanged(final ChangeEvent e) {
-				final int selectedIndex = tabbedPane.getSelectedIndex();
-				controller.setCurrentDomainIndex(selectedIndex);
-			}
+		tabbedPane.addChangeListener((e) -> {
+			final int selectedIndex = tabbedPane.getSelectedIndex();
+			controller.setCurrentDomainIndex(selectedIndex);
 		});
 		return tabbedPane;
 	}
@@ -189,14 +191,8 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		nextButton.setMnemonic('N');
 		otherButtonPanel.add(nextButton);
 		stopButton = new JButton(Messages.getString("HistoricMusicNotationTraining.stopButtonLabel")); //$NON-NLS-1$
-		stopButton.addActionListener(new ActionListener() {
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO: implement stop
-			}
+		stopButton.addActionListener((e) -> {
+			// TODO: implement stop
 		});
 		otherButtonPanel.add(stopButton);
 
@@ -214,15 +210,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		autoIntervallMenu.addItem(5);
 		autoIntervallMenu.addItem(6);
 		GuiUtils.setIntegerInitialValue(autoIntervallMenu, controller.getAutomaticInterval());
-		autoIntervallMenu.addActionListener(new ActionListener() {
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int automaticInterval = ((Integer) autoIntervallMenu.getSelectedItem()).intValue();
-				controller.setAutomaticInterval(automaticInterval);
-			}
+		autoIntervallMenu.addActionListener((e) -> {
+			int automaticInterval = ((Integer) autoIntervallMenu.getSelectedItem()).intValue();
+			controller.setAutomaticInterval(automaticInterval);
 		});
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.autoIntervallLabel"))); //$NON-NLS-1$
 		otherButtonPanel.add(autoIntervallMenu);
@@ -259,12 +249,8 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		JCheckBox playNotesCheckBox = new JCheckBox(Messages.getString("HistoricMusicNotationTraining.playNotesLabel"), //$NON-NLS-1$
 				controller.isPlayNotes());
 		midiPanel.add(playNotesCheckBox);
-		playNotesCheckBox.addItemListener(new ItemListener() {
-			/** {@inheritDoc} */
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				controller.setPlayNotes(e.getStateChange() == 1);
-			}
+		playNotesCheckBox.addItemListener((e) -> {
+			controller.setPlayNotes(e.getStateChange() == 1);
 		});
 
 		// instrument selection
@@ -272,26 +258,17 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		for (final ControllerInstrument instrument : controller.getInstruments()) {
 			instrumentCombo.addItem(instrument);
 		}
-		instrumentCombo.addItemListener(new ItemListener() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				controller.setIntrument((ControllerInstrument) instrumentCombo.getSelectedItem());
-			}
+		instrumentCombo.addItemListener((e) -> {
+			controller.setIntrument((ControllerInstrument) instrumentCombo.getSelectedItem());
 		});
 		midiPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.instrumentLabel"))); //$NON-NLS-1$
 		midiPanel.add(instrumentCombo);
 
 		// volume / velocity
 		JSlider velocitySlider = new JSlider(SwingConstants.HORIZONTAL, 0, 127, controller.getMidiNoteVelocity());
-		velocitySlider.addChangeListener(new ChangeListener() {
-			/** {@inheritDoc} */
-			@Override
-			public void stateChanged(ChangeEvent event) {
-				int value = velocitySlider.getValue();
-				controller.setMidiNoteVelocity(value);
-			}
+		velocitySlider.addChangeListener((e) -> {
+			int value = velocitySlider.getValue();
+			controller.setMidiNoteVelocity(value);
 		});
 		midiPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.volumeLabel"))); //$NON-NLS-1$
 		midiPanel.add(velocitySlider);
@@ -350,14 +327,9 @@ public class HistoricMusicNotationTraining implements IMainGui {
 			bgColor = Color.WHITE;
 		}
 		// System.out.println(text);
-		SwingUtilities.invokeLater(new Runnable() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void run() {
-				successLabel.setText(text);
-				successLabel.setBackground(bgColor);
-			}
+		SwingUtilities.invokeLater(() -> {
+			successLabel.setText(text);
+			successLabel.setBackground(bgColor);
 		});
 	}
 
@@ -366,15 +338,10 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	 */
 	@Override
 	public void setStatusMesssage(final String message) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void run() {
-				statusMessage.setText(message);
-				successBarLineLabel.setValues(controller.getGlobalCounterValues());
-				successBarLineLabel.repaint();
-			}
+		SwingUtilities.invokeLater(() -> {
+			statusMessage.setText(message);
+			successBarLineLabel.setValues(controller.getGlobalCounterValues());
+			successBarLineLabel.repaint();
 		});
 	}
 

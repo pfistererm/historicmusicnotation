@@ -24,6 +24,14 @@ public abstract class AbstractMusicDomain<S extends DomainSpecificState> impleme
 	 * {@inheritDoc}
 	 */
 	@Override
+	public final String getId() {
+		return getClass().getSimpleName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public final String getName() {
 		return NAME;
 	}

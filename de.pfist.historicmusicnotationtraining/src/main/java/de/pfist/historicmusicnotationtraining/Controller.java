@@ -17,6 +17,7 @@ import de.pfist.historicmusicnotationtraining.domains.MusicDomain;
 import de.pfist.historicmusicnotationtraining.messages.Messages;
 import de.pfist.historicmusicnotationtraining.midi.ControllerInstrument;
 import de.pfist.historicmusicnotationtraining.midi.MidiHelper;
+import de.pfist.historicmusicnotationtraining.util.PreferencesUtils;
 
 public class Controller {
 
@@ -33,6 +34,7 @@ public class Controller {
 	private List<DomainSpecificState> domainSpecificStates = new ArrayList<>();
 	private List<WorkerExtension<?, ?>> workerExtensions = new ArrayList<>();
 	private List<AbstractNotePanel<?, ?>> notePanels = new ArrayList<>();
+	// TODO: store state in preferences
 	private boolean playNotes = true;
 	private int midiNoteVelocity = 80;
 	private Mode mode = Mode.AUTO_NEXT_ON_RIGHT;
@@ -52,18 +54,13 @@ public class Controller {
 			e.printStackTrace();
 		}
 		globalCounter = new GlobalCounter();
-		globalCounter.addPropertyChangeListener(new PropertyChangeListener() {
+		globalCounter.addPropertyChangeListener((event) -> {
+			if (event.getPropertyName().equals(GlobalCounter.COUNTER_PROPERTY)) {
 
-			/** {@inheritDoc} */
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-				if (event.getPropertyName().equals(GlobalCounter.COUNTER_PROPERTY)) {
-
-					GlobalCounter g = ((GlobalCounter) event.getSource());
-					String message = String.format(Messages.getString("Controller.statusMessage"), g.getSuccessCount(), //$NON-NLS-1$
-							g.getFailureCount(), g.getMissedCount());
-					getMainGui().setStatusMesssage(message);
-				}
+				GlobalCounter g = ((GlobalCounter) event.getSource());
+				String message = String.format(Messages.getString("Controller.statusMessage"), g.getSuccessCount(), //$NON-NLS-1$
+						g.getFailureCount(), g.getMissedCount());
+				getMainGui().setStatusMesssage(message);
 			}
 		});
 	}
@@ -107,13 +104,8 @@ public class Controller {
 			doNext = getMode() == Mode.AUTO_NEXT_ALWAYS;
 		}
 		if (doNext) {
-			SwingUtilities.invokeLater(new Runnable() {
-
-				/** {@inheritDoc} */
-				@Override
-				public void run() {
-					doNext(true);
-				}
+			SwingUtilities.invokeLater(() -> {
+				doNext(true);
 			});
 		}
 	}
@@ -169,14 +161,7 @@ public class Controller {
 	}
 
 	private void repaintNotePanel() {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			/** {@inheritDoc} */
-			@Override
-			public void run() {
-				currentNotePanel.repaint();
-			}
-		});
+		SwingUtilities.invokeLater(() -> currentNotePanel.repaint());
 	}
 
 	/**
@@ -187,8 +172,7 @@ public class Controller {
 	}
 
 	/**
-	 * @param mainGui
-	 *            the mainGui to set
+	 * @param mainGui the mainGui to set
 	 */
 	public final void setMainGui(IMainGui mainGui) {
 		this.mainGui = mainGui;
@@ -200,6 +184,7 @@ public class Controller {
 		currentWorkerExtension = workerExtensions.get(selectedIndex);
 		currentNotePanel = notePanels.get(selectedIndex);
 		getMainGui().setNotePanelTypes(currentDomain.getNoteButtonPanelTypes());
+		PreferencesUtils.setLastUsedDomain(currentDomain);
 	}
 
 	/**
@@ -239,8 +224,7 @@ public class Controller {
 	}
 
 	/**
-	 * @param playNotes
-	 *            the playNotes to set
+	 * @param playNotes the playNotes to set
 	 */
 	public final void setPlayNotes(boolean playNotes) {
 		this.playNotes = playNotes;
@@ -254,8 +238,7 @@ public class Controller {
 	}
 
 	/**
-	 * @param midiNoteVelocity
-	 *            the midiNoteVelocity to set
+	 * @param midiNoteVelocity the midiNoteVelocity to set
 	 */
 	public final void setMidiNoteVelocity(int midiNoteVelocity) {
 		this.midiNoteVelocity = midiNoteVelocity;
@@ -269,8 +252,7 @@ public class Controller {
 	}
 
 	/**
-	 * @param mode
-	 *            the mode to set
+	 * @param mode the mode to set
 	 */
 	public final void setMode(Mode mode) {
 		this.mode = mode;
@@ -318,4 +300,12 @@ public class Controller {
 		}
 	}
 
+	public int getDomainIndex(MusicDomain domain) {
+		for (int i = 0; i < domains.length; i++) {
+			if (domains[i].equals(domain)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

@@ -39,6 +39,11 @@ import de.pfist.historicmusicnotationtraining.WorkerExtension;
 public interface MusicDomain {
 
 	/**
+	 * @return a string to use as an ID that identifies the domain language independently
+	 */
+	public String getId();
+
+	/**
 	 * @return a string to use as the name on the tab for the domain 
 	 */
 	public String getName();

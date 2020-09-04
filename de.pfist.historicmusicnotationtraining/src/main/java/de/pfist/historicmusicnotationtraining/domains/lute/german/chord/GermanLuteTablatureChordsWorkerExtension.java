@@ -53,14 +53,6 @@ public class GermanLuteTablatureChordsWorkerExtension implements
 		return randomResult;
 	}
 
-//
-//	private void doJaxB() throws JAXBException {
-//		JAXBContext context = JAXBContext.newInstance(ChordDescription.class);
-//		Marshaller mar = context.createMarshaller();
-//		mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//		mar.marshal(CHORDS, new File("./chords-glt.xml"));
-//	}
-
 	private static int[] getMidiNotes(final LuteTuning luteTuning, final LuteNote[] luteNotes) {
 		final int[] midiNotes = new int[luteNotes.length];
 		for (int i = 0; i < luteNotes.length; i++) {

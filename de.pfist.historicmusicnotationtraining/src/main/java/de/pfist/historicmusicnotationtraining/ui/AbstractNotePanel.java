@@ -16,7 +16,7 @@ import de.pfist.historicmusicnotationtraining.domains.AbstractRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainRandomResult;
 import de.pfist.historicmusicnotationtraining.domains.DomainSpecificState;
 
-// TODO: find a new base name ..DisplayPanel..PaintingPanel...
+// TODO: find a new base name ..DisplayPanel..PaintingPanel... DrawingPanel
 public abstract class AbstractNotePanel<D extends DomainSpecificState, O> extends JPanel {
 	/**
 	 * 
@@ -31,16 +31,14 @@ public abstract class AbstractNotePanel<D extends DomainSpecificState, O> extend
 
 	protected O domainObject;
 	private boolean initialized = false;
-	protected float fontSize ;
+	protected float fontSize;
 
 	protected AbstractNotePanel(final Controller controller) {
 		this.controller = controller;
 		setBackground(Color.WHITE);
 		this.addMouseListener(new MouseAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 */
+			/** {@inheritDoc} */
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.doNext(false);

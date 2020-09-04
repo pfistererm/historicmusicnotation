@@ -65,13 +65,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	 */
 	public HistoricMusicNotationTraining(final MusicDomain[] domains) {
 
-		// set look and feel
-		String local = javax.swing.UIManager.getSystemLookAndFeelClassName();
-		try {
-			UIManager.setLookAndFeel(local); // use local or metal
-		} catch (Exception e) {
-			// DO NOTHING
-		}
+		setLookAndFeel();
 		controller = new Controller(domains);
 		controller.setMainGui(this);
 		// call other methods
@@ -81,6 +75,13 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		frame.setSize(700, 500);
 		// frame.pack();
 		frame.setVisible(true);
+		setInitialDomain(domains);
+	}
+
+	/**
+	 * @param domains
+	 */
+	private void setInitialDomain(final MusicDomain[] domains) {
 		MusicDomain lastUsedDomain = PreferencesUtils.getLastUsedDomain(domains);
 		int domainIndex = 0;
 		if (lastUsedDomain != null) {
@@ -91,6 +92,18 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		}
 		tabbedPane.setSelectedIndex(domainIndex);
 		controller.setCurrentDomainIndex(domainIndex);
+	}
+
+	/**
+	 * Set Look&Feel.
+	 */
+	private static void setLookAndFeel() {
+		String local = javax.swing.UIManager.getSystemLookAndFeelClassName();
+		try {
+			UIManager.setLookAndFeel(local); // use local or metal
+		} catch (Exception e) {
+			// DO NOTHING
+		}
 	}
 
 	/**
@@ -130,7 +143,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		createNoteButtonPanels();
 		innerContentPane.add(noteButtonPanelContainer);
 
-		JPanel otherButtonPanel = createOtherButtonPanel();
+		JPanel otherButtonPanel = createOtherButtonPanel(frame);
 		innerContentPane.add(otherButtonPanel);
 
 		JPanel midiPanel = createMidiPanel();
@@ -186,7 +199,7 @@ public class HistoricMusicNotationTraining implements IMainGui {
 	/**
 	 * @return
 	 */
-	private JPanel createOtherButtonPanel() {
+	private JPanel createOtherButtonPanel(final JFrame frame) {
 		Action nextAction = createNextAction();
 
 		JPanel otherButtonPanel = new JPanel();
@@ -222,6 +235,12 @@ public class HistoricMusicNotationTraining implements IMainGui {
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.autoIntervallLabel"))); //$NON-NLS-1$
 		otherButtonPanel.add(autoIntervallMenu);
 		otherButtonPanel.add(new JLabel(Messages.getString("HistoricMusicNotationTraining.seconsLabel"))); //$NON-NLS-1$
+
+//		JButton button = new JButton("Click Me!");
+//		final JDialog modelDialog = TryOutDialog.createDialog(frame);
+//		button.addActionListener((e) -> modelDialog.setVisible(true));
+
+//		otherButtonPanel.add(button);
 		return otherButtonPanel;
 	}
 

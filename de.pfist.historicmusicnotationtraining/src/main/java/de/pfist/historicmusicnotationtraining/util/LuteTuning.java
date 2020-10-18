@@ -64,6 +64,6 @@ public class LuteTuning {
 
 	public AbsoluteChord getAbsoluteChord(RelativeChord relativeChord) {
 		int relativeIndex = (relativeChord.getRelativeIndex() + relativeNoteIndex) % 12;
-		return AbsoluteChord.getChord(relativeIndex, relativeChord.getChordType());
+		return AbsoluteChord.getChord(relativeIndex, relativeChord.getChordType(), relativeChord.getChordInversion());
 	}
 }

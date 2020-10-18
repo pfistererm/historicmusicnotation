@@ -108,7 +108,7 @@ public class NoteButtonPanel extends AbstractNoteButtonPanel implements ActionLi
 		case SINGLE_DIATONIC:
 			return 4;
 		case CHORDS:
-			return 3;
+			return 8;
 		default:
 			return 5;
 		}

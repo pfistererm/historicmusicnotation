@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <chorddescriptions>
 	<!-- A -->
+	<!-- 4cf' -->
     <chorddescription chord="_0_MINOR"><note>S4_0</note><note>S3_1</note><note>S2_2</note></chorddescription>
 	<!-- 4cg -->
     <chorddescription chord="_0_POWER"><note>S4_0</note><note>S2_2</note><note>S1_2</note></chorddescription>

@@ -1,6 +1,7 @@
 package de.pfist.historicmusicnotationtraining.util;
 
 import de.pfist.historicmusicnotationtraining.data.AbsoluteChord;
+import de.pfist.historicmusicnotationtraining.data.ChordInversion;
 import de.pfist.historicmusicnotationtraining.data.ChordType;
 
 public abstract class NoteConstants {
@@ -31,10 +32,15 @@ public abstract class NoteConstants {
 		AbsoluteChord[] chords = new AbsoluteChord[AbsoluteChord.values().length];
 		int chordIndex = 0;
 		for (ChordType chordType : ChordType.values()) {
-			for (AbsoluteChord chord : AbsoluteChord.values()) {
-				if (chord.getChordType() == chordType) {
-					chords[chordIndex] = chord;
-					chordIndex++;
+			for (ChordInversion chordInversion : ChordInversion.values()) {
+				if (chordType == ChordType.POWER && chordInversion == ChordInversion.FIRST) {
+					continue;
+				}
+				for (AbsoluteChord chord : AbsoluteChord.values()) {
+					if (chord.getChordType() == chordType && chord.getChordInversion() == chordInversion) {
+						chords[chordIndex] = chord;
+						chordIndex++;
+					}
 				}
 			}
 		}
